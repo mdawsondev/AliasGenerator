@@ -1,4 +1,4 @@
-var types = ["animals", "colors", "food", "nature", "numbers"];
+var types = ["adjectives", "animals", "colors", "food", "nature", "numbers"];
 var data = [];
 
 for (i in types) { 
@@ -28,7 +28,7 @@ window.onload = function() {
     	if (document.getElementById(types[i]).checked)
       	category.push(data[i]);
     }
-    
+
     for (i=0; i<count; i++){
     	var rdmCat = Math.floor(Math.random() * category.length);
     	var rdmItem = Math.floor(Math.random() * category[rdmCat].length);

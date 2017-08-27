@@ -6,7 +6,8 @@ Hamster
 Horse
 Koala
 Monkey
+Pangolin
 Salmon
 Snake
 Wolf
-Zeebra
+Zebra

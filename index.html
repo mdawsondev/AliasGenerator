@@ -7,10 +7,12 @@
 	<script type="text/javascript" src="scripts/generator.js"></script>
 	<body>
 		<div>
-			<p id="name"></p>
+			<p id="name" contenteditable="true"></p>
 			<div id="categories"></div>
 			<button id="go">Generate Alias</button>
-			<input id="count" type="text" placeholder="How many words?"></input>
+			<input id="count" type="text" placeholder="How many words?">
+			<textarea id="custom" rows="4" cols="50" placeholder="Custom Field"></textarea>
+			<input id="usecustom" type="checkbox"><label for="custom">Use Custom Only</label>
 		</div>
 	</body>
 </html>

@@ -29,18 +29,26 @@ window.onload = function () {
 
   document.getElementById("go").onclick = function () {
     var count = document.getElementById("count").value,
+        custom = document.getElementById("custom").value,
         alias = "",
         category = [];
 
-    for (i in types) {
-      if (document.getElementById(types[i]).checked)
-        category.push(data[i]);
+    if (! document.getElementById("usecustom").checked) {
+      for (i in types) {
+        if (document.getElementById(types[i]).checked)
+          category.push(data[i]);
+      }
+    } else {
+      category = custom.split(',');
     }
 
     for (i=0; i<count; i++){
       var rdmCat = Math.floor(Math.random() * category.length);
       var rdmItem = Math.floor(Math.random() * category[rdmCat].length);
-      alias += category[rdmCat][rdmItem];
+      if (! document.getElementById("usecustom").checked)
+        alias += category[rdmCat][rdmItem];
+      else
+        alias += category[rdmItem];
       document.getElementById("name").innerHTML = alias;
     }
   }

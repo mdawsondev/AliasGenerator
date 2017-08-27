@@ -1,6 +1,0 @@
-red
-blue
-green
-yellow
-orange
-indigo

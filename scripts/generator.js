@@ -21,9 +21,6 @@ window.onload = function() {
     if (document.getElementById("nature").checked)
             category.push(nature);
 
-//pick random category from category
-//pick random item from that category
-
     for (i=0; i<count; i++){
     	var rdmCat = Math.floor(Math.random() * category.length);
     	var rdmItem = Math.floor(Math.random() * category[rdmCat].length);

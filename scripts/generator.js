@@ -83,8 +83,13 @@ window.onload = function () {
       var rdmCat = Math.floor(Math.random() * library.length);
       var rdmItem = Math.floor(Math.random() * library[rdmCat].content.length);
       //Grammar logic; needs work!
+      console.log(i + " c" + count + "g " + library[rdmCat].grammar)
       if (grammar.checked && library[rdmCat].grammar !== "adjective" && i !== count-1){
         i -= 1;
+        continue;
+      }
+      if (grammar.checked && library[rdmCat].grammar !== "noun" && i == count-1) {
+        i -= 1
         continue;
       }
       alias += library[rdmCat].content[rdmItem];

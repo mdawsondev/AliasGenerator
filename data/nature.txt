@@ -1,0 +1,7 @@
+Grass
+Gravel
+Swamp
+Rock
+Lake
+Lava
+Desert

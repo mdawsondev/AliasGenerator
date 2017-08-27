@@ -1,5 +1,7 @@
-cat
-dog
-spider
-fly
-monkey
+Cat
+Badger
+Dog
+Hamster
+Horse
+Salmon
+Wolf

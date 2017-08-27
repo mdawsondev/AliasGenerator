@@ -1,6 +1,10 @@
-red
-blue
-green
-yellow
-orange
-indigo
+Red
+Orange
+Yellow
+Green
+Blue
+Indigo
+Violet
+Rainbow
+Black
+White

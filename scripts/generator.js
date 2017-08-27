@@ -1,3 +1,4 @@
+window.onload = function() {
 var types = ["adjectives", "animals", "colors", "food", "nature", "numbers"];
 var data = [];
 
@@ -9,7 +10,15 @@ for (i in types) {
 	        if (rawFile.readyState === 4) {
 	            if (rawFile.status === 200 || rawFile.status == 0) {
 	                var allText = rawFile.responseText;
-	                data[i] = allText.split('\n'); 
+	                data[i] = allText.split('\n');
+	            	  var checkbox = document.createElement("input");
+	            	  checkbox.type = "checkbox"
+	            	  checkbox.id = types[i];
+							    var label = document.createElement("label");
+							    label.htmlFor = types[i];
+							    label.appendChild(document.createTextNode(types[i].charAt(0).toUpperCase() + types[i].slice(1)));
+							    document.getElementById("categories").appendChild(checkbox).checked = true;
+							    document.getElementById("categories").appendChild(label);
 	            }
 	        }
 	    }
@@ -17,8 +26,6 @@ for (i in types) {
 	}
 	readTextFile("https://raw.githubusercontent.com/mdawsondev/AliasGenerator/master/data/" + types[i] + ".txt");
 }
-
-window.onload = function() {
   document.getElementById("go").onclick = function () {
    	var count = document.getElementById("count").value;
 		var alias = "";

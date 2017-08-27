@@ -2,7 +2,7 @@ var nrmlAdjs = ["normal", "adjective", ["adjectives", "colors", "numbers"]],
 nrmlNouns = ["normal", "noun", ["animals", "food", "nature"]],
 nrmlTtl = ["normal", "title", ["titles"]];
 fntsyNouns = ["fantasy", "noun", ["orcish"]],
-categories = [nrmlAdjs, nrmlNouns, fntsyNouns],
+categories = [nrmlAdjs, nrmlNouns, fntsyNouns, nrmlTtl],
 data = [];
 
 class Category {
@@ -77,24 +77,29 @@ window.onload = function () {
     }
 
     //Randomly select words from the library.
-    var title = false;
+    var title = false,
+        titleLoc = 0;
     if (library[0].content.length === 0)
       library.shift();
     for (i=0; i<library.length; i++) {
-      if (library[i].grammar === "title")
-        var title = true;
+      if (library[i].grammar === "title") {
+        titleLoc = i;
+        title = true;
+      }
     }
     for (i=0; i<count; i++){
       var rdmCat = Math.floor(Math.random() * library.length);
       var rdmItem = Math.floor(Math.random() * library[rdmCat].content.length);
       //Grammar logic; needs work!
-      if (grammar.checked && title && library[rdmCat].grammar !== "title" && i !== 0)
-        i -=1;
-        continue;
-      if ((grammar.checked && library[rdmCat].grammar !== "adjective" && i !== count-1) || 
-        (grammar.checked && library[rdmCat].grammar !== "noun" && i == count-1)) {
-        i -= 1
-        continue;
+      if (grammar.checked) {
+        if (title && i === 0) { 
+            alias += library[titleLoc].content[rdmItem];
+            continue;
+        }
+        if (i === count-1 && library[rdmCat].grammar !== "noun") {
+          i -= 1;
+          continue;
+        }
       }
       alias += library[rdmCat].content[rdmItem];
     }

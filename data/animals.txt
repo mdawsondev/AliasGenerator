@@ -1,7 +1,12 @@
 Cat
 Badger
 Dog
+Frog
 Hamster
 Horse
+Koala
+Monkey
 Salmon
+Snake
 Wolf
+Zeebra

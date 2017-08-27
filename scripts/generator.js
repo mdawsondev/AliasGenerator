@@ -1,4 +1,4 @@
-var nrmlAdjs = ["normal", "adjective", ["colors", "numbers"]],
+var nrmlAdjs = ["normal", "adjective", ["adjectives", "colors", "numbers"]],
 nrmlNouns = ["normal", "noun", ["animals", "food"]],
 fntsyNouns = ["fantasy", "noun", ["nature"]],
 categories = [nrmlAdjs, nrmlNouns, fntsyNouns],

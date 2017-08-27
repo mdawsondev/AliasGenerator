@@ -5,3 +5,9 @@ Rock
 Lake
 Lava
 Desert
+Blizzard
+Tundra
+Earth
+Dirt
+Tree
+Pinecone

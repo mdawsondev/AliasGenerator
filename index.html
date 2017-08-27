@@ -7,12 +7,18 @@
 	<script type="text/javascript" src="scripts/generator.js"></script>
 	<body>
 		<div>
-			<p id="name" contenteditable="true"></p>
-			<div id="categories"></div>
+			<p id="alias" contenteditable="true"></p>
+			<div id="selections"><!--Dynamic--></div>
+			<div id="options">
+				<input id="count" type="text" placeholder="Number of Words">
+				<input id="grammar" type="checkbox"><label for="grammar">Use Grammar</label>
+			</div>
+			<div id="custom">
+				<textarea id="c-list" rows="5" cols="40" placeholder="Custom Words"></textarea>
+				<input id="c-only" type="checkbox" onclick="custCheck(this.id)"><label for="c-only">Use Custom Only</label>
+				<input id="c-plus" type="checkbox" onclick="custCheck(this.id)"><label for="c-plus">Include Custom</label>
+			</div>
 			<button id="go">Generate Alias</button>
-			<input id="count" type="text" placeholder="How many words?">
-			<textarea id="custom" rows="4" cols="50" placeholder="Custom Field"></textarea>
-			<input id="usecustom" type="checkbox"><label for="custom">Use Custom Only</label>
 		</div>
 	</body>
 </html>

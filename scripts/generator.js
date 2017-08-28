@@ -53,7 +53,7 @@ function harvest() {
       }
       rawFile.send(null);
     }
-    readTextFile("https://raw.githubusercontent.com/mdawsondev/AliasGenerator/master/data/" + data[i].name + ".txt");
+    readTextFile("https://raw.githubusercontent.com/mdawsondev/AliasGenerator/caps/data/" + data[i].name + ".txt");
   }
 }
 
@@ -114,10 +114,16 @@ window.onload = function () {
 	    else
 	      continue;
   	  }
+
   	  //Caps logic.
-  	  if (caps.checked) {
-  	  	rdmThing = rdmThing.charAt(0).toUpperCase() + rdmThing.slice(1);
+  	  function process (input) {
+  	    if (caps.checked)
+  	  	  input = input.charAt(0).toUpperCase() + input.slice(1);
+  	    return input
   	  }
+  	  console.log(rdmThing + typeof rdmThing)
+  	  rdmThing = process(rdmThing);
+
       //Grammar logic; needs work!
       if (grammar.checked) {
         if (title && i === 0) { 

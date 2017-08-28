@@ -1,4 +1,8 @@
-// Ideas: Caps, RanDOmCaPS, L337, x_HXC_x, Verbs?
+/*Ideas: Caps, RanDOmCaPS, L337, x_HXC_x, Verbs?
+  Needs modular conversion, see example below:
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }*/
 
 var nrmlAdjs = ["normal", "adjective", ["adjectives", "colors", "numbers"]],
 nrmlNouns = ["normal", "noun", ["animals", "food", "nature"]],
@@ -59,6 +63,9 @@ window.onload = function () {
     var count = document.getElementById("count").value,
     cOnly = document.getElementById("c-only"),
     cPlus = document.getElementById("c-plus"),
+    caps = document.getElementById("caps"),
+    capsRand = document.getElementById("caps-random"),
+    capsLock = document.getElementById("caps-only"),
     grammar = document.getElementById("grammar"),
     norepeats = document.getElementById("norepeats"),
     alias = "",
@@ -77,7 +84,7 @@ window.onload = function () {
         custom.content = [];
       for (i in data){
         if (document.getElementById(data[i].name).checked)
-          library.push(data[i]); //Creating issue with pointer; can't manipulate data without destroying.
+          library.push(data[i]);
         }
     }
 
@@ -106,6 +113,10 @@ window.onload = function () {
 	      used.push(rdmThing);
 	    else
 	      continue;
+  	  }
+  	  //Caps logic.
+  	  if (caps.checked) {
+  	  	rdmThing = rdmThing.charAt(0).toUpperCase() + rdmThing.slice(1);
   	  }
       //Grammar logic; needs work!
       if (grammar.checked) {

@@ -1,3 +1,5 @@
+// Ideas: Caps, RanDOmCaPS, L337, x_HXC_x, Verbs?
+
 var nrmlAdjs = ["normal", "adjective", ["adjectives", "colors", "numbers"]],
 nrmlNouns = ["normal", "noun", ["animals", "food", "nature"]],
 nrmlTtl = ["normal", "title", ["titles"]];
@@ -108,7 +110,7 @@ window.onload = function () {
       //Grammar logic; needs work!
       if (grammar.checked) {
         if (title && i === 0) { 
-          alias += library[titleLoc].content[rdmItem];
+          alias += library[titleLoc].content[Math.floor(Math.random() * library[titleLoc].content.length)];
           continue;
         }
         if (i === count-1 && library[rdmCat].grammar !== "noun") {

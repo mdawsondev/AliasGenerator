@@ -69,14 +69,16 @@ window.onload = function () {
       custom.content = document.getElementById("c-list").value.split(', ');
       library.push(custom);
     }
+
     if (!cOnly.checked) {
       if (!cPlus.checked)
         custom.content = [];
-      for (i in data){ 
-        if (document.getElementById(data[i].name).checked) 
+      for (i in data){
+        if (document.getElementById(data[i].name).checked)
           library.push(data[i]); //Creating issue with pointer; can't manipulate data without destroying.
-      }
+        }
     }
+
 
     //Pick words at random matching our grammar rules.
     var title = false,
@@ -89,13 +91,21 @@ window.onload = function () {
         title = true;
       }
     }
+
+    var used = [];
+
     for (i=0; i<count; i++){
-      var rdmCat = Math.floor(Math.random() * library.length);
-      var rdmItem = Math.floor(Math.random() * library[rdmCat].content.length);
-      //Grammar logic; needs work!
+      var rdmCat = Math.floor(Math.random() * library.length),
+      	  rdmItem = Math.floor(Math.random() * library[rdmCat].content.length),
+      	  rdmThing = library[rdmCat].content[rdmItem];
+      //Repeat logic.
       if (norepeats.checked) {
-          library[rdmCat].content.splice(rdmItem, 1);
-      }
+	    if (used.indexOf(rdmThing) < 0)
+	      used.push(rdmThing);
+	    else
+	      continue;
+  	  }
+      //Grammar logic; needs work!
       if (grammar.checked) {
         if (title && i === 0) { 
           alias += library[titleLoc].content[rdmItem];
@@ -106,7 +116,7 @@ window.onload = function () {
           continue;
         }
       }
-      alias += library[rdmCat].content[rdmItem];
+      alias += rdmThing;
     }
     document.getElementById("alias").innerHTML = alias;
   }

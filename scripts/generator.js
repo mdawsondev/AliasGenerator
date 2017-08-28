@@ -57,26 +57,28 @@ window.onload = function () {
     var count = document.getElementById("count").value,
     cOnly = document.getElementById("c-only"),
     cPlus = document.getElementById("c-plus"),
-    custom = data[0];
     grammar = document.getElementById("grammar"),
+    norepeats = document.getElementById("norepeats"),
     alias = "",
+    custom = data[0],
     library = [];
 
 
     //Add selected words to the library.
-    if (cOnly.checked || cPlus.checked)
+    if (cOnly.checked || cPlus.checked) {
       custom.content = document.getElementById("c-list").value.split(', ');
-    library.push(custom);
+      library.push(custom);
+    }
     if (!cOnly.checked) {
       if (!cPlus.checked)
         custom.content = [];
       for (i in data){ 
         if (document.getElementById(data[i].name).checked) 
-          library.push(data[i]);
+          library.push(data[i]); //Creating issue with pointer; can't manipulate data without destroying.
       }
     }
 
-    //Randomly select words from the library.
+    //Pick words at random matching our grammar rules.
     var title = false,
         titleLoc = 0;
     if (library[0].content.length === 0)
@@ -91,10 +93,13 @@ window.onload = function () {
       var rdmCat = Math.floor(Math.random() * library.length);
       var rdmItem = Math.floor(Math.random() * library[rdmCat].content.length);
       //Grammar logic; needs work!
+      if (norepeats.checked) {
+          library[rdmCat].content.splice(rdmItem, 1);
+      }
       if (grammar.checked) {
         if (title && i === 0) { 
-            alias += library[titleLoc].content[rdmItem];
-            continue;
+          alias += library[titleLoc].content[rdmItem];
+          continue;
         }
         if (i === count-1 && library[rdmCat].grammar !== "noun") {
           i -= 1;

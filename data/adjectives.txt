@@ -4,7 +4,7 @@ Broken
 Cautious
 Cold
 Curious
-Edible 
+Edible
 Hairy
 Happy
 Hopeful

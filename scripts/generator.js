@@ -1,4 +1,8 @@
-// Ideas: Caps, RanDOmCaPS, L337, x_HXC_x, Verbs?
+/*Ideas: Caps, RanDOmCaPS, L337, x_HXC_x, Verbs?
+  Needs modular conversion, see example below:
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }*/
 
 var nrmlAdjs = ["normal", "adjective", ["adjectives", "colors", "numbers"]],
 nrmlNouns = ["normal", "noun", ["animals", "food", "nature"]],
@@ -49,7 +53,7 @@ function harvest() {
       }
       rawFile.send(null);
     }
-    readTextFile("https://raw.githubusercontent.com/mdawsondev/AliasGenerator/master/data/" + data[i].name + ".txt");
+    readTextFile("https://raw.githubusercontent.com/mdawsondev/AliasGenerator/caps/data/" + data[i].name + ".txt");
   }
 }
 
@@ -59,6 +63,9 @@ window.onload = function () {
     var count = document.getElementById("count").value,
     cOnly = document.getElementById("c-only"),
     cPlus = document.getElementById("c-plus"),
+    caps = document.getElementById("caps"),
+    capsRand = document.getElementById("caps-random"),
+    capsLock = document.getElementById("caps-only"),
     grammar = document.getElementById("grammar"),
     norepeats = document.getElementById("norepeats"),
     alias = "",
@@ -77,7 +84,7 @@ window.onload = function () {
         custom.content = [];
       for (i in data){
         if (document.getElementById(data[i].name).checked)
-          library.push(data[i]); //Creating issue with pointer; can't manipulate data without destroying.
+          library.push(data[i]);
         }
     }
 
@@ -107,17 +114,38 @@ window.onload = function () {
 	    else
 	      continue;
   	  }
+
+  	  //Process words before displaying them.
+  	  function process (input) {
+  	  	//Caps logic.
+  	    if (caps.checked)
+  	  	  input = input.charAt(0).toUpperCase() + input.slice(1);
+  	    if (capsLock.checked)
+  	      input = input.toUpperCase();
+  	  	if (capsRand.checked) {
+  	  	  var randOutput = "";
+  	  	  for (letter in input) {
+  	  	  	if (Math.floor(Math.random() * 2))
+  	  	  		randOutput += input[letter].toUpperCase();
+  	  	  	else
+  	  	  		randOutput += input[letter];
+  	  	  }
+  	  	  input = randOutput;
+  	  	}
+  	    return input
+  	  }
+
       //Grammar logic; needs work!
       if (grammar.checked) {
-        if (title && i === 0) { 
-          alias += library[titleLoc].content[Math.floor(Math.random() * library[titleLoc].content.length)];
-          continue;
-        }
+        if (title && i === 0)
+          rdmThing = library[titleLoc].content[Math.floor(Math.random() * library[titleLoc].content.length)];
         if (i === count-1 && library[rdmCat].grammar !== "noun") {
           i -= 1;
           continue;
         }
       }
+
+  	  rdmThing = process(rdmThing);
       alias += rdmThing;
     }
     document.getElementById("alias").innerHTML = alias;

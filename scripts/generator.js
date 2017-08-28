@@ -115,26 +115,37 @@ window.onload = function () {
 	      continue;
   	  }
 
-  	  //Caps logic.
+  	  //Process words before displaying them.
   	  function process (input) {
+  	  	//Caps logic.
   	    if (caps.checked)
   	  	  input = input.charAt(0).toUpperCase() + input.slice(1);
+  	    if (capsLock.checked)
+  	      input = input.toUpperCase();
+  	  	if (capsRand.checked) {
+  	  	  var randOutput = "";
+  	  	  for (letter in input) {
+  	  	  	if (Math.floor(Math.random() * 2))
+  	  	  		randOutput += input[letter].toUpperCase();
+  	  	  	else
+  	  	  		randOutput += input[letter];
+  	  	  }
+  	  	  input = randOutput;
+  	  	}
   	    return input
   	  }
-  	  console.log(rdmThing + typeof rdmThing)
-  	  rdmThing = process(rdmThing);
 
       //Grammar logic; needs work!
       if (grammar.checked) {
-        if (title && i === 0) { 
-          alias += library[titleLoc].content[Math.floor(Math.random() * library[titleLoc].content.length)];
-          continue;
-        }
+        if (title && i === 0)
+          rdmThing = library[titleLoc].content[Math.floor(Math.random() * library[titleLoc].content.length)];
         if (i === count-1 && library[rdmCat].grammar !== "noun") {
           i -= 1;
           continue;
         }
       }
+
+  	  rdmThing = process(rdmThing);
       alias += rdmThing;
     }
     document.getElementById("alias").innerHTML = alias;

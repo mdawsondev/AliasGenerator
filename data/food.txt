@@ -14,5 +14,5 @@ pickle
 pepper
 salt
 sandwich
-soast
+toast
 yam

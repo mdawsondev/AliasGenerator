@@ -9,7 +9,7 @@ nrmlNouns = ["normal", "noun", ["animals", "food", "nature"]],
 nrmlTtl = ["normal", "title", ["titles"]],
 verbs = ["normal", "verb", ["verbs"]],
 fntsyNouns = ["fantasy", "noun", ["orcish"]],
-categories = [nrmlAdjs, nrmlNouns, fntsyNouns, nrmlTtl],
+categories = [nrmlAdjs, nrmlNouns, nrmlTtl, fntsyNouns, verbs],
 data = [];
 
 class Category {
@@ -121,9 +121,9 @@ window.onload = function () {
   	  //Leet speek before caps!
   	  function goLeet (input) {
   	  	var leetOutput = input;
-  	  	if (input.slice(-2) === "ed")
+  	  	if (input.endsWith("ed"))
   	  		leetOutput = input.slice(0, -2) + "d";
-  	  	if (input.slice(-2) === "er")
+  	  	if (input.endsWith("er"))
   	  		leetOutput = input.slice(0, -2) + "xor";
   	  	if (library[rdmCat].grammar === "verb")
   	  		leetOutput += "age";

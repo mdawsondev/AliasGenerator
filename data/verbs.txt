@@ -1,0 +1,14 @@
+kick
+punch
+slap
+cut
+drink
+eat
+chew
+sigh
+kill
+give
+take
+destroy
+grow
+tackle

@@ -6,10 +6,25 @@
 body {
   background-color: #f7feff; }
 
-#alias {
+.names {
   display: flex;
-  justify-content: center;
-  font-size: 2.5em; }
+  justify-content: center; }
+
+#alias {
+  font-size: 2.8em;
+  color: #12d9ff; }
+
+#alias2 {
+  font-size: 2em;
+  color: #45e1ff; }
+
+#alias3 {
+  font-size: 1.5em;
+  color: #78e9ff; }
+
+#alias4 {
+  font-size: 1em;
+  color: #abf1ff; }
 
 header h1 {
   display: flex;

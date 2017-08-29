@@ -5,10 +5,11 @@
 		<link href="style.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Dancing+Script|Raleway" rel="stylesheet">
 	</head>
+	<script src="https://use.fontawesome.com/31b02488b8.js"></script>
 	<script type="text/javascript" src="scripts/generator.js"></script>
 	<body>
 		<header>
-			<h1>Alias Generator</h1>
+			<h1>Alias <i class="fa fa-hand-spock-o"></i> Generator</h1>
 		</header>
 		<div>
 			<div id="selections"><!--Dynamic--></div>
@@ -19,7 +20,10 @@
 					<div><input id="c-plus" type="checkbox" onclick="custCheck(this.id)"><label for="c-plus">Include Custom</label></div>
 				</div>
 			</div>
-			<h2 id="alias" contenteditable="true">Press "Generate" to Start</h2>
+			<h2 class="names" id="alias" contenteditable="true">Press "Generate" to Start</h2>
+			<h3 class="names" id="alias2" contenteditable="true">...</h3>
+			<h4 class="names" id="alias3" contenteditable="true">...</h4>
+			<h5 class="names" id="alias4" contenteditable="true">...</h5>
 			<form id="options" onsubmit="return false">
 				<div class="col-wrap">
 				    <button id="go">Generate Alias</button>
@@ -33,7 +37,7 @@
 					</select>
 					<div><input id="grammar" type="checkbox"><label for="grammar">Use Grammar</label></div>
 					<div><input id="norepeats" type="checkbox"><label for="norepeats">No Repeated Words</label></div>
-					<div><input id="caps" type="checkbox"><label for="caps">Capital Words</label></div>
+					<div><input id="caps" type="checkbox" checked><label for="caps">Capital Words</label></div>
 					<div><input id="caps-random" type="checkbox"><label for="caps-random">Random Caps</label></div>
 					<div><input id="caps-only" type="checkbox"><label for="caps-only">Caps Lock</label></div>
 					<div><input id="leet" type="checkbox"><label for="leet">Leet</label></div>

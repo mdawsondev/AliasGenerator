@@ -9,7 +9,8 @@ nrmlNouns = ["normal", "noun", ["animals", "food", "nature"]],
 nrmlTtl = ["normal", "title", ["titles"]],
 verbs = ["normal", "verb", ["verbs"]],
 categories = [nrmlAdjs, nrmlNouns, nrmlTtl, verbs],
-data = [];
+data = []
+loader = [];
 
 class Category {
 	constructor(name, genre, grammar) {
@@ -161,12 +162,21 @@ window.onload = function () {
       }
 
       if (leet.checked)
-	    rdmThing = goLeet(rdmThing);
+      	rdmThing = goLeet(rdmThing);
       if (caps.checked || capsLock.checked || capsRand.checked)
       	rdmThing = goCaps(rdmThing);
       alias += rdmThing;
   }
   document.getElementById("alias").innerHTML = alias;
+  loader.unshift(alias);
+  if (loader.length > 4)
+  	loader.pop();
+  if (loader[1])
+	  document.getElementById("alias2").innerHTML = loader[1];
+  if (loader[2])
+	  document.getElementById("alias3").innerHTML = loader[2];
+  if (loader[3])
+	  document.getElementById("alias4").innerHTML = loader[3];
 }
 }
 

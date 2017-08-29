@@ -44,6 +44,7 @@ function harvest() {
     				label = document.createElement("label");
     				checkbox.type = "checkbox"
     				checkbox.id = data[i].name;
+    				checkbox.className = "cat";
     				label.htmlFor = data[i].name;
     				label.appendChild(document.createTextNode(data[i].name.charAt(0).toUpperCase() + data[i].name.slice(1)));
     				document.getElementById("selections").appendChild(checkbox).checked = true;

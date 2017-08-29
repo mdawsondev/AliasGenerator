@@ -2,13 +2,17 @@
 <html>
 	<head>
 		<title>Alias Generator</title>
-		<link rel="stylesheet" href="style.css">
+		<link href="style.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Dancing+Script|Raleway" rel="stylesheet">
 	</head>
 	<script type="text/javascript" src="scripts/generator.js"></script>
 	<body>
+		<header>
+			<h1>Alias Generator</h1>
+		</header>
 		<div>
-			<p id="alias" contenteditable="true"></p>
 			<div id="selections"><!--Dynamic--></div>
+			<h2 id="alias" contenteditable="true">Press "Generate" to Start</h2>
 			<div id="options">
 				<input id="count" type="text" placeholder="Number of Words">
 				<input id="grammar" type="checkbox"><label for="grammar">Use Grammar</label>

@@ -1,4 +1,4 @@
-/*Ideas: L337, x_HXC_x, Verbs?
+/*Ideas: x_HXC_x?
   Needs modular conversion, see example below:
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -8,8 +8,7 @@ var nrmlAdjs = ["normal", "adjective", ["adjectives", "colors", "numbers"]],
 nrmlNouns = ["normal", "noun", ["animals", "food", "nature"]],
 nrmlTtl = ["normal", "title", ["titles"]],
 verbs = ["normal", "verb", ["verbs"]],
-fntsyNouns = ["fantasy", "noun", ["orcish"]],
-categories = [nrmlAdjs, nrmlNouns, nrmlTtl, fntsyNouns, verbs],
+categories = [nrmlAdjs, nrmlNouns, nrmlTtl, verbs],
 data = [];
 
 class Category {

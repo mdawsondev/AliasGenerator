@@ -1,8 +1,15 @@
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: 'Raleway', sans-serif; }
 
-textarea {
-  style: block; }
+#alias {
+  display: flex;
+  justify-content: center; }
+
+header h1 {
+  display: flex;
+  justify-content: center;
+  font-family: 'Dancing Script', cursive; }
 
 /*# sourceMappingURL=style.css.map */

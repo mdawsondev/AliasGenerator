@@ -28,8 +28,15 @@ html {
 }
 
 body {
+	box-sizing: border-box;
 	background-color: darken($sColor, 40%);
 	height: 100%;
+	border-top: 0.2em solid lighten($sColor, 10%);
+	border-bottom: 0.2em solid lighten($sColor, 10%);
+}
+
+.clickable {
+	cursor: pointer;
 }
 
 button {
@@ -58,8 +65,48 @@ header {
 	}
 }
 
+
+.title {
+	display: flex;
+	justify-content: center;
+	font-weight: bolder;
+	margin: 0.5em;
+	i {
+		margin: 0 0.5em 0 0;
+	}
+}
+
 textarea, select, select option {
 	color: #000;
+}
+
+#custom {
+	margin: 1em 0;
+}
+
+#count {
+	margin-bottom: 1em;
+}
+
+#hub {
+	width: 100%;
+	height: auto;
+	font-size: 0.8em;
+	background-color: darken($sColor, 50%);
+	display: flex;
+	justify-content: center;
+	p {
+		display: flex;
+		align-items: center;
+		i {
+			margin-left: 0.5em;
+		}
+	}
+}
+
+.c-feature {
+	display: flex;
+	justify-content: flex-end;
 }
 
 .col-wrap {
@@ -100,7 +147,6 @@ content {
 	background: darken($sColor, 40%);
 	background: linear-gradient(darken($sColor, 20%), darken($sColor, 40%));
 	padding-bottom: 1.5em;
-	border-top: 0.2em solid lighten($sColor, 10%);
 	p {
 		text-align: center;
 		width: 8em;
@@ -113,14 +159,10 @@ content {
 	}
 }
 
-#options {
-	display: flex;
-	justify-content: center;
-}
-
 label:hover {
 	color: lighten($sColor, 30%);
 }
+
 input[type=checkbox] {
 	display: none;
 		&:checked + label {

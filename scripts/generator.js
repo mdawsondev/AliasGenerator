@@ -46,9 +46,10 @@ function harvest() {
     				  checkbox = document.createElement("input"),
     				  label = document.createElement("label");
     				checkbox.type = "checkbox"
-    				checkbox.className = "cat";
     				checkbox.id = data[i].name;
     				label.htmlFor = data[i].name;
+    				wrapper.className = "cat";
+    				wrapper.style.display = "none";
     				label.appendChild(document.createTextNode(data[i].name.charAt(0).toUpperCase() + data[i].name.slice(1)));
     				wrapper.appendChild(checkbox).checked = true;
     				wrapper.appendChild(label);
@@ -64,6 +65,7 @@ function harvest() {
 
 window.onload = function () {
 	harvest();
+
 	document.getElementById("go").onclick = function () {
 		var count = document.getElementById("count").value,
 		cOnly = document.getElementById("c-only"),
@@ -181,6 +183,17 @@ window.onload = function () {
   if (loader[3])
 	  document.getElementById("alias4").innerHTML = loader[3];
 }
+}
+
+function list () {
+	var elems = document.getElementsByClassName("cat")
+	for (var i = 0 ; i < elems.length; i+=1){
+		console.log(elems[i].style.display)
+		if (elems[i].style.display !== "none")
+			elems[i].style.display = "none";
+		else
+			elems[i].style.display = "initial";
+	}
 }
 
 //Disable options so checkboxes don't conflict.

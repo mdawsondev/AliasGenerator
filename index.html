@@ -12,25 +12,29 @@
 			<aside>
 				<header>
 					<h1>Alias Generator</h1>
-					<p><a href="http://github.com/mdawsondev/AliasGenerator"><i class="fa fa-github fa-2x"></i></a> by <a href="#">mdawsondev</a></p>
+					<p>by <a href="#">mdawsondev</a></p>
 				</header>
-				<div id="selections"><!--Dynamic--></div>
+				
+				<div id="selections">
+					<p class="title clickable" onclick="list()"><i class="fa fa-plus"></i> Toggle List</p>
+					<!--Dynamic-->
+				</div>
 				<div id="custom">
-					<textarea id="c-list" rows="3" cols="30" placeholder="custom word, custom word 2 . . ."></textarea>
+					<textarea id="c-list" rows="3" cols="28" placeholder="custom word, custom word 2 . . ."></textarea>
 					<div class="col-wrap">
 						<div class="c-feature">
 							<input id="c-only" type="checkbox" onclick="custCheck(this.id)" />
-							<label for="c-only">Use Custom Only</label>
+							<label for="c-only">Use Custom Only <i class="fa fa-chevron-left"></i></label>
 						</div>
 						<div class="c-feature">
 							<input id="c-plus" type="checkbox" onclick="custCheck(this.id)" />
-							<label for="c-plus">Include Custom</label>
+							<label for="c-plus">Include Custom <i class="fa fa-chevron-left"></i></label>
 						</div>
 					</div>
 				</div>
+				<p class="title"><i class="fa fa-flask"></i> Options</p>
 				<form id="options" onsubmit="return false">
 					<div class="col-wrap">
-					    <button id="go"><i class="fa fa-cog fa-lg" aria-hidden="true"></i> Generate</button>
 						<select id="count" placeholder="Number of Words" required>
 							<option value="" disabled selected>Word Count</option>
 							<option value="1">1</option>
@@ -41,28 +45,29 @@
 						</select>
 						<div>
 							<input id="grammar" type="checkbox">
-							<label for="grammar">Use Grammar</label>
+							<label for="grammar"><i class="fa fa-chevron-right"></i> Use Grammar</label>
 						</div>
 						<div>
 							<input id="norepeats" type="checkbox">
-							<label for="norepeats">No Repeated Words</label>
+							<label for="norepeats"><i class="fa fa-chevron-right"></i> No Repeated Words</label>
 						</div>
 						<div>
 							<input id="caps" type="checkbox" checked>
-							<label for="caps">Capital Words</label>
+							<label for="caps"><i class="fa fa-chevron-right"></i> Capital Words</label>
 						</div>
 						<div>
 							<input id="caps-random" type="checkbox">
-							<label for="caps-random">Random Caps</label>
+							<label for="caps-random"><i class="fa fa-chevron-right"></i> Random Caps</label>
 						</div>
 						<div>
 							<input id="caps-only" type="checkbox">
-							<label for="caps-only">Caps Lock</label>
+							<label for="caps-only"><i class="fa fa-chevron-right"></i> Caps Lock</label>
 						</div>
 						<div>
 							<input id="leet" type="checkbox">
-							<label for="leet">Leet</label>
+							<label for="leet"><i class="fa fa-chevron-right"></i> Leet</label>
 						</div>
+					    <button class="clickable" id="go"><i class="fa fa-cog fa-lg" aria-hidden="true"></i> Generate</button>
 					</div>
 				</form>
 			</aside>
@@ -74,10 +79,13 @@
 					<p><i class="fa fa-linkedin"></i> LinkedIn</p>
 				</div>
 				<div id="generated">
-					<h2 class="names" id="alias1" contenteditable="true">Press "Generate" to Start</h2>
+					<h2 class="names" id="alias1" contenteditable="true">"Generate" to Start</h2>
 					<h3 class="names" id="alias2" contenteditable="true">...</h3>
 					<h4 class="names" id="alias3" contenteditable="true">...</h4>
 					<h5 class="names" id="alias4" contenteditable="true">...</h5>
+				</div>
+				<div id="hub">
+					<p>AG is on GitHub! <a href="http://github.com/mdawsondev/AliasGenerator"><i class="fa fa-github fa-2x"></i></a></p>
 				</div>
 			</content>
 		</div>

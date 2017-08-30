@@ -8,49 +8,51 @@
 		<script src="scripts/generator.js" defer></script>
 	</head>
 	<body>
-		<header>
-			<h1>Alias Generator</h1>
-		</header>
-		<div>
-			<div id="selections"><!--Dynamic--></div>
-			<div id="custom">
-				<textarea id="c-list" rows="3" cols="30" placeholder="custom word, custom word 2 . . ."></textarea>
-				<div class="col-wrap">
-					<div class="c-feature">
-						<input id="c-only" type="checkbox" onclick="custCheck(this.id)" />
-						<label for="c-only">Use Custom Only</label>
-					</div>
-					<div class="c-feature">
-						<input id="c-plus" type="checkbox" onclick="custCheck(this.id)" />
-						<label for="c-plus">Include Custom</label>
+		<div id="content-wrapper">
+			<aside>
+				<header>
+					<h1>Alias Generator</h1>
+				</header>
+				<div id="selections"><!--Dynamic--></div>
+				<div id="custom">
+					<textarea id="c-list" rows="3" cols="30" placeholder="custom word, custom word 2 . . ."></textarea>
+					<div class="col-wrap">
+						<div class="c-feature">
+							<input id="c-only" type="checkbox" onclick="custCheck(this.id)" />
+							<label for="c-only">Use Custom Only</label>
+						</div>
+						<div class="c-feature">
+							<input id="c-plus" type="checkbox" onclick="custCheck(this.id)" />
+							<label for="c-plus">Include Custom</label>
+						</div>
 					</div>
 				</div>
-			</div>
+				<form id="options" onsubmit="return false">
+					<div class="col-wrap">
+					    <button id="go">Generate Alias</button>
+						<select id="count" placeholder="Number of Words" required>
+							<option value="" disabled selected>Word Count</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+						<div><input id="grammar" type="checkbox"><label for="grammar">Use Grammar</label></div>
+						<div><input id="norepeats" type="checkbox"><label for="norepeats">No Repeated Words</label></div>
+						<div><input id="caps" type="checkbox" checked><label for="caps">Capital Words</label></div>
+						<div><input id="caps-random" type="checkbox"><label for="caps-random">Random Caps</label></div>
+						<div><input id="caps-only" type="checkbox"><label for="caps-only">Caps Lock</label></div>
+						<div><input id="leet" type="checkbox"><label for="leet">Leet</label></div>
+					</div>
+				</form>
+			</aside>
 			<div id="generated">
 				<h2 class="names" id="alias1" contenteditable="true">Press "Generate" to Start</h2>
 				<h3 class="names" id="alias2" contenteditable="true">...</h3>
 				<h4 class="names" id="alias3" contenteditable="true">...</h4>
 				<h5 class="names" id="alias4" contenteditable="true">...</h5>
 			</div>
-			<form id="options" onsubmit="return false">
-				<div class="col-wrap">
-				    <button id="go">Generate Alias</button>
-					<select id="count" placeholder="Number of Words" required>
-						<option value="" disabled selected>Word Count</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
-					<div><input id="grammar" type="checkbox"><label for="grammar">Use Grammar</label></div>
-					<div><input id="norepeats" type="checkbox"><label for="norepeats">No Repeated Words</label></div>
-					<div><input id="caps" type="checkbox" checked><label for="caps">Capital Words</label></div>
-					<div><input id="caps-random" type="checkbox"><label for="caps-random">Random Caps</label></div>
-					<div><input id="caps-only" type="checkbox"><label for="caps-only">Caps Lock</label></div>
-					<div><input id="leet" type="checkbox"><label for="leet">Leet</label></div>
-				</div>
-			</form>
 		</div>
 	</body>
 </html>

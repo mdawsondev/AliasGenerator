@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+  color: white; }
+
 #alias1 {
   color: #12d9ff;
   font-size: 2.5em; }
@@ -14,39 +20,41 @@
   color: #d8f9ff;
   font-size: 1em; }
 
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'Raleway', sans-serif; }
+aside {
+  background-color: black; }
+
+html {
+  height: 100%; }
 
 body {
-  background-color: #f7feff; }
-
-#generated {
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
+  background-color: #00242b;
+  height: 100%; }
 
 header h1 {
   display: flex;
   justify-content: center;
-  font-family: 'Dancing Script', cursive;
-  font-size: 5em; }
+  font: bold 2em 'Dancing Script', cursive;
+  margin: 20px; }
+
+#content-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%; }
 
 #selections {
   display: flex;
+  flex-direction: column; }
+
+#generated {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: baseline; }
-  #selections label {
-    margin-left: -10px; }
-  #selections .cat {
-    margin: 10px; }
+  width: 100%; }
 
 #options {
   display: flex;
   justify-content: center;
-  width: 30em;
   margin: 10px auto; }
 
 button {
@@ -63,11 +71,5 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center; }
-
-#custom {
-  display: flex;
-  justify-content: center; }
-  #custom textarea {
-    margin: 10px; }
 
 /*# sourceMappingURL=style.css.map */

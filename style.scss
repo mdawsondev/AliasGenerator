@@ -1,56 +1,65 @@
 $sColor: #00cff7;
-$gSize: 3em;
-$percent: 5%;
-
-@for $i from 1 through 4{
-	#alias#{$i} {
-		color: lighten($sColor, $percent);
-		font-size: $gSize - 0.5em;
-		$gSize: $gSize - 0.5;
-		$percent: $percent + 13%;
-	}
-}
+$aSize: 3em;
+$aPercent: 5%;
 
 * {
 	margin: 0;
 	padding: 0;
 	font-family: 'Raleway', sans-serif;
+	color: white;
+}
+
+@for $i from 1 through 4{
+	#alias#{$i} {
+		color: lighten($sColor, $aPercent);
+		font-size: $aSize - 0.5em;
+		$aSize: $aSize - 0.5;
+		$aPercent: $aPercent + 13%;
+	}
+}
+
+aside {
+	background-color: darken($sColor, 50%);
+}
+
+html {
+	height: 100%;
 }
 
 body {
-	background-color: lighten($sColor, 50%);
-}
-
-#generated {
-	width: auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	background-color: darken($sColor, 40%);
+	height: 100%;
 }
 
 header h1 {
 	display: flex;
 	justify-content: center;
-	font-family: 'Dancing Script', cursive;
-	font-size: 5em;
+	font: bold 2em 'Dancing Script', cursive;
+	margin: 20px;
+}
+
+#content-wrapper {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
 }
 
 #selections {
 	display: flex;
+	flex-direction: column;
+}
+
+#generated {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	justify-content: center;
-	align-items: baseline;
-	label {
-		margin-left: -10px;
-	}
-	.cat { 
-		margin: 10px;
-	}
+	width: 100%;
 }
 
 #options {
 	display: flex;
 	justify-content: center;
-	width: 30em;
 	margin: 10px auto;
 }
 
@@ -70,12 +79,3 @@ button {
 	flex-direction: column;
 	justify-content: center;
 }
-
-#custom {
-	display: flex;
-	justify-content: center;
-	textarea {
-		margin: 10px;
-	}
-}
-

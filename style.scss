@@ -9,20 +9,6 @@ $aPercent: 5%;
 	color: white;
 }
 
-@for $i from 1 through 4{
-	#alias#{$i} {
-		color: lighten(darken($sColor, $aPercent), 50%);
-		font-size: $aSize - 0.5em;
-		$aSize: $aSize - 0.5;
-		$aPercent: $aPercent + 10%;
-	}
-}
-
-aside {
-	background-color: darken($sColor, 50%);
-	padding: 0.5em;
-}
-
 html {
 	height: 100%;
 }
@@ -35,8 +21,9 @@ body {
 	border-bottom: 0.2em solid lighten($sColor, 10%);
 }
 
-.clickable {
-	cursor: pointer;
+aside {
+	background-color: darken($sColor, 50%);
+	padding: 0.5em;
 }
 
 button {
@@ -48,6 +35,12 @@ button {
 	font-size: 16px;
 	font-weight: bold;
 	color: #fff;
+}
+
+content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 header {
@@ -65,6 +58,35 @@ header {
 	}
 }
 
+input[type=checkbox] {
+	display: none;
+		&:checked + label {
+		color: $sColor;
+	}
+}
+
+label:hover {
+	color: lighten($sColor, 30%);
+}
+
+textarea, select, select option {
+	color: #000;
+}
+
+.c-feature {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.col-wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
 
 .title {
 	display: flex;
@@ -76,16 +98,27 @@ header {
 	}
 }
 
-textarea, select, select option {
-	color: #000;
+@for $i from 1 through 4{
+	#alias#{$i} {
+		color: lighten(darken($sColor, $aPercent), 50%);
+		font-size: $aSize - 0.5em;
+		$aSize: $aSize - 0.5;
+		$aPercent: $aPercent + 10%;
+	}
 }
 
-#custom {
-	margin: 1em 0;
+#content-wrapper {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
 }
 
 #count {
 	margin-bottom: 1em;
+}
+
+#custom {
+	margin: 1em 0;
 }
 
 #hub {
@@ -104,28 +137,6 @@ textarea, select, select option {
 	}
 }
 
-.c-feature {
-	display: flex;
-	justify-content: flex-end;
-}
-
-.col-wrap {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-#content-wrapper {
-	display: flex;
-	flex-direction: row;
-	height: 100%;
-}
-
-#selections {
-	display: flex;
-	flex-direction: column;
-}
-
 #generated {
 	display: flex;
 	flex-direction: column;
@@ -135,8 +146,7 @@ textarea, select, select option {
 	height: 100%;
 }
 
-content {
-	width: 100%;
+#selections {
 	display: flex;
 	flex-direction: column;
 }
@@ -156,16 +166,5 @@ content {
 		padding: 0.5em 0 0.8em 0;
 		border-bottom-left-radius: 1em;
 		border-bottom-right-radius: 1em;
-	}
-}
-
-label:hover {
-	color: lighten($sColor, 30%);
-}
-
-input[type=checkbox] {
-	display: none;
-		&:checked + label {
-		color: $sColor;
 	}
 }

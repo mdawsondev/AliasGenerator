@@ -4,6 +4,78 @@
   font-family: 'Raleway', sans-serif;
   color: white; }
 
+html {
+  height: 100%; }
+
+body {
+  box-sizing: border-box;
+  background-color: #00242b;
+  height: 100%;
+  border-top: 0.2em solid #2bddff;
+  border-bottom: 0.2em solid #2bddff; }
+
+aside {
+  background-color: black;
+  padding: 0.5em; }
+
+button {
+  padding: 10px;
+  margin: 10px;
+  border: 0;
+  border-radius: 2em;
+  background-color: #00cff7;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; }
+
+content {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+
+header {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  header h1 {
+    font: bold 2.3em 'Dancing Script', cursive; }
+  header p {
+    display: flex;
+    align-items: center;
+    font-size: 0.8em; }
+
+input[type=checkbox] {
+  display: none; }
+  input[type=checkbox]:checked + label {
+    color: #00cff7; }
+
+label:hover {
+  color: #91edff; }
+
+textarea, select, select option {
+  color: #000; }
+
+.c-feature {
+  display: flex;
+  justify-content: flex-end; }
+
+.clickable {
+  cursor: pointer; }
+
+.col-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.title {
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+  margin: 0.5em; }
+  .title i {
+    margin: 0 0.5em 0 0; }
+
 #alias1 {
   color: #defaff;
   font-size: 2.5em; }
@@ -20,61 +92,16 @@
   color: #45e1ff;
   font-size: 1em; }
 
-aside {
-  background-color: black;
-  padding: 0.5em; }
-
-html {
+#content-wrapper {
+  display: flex;
+  flex-direction: row;
   height: 100%; }
-
-body {
-  box-sizing: border-box;
-  background-color: #00242b;
-  height: 100%;
-  border-top: 0.2em solid #2bddff;
-  border-bottom: 0.2em solid #2bddff; }
-
-.clickable {
-  cursor: pointer; }
-
-button {
-  padding: 10px;
-  margin: 10px;
-  border: 0;
-  border-radius: 2em;
-  background-color: #00cff7;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff; }
-
-header {
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
-  header h1 {
-    font: bold 2.3em 'Dancing Script', cursive; }
-  header p {
-    display: flex;
-    align-items: center;
-    font-size: 0.8em; }
-
-.title {
-  display: flex;
-  justify-content: center;
-  font-weight: bolder;
-  margin: 0.5em; }
-  .title i {
-    margin: 0 0.5em 0 0; }
-
-textarea, select, select option {
-  color: #000; }
-
-#custom {
-  margin: 1em 0; }
 
 #count {
   margin-bottom: 1em; }
+
+#custom {
+  margin: 1em 0; }
 
 #hub {
   width: 100%;
@@ -89,24 +116,6 @@ textarea, select, select option {
     #hub p i {
       margin-left: 0.5em; }
 
-.c-feature {
-  display: flex;
-  justify-content: flex-end; }
-
-.col-wrap {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; }
-
-#content-wrapper {
-  display: flex;
-  flex-direction: row;
-  height: 100%; }
-
-#selections {
-  display: flex;
-  flex-direction: column; }
-
 #generated {
   display: flex;
   flex-direction: column;
@@ -115,8 +124,7 @@ textarea, select, select option {
   width: 100%;
   height: 100%; }
 
-content {
-  width: 100%;
+#selections {
   display: flex;
   flex-direction: column; }
 
@@ -135,13 +143,5 @@ content {
     padding: 0.5em 0 0.8em 0;
     border-bottom-left-radius: 1em;
     border-bottom-right-radius: 1em; }
-
-label:hover {
-  color: #91edff; }
-
-input[type=checkbox] {
-  display: none; }
-  input[type=checkbox]:checked + label {
-    color: #00cff7; }
 
 /*# sourceMappingURL=style.css.map */

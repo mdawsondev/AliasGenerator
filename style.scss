@@ -1,4 +1,15 @@
-$tColor: #00cff7;
+$sColor: #00cff7;
+$gSize: 3em;
+$percent: 5%;
+
+@for $i from 1 through 4{
+	#alias#{$i} {
+		color: lighten($sColor, $percent);
+		font-size: $gSize - 0.5em;
+		$gSize: $gSize - 0.5;
+		$percent: $percent + 13%;
+	}
+}
 
 * {
 	margin: 0;
@@ -7,32 +18,14 @@ $tColor: #00cff7;
 }
 
 body {
-	background-color: lighten($tColor, 50%);
+	background-color: lighten($sColor, 50%);
 }
 
-.names {
+#generated {
+	width: auto;
 	display: flex;
-	justify-content: center;
-}
-
-#alias {
-	font-size: 2.8em;
-	color: lighten($tColor, 5%);
-}
-
-#alias2 {
-	font-size: 2em;
-	color: lighten($tColor, 15%);
-}
-
-#alias3 {
-	font-size: 1.5em;
-	color: lighten($tColor, 25%);
-}
-
-#alias4 {
-	font-size: 1em;
-	color: lighten($tColor, 35%);
+	flex-direction: column;
+	align-items: center;
 }
 
 header h1 {
@@ -66,7 +59,7 @@ button {
 	margin: 10px;
 	border: 0;
 	border-radius: 2em;
-	background-color: $tColor;
+	background-color: $sColor;
 	font-size: 16px;
 	font-weight: bold;
 	color: #fff;

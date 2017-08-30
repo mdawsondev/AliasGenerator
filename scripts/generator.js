@@ -167,7 +167,7 @@ window.onload = function () {
       	rdmThing = goCaps(rdmThing);
       alias += rdmThing;
   }
-  document.getElementById("alias").innerHTML = alias;
+  document.getElementById("alias1").innerHTML = alias;
   loader.unshift(alias);
   if (loader.length > 4)
   	loader.pop();

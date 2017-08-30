@@ -11,10 +11,10 @@ $aPercent: 5%;
 
 @for $i from 1 through 4{
 	#alias#{$i} {
-		color: lighten($sColor, $aPercent);
+		color: lighten(darken($sColor, $aPercent), 50%);
 		font-size: $aSize - 0.5em;
 		$aSize: $aSize - 0.5;
-		$aPercent: $aPercent + 13%;
+		$aPercent: $aPercent + 10%;
 	}
 }
 
@@ -49,7 +49,12 @@ header {
 	flex-direction: column;
 	align-items: center;
 	h1 {
-		font: bold 2em 'Dancing Script', cursive;
+		font: bold 2.3em 'Dancing Script', cursive;
+	}
+	p {
+		display: flex;
+		align-items: center;
+		font-size: 0.8em;
 	}
 }
 
@@ -80,6 +85,32 @@ textarea, select, select option {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+	height: 100%;
+}
+
+content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#tbar {
+	display: flex;
+	justify-content: space-around;
+	background: darken($sColor, 40%);
+	background: linear-gradient(darken($sColor, 20%), darken($sColor, 40%));
+	padding-bottom: 1.5em;
+	border-top: 0.2em solid lighten($sColor, 10%);
+	p {
+		text-align: center;
+		width: 8em;
+		color: #000;
+		font-weight: bold;
+		background-color: lighten($sColor, 10%);
+		padding: 0.5em 0 0.8em 0;
+		border-bottom-left-radius: 1em;
+		border-bottom-right-radius: 1em;
+	}
 }
 
 #options {

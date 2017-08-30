@@ -12,7 +12,7 @@
 			<aside>
 				<header>
 					<h1>Alias Generator</h1>
-					<p><a href="http://github.com/mdawsondev/AliasGenerator"><i class="fa fa-github"></i></a></p>
+					<p><a href="http://github.com/mdawsondev/AliasGenerator"><i class="fa fa-github fa-2x"></i></a> by <a href="#">mdawsondev</a></p>
 				</header>
 				<div id="selections"><!--Dynamic--></div>
 				<div id="custom">
@@ -30,7 +30,7 @@
 				</div>
 				<form id="options" onsubmit="return false">
 					<div class="col-wrap">
-					    <button id="go">Generate Alias</button>
+					    <button id="go"><i class="fa fa-cog fa-lg" aria-hidden="true"></i> Generate</button>
 						<select id="count" placeholder="Number of Words" required>
 							<option value="" disabled selected>Word Count</option>
 							<option value="1">1</option>
@@ -39,39 +39,47 @@
 							<option value="4">4</option>
 							<option value="5">5</option>
 						</select>
-						<div class="bluetest">
+						<div>
 							<input id="grammar" type="checkbox">
 							<label for="grammar">Use Grammar</label>
 						</div>
-						<div class="bluetest">
+						<div>
 							<input id="norepeats" type="checkbox">
 							<label for="norepeats">No Repeated Words</label>
 						</div>
-						<div class="bluetest">
+						<div>
 							<input id="caps" type="checkbox" checked>
 							<label for="caps">Capital Words</label>
 						</div>
-						<div class="bluetest">
+						<div>
 							<input id="caps-random" type="checkbox">
 							<label for="caps-random">Random Caps</label>
 						</div>
-						<div class="bluetest">
+						<div>
 							<input id="caps-only" type="checkbox">
 							<label for="caps-only">Caps Lock</label>
 						</div>
-						<div class="bluetest">
+						<div>
 							<input id="leet" type="checkbox">
 							<label for="leet">Leet</label>
 						</div>
 					</div>
 				</form>
 			</aside>
-			<div id="generated">
-				<h2 class="names" id="alias1" contenteditable="true">Press "Generate" to Start</h2>
-				<h3 class="names" id="alias2" contenteditable="true">...</h3>
-				<h4 class="names" id="alias3" contenteditable="true">...</h4>
-				<h5 class="names" id="alias4" contenteditable="true">...</h5>
-			</div>
+			<content>
+				<div id="tbar">
+					<p><i class="fa fa-home"></i> Default</p>
+					<p><i class="fa fa-reddit"></i> Reddit</p>
+					<p><i class="fa fa-twitter"></i> Twitter</p>
+					<p><i class="fa fa-linkedin"></i> LinkedIn</p>
+				</div>
+				<div id="generated">
+					<h2 class="names" id="alias1" contenteditable="true">Press "Generate" to Start</h2>
+					<h3 class="names" id="alias2" contenteditable="true">...</h3>
+					<h4 class="names" id="alias3" contenteditable="true">...</h4>
+					<h5 class="names" id="alias4" contenteditable="true">...</h5>
+				</div>
+			</content>
 		</div>
 	</body>
 </html>

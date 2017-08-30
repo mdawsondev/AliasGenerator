@@ -41,15 +41,18 @@ function harvest() {
     		if (rawFile.readyState === 4) {
     			if (rawFile.status === 200 || rawFile.status === 0) {
     				data[i].content = rawFile.responseText.split('\n');
-    				var checkbox = document.createElement("input"),
-    				label = document.createElement("label");
+
+    				var wrapper = document.createElement("div"), 
+    				  checkbox = document.createElement("input"),
+    				  label = document.createElement("label");
     				checkbox.type = "checkbox"
-    				checkbox.id = data[i].name;
     				checkbox.className = "cat";
+    				checkbox.id = data[i].name;
     				label.htmlFor = data[i].name;
     				label.appendChild(document.createTextNode(data[i].name.charAt(0).toUpperCase() + data[i].name.slice(1)));
-    				document.getElementById("selections").appendChild(checkbox).checked = true;
-    				document.getElementById("selections").appendChild(label);
+    				wrapper.appendChild(checkbox).checked = true;
+    				wrapper.appendChild(label);
+    				document.getElementById("selections").appendChild(wrapper);
     			}
     		}
     	}

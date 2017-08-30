@@ -20,6 +20,7 @@ $aPercent: 5%;
 
 aside {
 	background-color: darken($sColor, 50%);
+	padding: 0.5em;
 }
 
 html {
@@ -31,11 +32,35 @@ body {
 	height: 100%;
 }
 
-header h1 {
+button {
+	padding: 10px;
+	margin: 10px;
+	border: 0;
+	border-radius: 2em;
+	background-color: $sColor;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+}
+
+header {
+	margin: 20px auto;
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+	h1 {
+		font: bold 2em 'Dancing Script', cursive;
+	}
+}
+
+textarea, select, select option {
+	color: #000;
+}
+
+.col-wrap {
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	font: bold 2em 'Dancing Script', cursive;
-	margin: 20px;
 }
 
 #content-wrapper {
@@ -60,22 +85,14 @@ header h1 {
 #options {
 	display: flex;
 	justify-content: center;
-	margin: 10px auto;
 }
 
-button {
-	padding: 10px;
-	margin: 10px;
-	border: 0;
-	border-radius: 2em;
-	background-color: $sColor;
-	font-size: 16px;
-	font-weight: bold;
-	color: #fff;
+label:hover {
+	color: lighten($sColor, 30%);
 }
-
-.col-wrap {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+input[type=checkbox] {
+	display: none;
+		&:checked + label {
+		color: $sColor;
+	}
 }

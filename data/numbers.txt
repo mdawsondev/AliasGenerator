@@ -8,3 +8,16 @@ seven
 eight
 nine
 ten
+twenty
+thirty
+fourty
+fifty
+sixty
+seventy
+eighty
+ninety
+hundred
+thousand
+million
+billion
+trillion

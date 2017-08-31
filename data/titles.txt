@@ -2,6 +2,10 @@ the
 mister
 miss
 sir
+sire
+dame
+lady
+lord
 master
 doctor
 inspector
@@ -14,3 +18,9 @@ duke
 emperor
 king
 queen
+professor
+chancellor
+father
+brother
+sister
+pastor

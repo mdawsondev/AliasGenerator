@@ -12,3 +12,17 @@ take
 destroy
 grow
 tackle
+shoot
+tickle
+sneeze
+talk
+cough
+blink
+clap
+whisper
+pat
+steal
+forgive
+nod
+scream
+shout

@@ -8,9 +8,15 @@ violet
 rainbow
 black
 white
-blond
 brown
 gold
 bronze
 copper
 silver
+pink
+maroon
+fuchsia
+jade
+teal
+purple
+periwinkle

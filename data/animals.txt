@@ -19,7 +19,7 @@ lion
 monkey
 owl
 pangolin
-pidgen
+pigeon
 quail
 rhinoceros
 salmon

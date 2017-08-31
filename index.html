@@ -67,16 +67,21 @@
 							<input id="leet" type="checkbox">
 							<label for="leet"><i class="fa fa-chevron-right"></i> Leet</label>
 						</div>
-					    <button class="clickable" id="go"><i class="fa fa-cog fa-lg" aria-hidden="true"></i> Generate</button>
+					    <button class="clickable" id="go"><i class="fa fa-spin fa-cog fa-lg" aria-hidden="true"></i> Generate</button>
 					</div>
 				</form>
 			</aside>
 			<content>
 				<div id="tbar">
-					<p id="default" onclick="swap(this.id)"><i class="fa fa-home"></i> Default</p>
-					<p id="reddit" onclick="swap(this.id)"><i class="fa fa-reddit"></i> Reddit</p>
-					<p><i class="fa fa-twitter"></i> Twitter</p>
-					<p><i class="fa fa-linkedin"></i> LinkedIn</p>
+					<div>
+						<p id="default" onclick="swap(this.id)"><i class="fa fa-home"></i> Default</p>
+					</div>
+					<div>
+						<p id="reddit" onclick="swap(this.id)"><i class="fa fa-reddit"></i> Reddit</p>
+					</div>
+					<div>
+						<p id="twitter" onclick="swap(this.id)"><i class="fa fa-twitter"></i> Twitter</p>
+					</div>
 				</div>
 				<div id="generated">
 					<div class="gencontent" id="gendefault">
@@ -85,8 +90,15 @@
 						<h4 class="names" id="alias3" contenteditable="true">...</h4>
 						<h5 class="names" id="alias4" contenteditable="true">...</h5>
 					</div>
-					<div class="gencontent"id="genreddit">
-						<h2>It works!</h2>
+					<div class="gencontent" id="genreddit">
+						<div></div>
+						<img src="https://b.thumbs.redditmedia.com/7AlpvErovtQ160o9FyIIdHCzfL2k-ejc982U6uPCuzI.png"" />
+						<p>u/<span contenteditable="true">placeholder</span></p>
+						<p>21,521 Karma<i class="fa fa-info"></i></p>
+						<p>Say something about yourself!</p>
+					</div>
+					<div class="gencontent" id="gentwitter">
+						<p>Twitter placeholder!</p>
 					</div>
 				</div>
 				<div id="hub">

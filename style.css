@@ -8,9 +8,9 @@ html {
   height: 100%; }
 
 body {
+  height: 100%;
   box-sizing: border-box;
   background-color: #00242b;
-  height: 100%;
   border-top: 0.2em solid #2bddff;
   border-bottom: 0.2em solid #2bddff; }
 
@@ -19,6 +19,8 @@ aside {
   padding: 0.5em; }
 
 button {
+  transition: box-shadow 0.2s;
+  box-shadow: 0;
   padding: 10px;
   margin: 10px;
   border: 0;
@@ -27,6 +29,9 @@ button {
   font-size: 16px;
   font-weight: bold;
   color: #fff; }
+  button:hover {
+    box-shadow: 0 0 0.5em #00cff7;
+    transition: box-shadow 0.2s; }
 
 content {
   width: 100%;
@@ -115,7 +120,7 @@ textarea, select, select option {
   width: 100%;
   height: 100%; }
 
-#genreddit {
+.gencontent:not(#gendefault) {
   display: none; }
 
 #hub {
@@ -140,7 +145,8 @@ textarea, select, select option {
   justify-content: space-around;
   background: #00242b;
   background: linear-gradient(#007a91, #00242b);
-  padding-bottom: 1.5em; }
+  padding-bottom: 1.5em;
+  height: 2.5em; }
   #tbar p {
     text-align: center;
     width: 8em;
@@ -149,6 +155,10 @@ textarea, select, select option {
     background-color: #2bddff;
     padding: 0.5em 0 0.8em 0;
     border-bottom-left-radius: 1em;
-    border-bottom-right-radius: 1em; }
+    border-bottom-right-radius: 1em;
+    transition: padding 0.2s; }
+    #tbar p:hover {
+      transition: padding-top 0.2s;
+      padding-top: 1em; }
 
 /*# sourceMappingURL=style.css.map */

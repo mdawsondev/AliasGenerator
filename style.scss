@@ -14,9 +14,9 @@ html {
 }
 
 body {
+	height: 100%;
 	box-sizing: border-box;
 	background-color: darken($sColor, 40%);
-	height: 100%;
 	border-top: 0.2em solid lighten($sColor, 10%);
 	border-bottom: 0.2em solid lighten($sColor, 10%);
 }
@@ -27,6 +27,12 @@ aside {
 }
 
 button {
+	&:hover {
+		box-shadow: 0 0 0.5em $sColor;
+		transition: box-shadow 0.2s;
+	}
+	transition: box-shadow 0.2s;
+	box-shadow: 0;
 	padding: 10px;
 	margin: 10px;
 	border: 0;
@@ -138,7 +144,7 @@ textarea, select, select option {
 	height: 100%;
 }
 
-#genreddit {
+.gencontent:not(#gendefault) {
 	display: none;
 }
 
@@ -169,7 +175,12 @@ textarea, select, select option {
 	background: darken($sColor, 40%);
 	background: linear-gradient(darken($sColor, 20%), darken($sColor, 40%));
 	padding-bottom: 1.5em;
+	height: 2.5em;
 	p {
+		&:hover {
+			transition: padding-top 0.2s;
+			padding-top: 1em;
+		}
 		@extend .clickable;
 		text-align: center;
 		width: 8em;
@@ -179,5 +190,6 @@ textarea, select, select option {
 		padding: 0.5em 0 0.8em 0;
 		border-bottom-left-radius: 1em;
 		border-bottom-right-radius: 1em;
+		transition: padding 0.2s;
 	}
 }

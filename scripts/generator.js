@@ -188,12 +188,20 @@ window.onload = function () {
 function list () {
 	var elems = document.getElementsByClassName("cat")
 	for (var i = 0 ; i < elems.length; i+=1){
-		console.log(elems[i].style.display)
 		if (elems[i].style.display !== "none")
 			elems[i].style.display = "none";
 		else
 			elems[i].style.display = "initial";
 	}
+}
+
+function swap (id) {
+	console.log(id);
+	var mute =document.getElementsByClassName("gencontent");
+	for (i=0; i<mute.length; i++){
+		mute[i].style.display = "none";
+	}
+	document.getElementById("gen" + id).style.display = "flex";
 }
 
 //Disable options so checkboxes don't conflict.

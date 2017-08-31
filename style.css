@@ -60,7 +60,7 @@ textarea, select, select option {
   display: flex;
   justify-content: flex-end; }
 
-.clickable {
+.clickable, label, #tbar p {
   cursor: pointer; }
 
 .col-wrap {
@@ -103,6 +103,21 @@ textarea, select, select option {
 #custom {
   margin: 1em 0; }
 
+#gendefault {
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
+
+#generated {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%; }
+
+#genreddit {
+  display: none; }
+
 #hub {
   width: 100%;
   height: auto;
@@ -115,14 +130,6 @@ textarea, select, select option {
     align-items: center; }
     #hub p i {
       margin-left: 0.5em; }
-
-#generated {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%; }
 
 #selections {
   display: flex;

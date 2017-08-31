@@ -73,16 +73,21 @@
 			</aside>
 			<content>
 				<div id="tbar">
-					<p><i class="fa fa-home"></i> Default</p>
-					<p><i class="fa fa-reddit"></i> Reddit</p>
+					<p id="default" onclick="swap(this.id)"><i class="fa fa-home"></i> Default</p>
+					<p id="reddit" onclick="swap(this.id)"><i class="fa fa-reddit"></i> Reddit</p>
 					<p><i class="fa fa-twitter"></i> Twitter</p>
 					<p><i class="fa fa-linkedin"></i> LinkedIn</p>
 				</div>
 				<div id="generated">
-					<h2 class="names" id="alias1" contenteditable="true">"Generate" to Start</h2>
-					<h3 class="names" id="alias2" contenteditable="true">...</h3>
-					<h4 class="names" id="alias3" contenteditable="true">...</h4>
-					<h5 class="names" id="alias4" contenteditable="true">...</h5>
+					<div class="gencontent" id="gendefault">
+						<h2 class="names" id="alias1" contenteditable="true">"Generate" to Start</h2>
+						<h3 class="names" id="alias2" contenteditable="true">...</h3>
+						<h4 class="names" id="alias3" contenteditable="true">...</h4>
+						<h5 class="names" id="alias4" contenteditable="true">...</h5>
+					</div>
+					<div class="gencontent"id="genreddit">
+						<h2>It works!</h2>
+					</div>
 				</div>
 				<div id="hub">
 					<p>AG is on GitHub! <a href="http://github.com/mdawsondev/AliasGenerator"><i class="fa fa-github fa-2x"></i></a></p>

@@ -36,13 +36,13 @@ button {
   margin: 10px;
   border: 0;
   border-radius: 2em;
-  background-color: #00242b;
+  background-color: #004f5e;
   font-size: 16px;
   font-weight: bold;
   color: #fff; }
   button:hover {
     box-shadow: 0 0 0.5em #00cff7;
-    background-color: #003945;
+    background-color: #006478;
     transition: box-shadow 0.2s, background-color 0.2s; }
   button:active {
     box-shadow: 0 0 0.5em #00cff7;
@@ -63,10 +63,23 @@ header {
   align-items: center; }
   header h1 {
     font: bold 2.5em 'Amatic SC', cursive; }
-  header p {
+  header #author {
     display: flex;
     align-items: center;
-    font-size: 0.8em; }
+    font-size: 0.7em;
+    color: #00a4c4; }
+    header #author a {
+      text-decoration: none;
+      margin: 0 0.2em;
+      color: inherit; }
+      header #author a:hover {
+        color: #91edff; }
+  header #desc {
+    width: 20em;
+    font-size: 0.7em;
+    text-align: justify;
+    color: #999;
+    margin-top: 0.5em; }
 
 input[type=checkbox] {
   display: none; }

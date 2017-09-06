@@ -1,3 +1,13 @@
+#generated:before {
+  content: "\f0c0";
+  font-family: FontAwesome;
+  position: absolute;
+  font-size: 30vw;
+  color: #002d35;
+  display: flex;
+  justify-content: center;
+  z-index: -1; }
+
 * {
   margin: 0;
   padding: 0;
@@ -153,6 +163,27 @@ textarea, select, select option {
   #genreddit #user {
     font-weight: 900; }
 
+#gentwitter {
+  background: #e6ecf0;
+  padding: 2em;
+  border-radius: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  #gentwitter * {
+    color: #000; }
+  #gentwitter img {
+    width: 12em;
+    height: auto;
+    border: 0.4em solid #fff;
+    border-radius: 100%;
+    margin: auto; }
+  #gentwitter #tname {
+    font-size: 1.3em;
+    font-weight: 900; }
+  #gentwitter .fa-check-circle {
+    color: #1da1f2; }
+
 .gencontent:not(#gendefault) {
   display: none; }
 
@@ -177,7 +208,7 @@ textarea, select, select option {
   display: flex;
   justify-content: space-around;
   background: #00242b;
-  background: linear-gradient(#007a91, #00242b);
+  background: linear-gradient(#004f5e, #00242b);
   padding-bottom: 1.5em;
   height: 2.5em; }
   #tbar p {

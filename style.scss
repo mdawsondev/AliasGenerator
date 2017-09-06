@@ -41,15 +41,24 @@ aside {
 button {
 	&:hover {
 		box-shadow: 0 0 0.5em $sColor;
-		transition: box-shadow 0.2s;
+		background-color: darken($sColor, 35%);
+		transition: box-shadow 0.2s, background-color 0.2s;
 	}
-	transition: box-shadow 0.2s;
+	&:active {
+		box-shadow: 0 0 0.5em $sColor;
+		background-color: $sColor;
+		transition: background-color 0.2s;
+	}
+	&:focus {
+		outline: 0;
+	}
+	transition: box-shadow 0.2s ease-in-out, background-color 0.2s;
 	box-shadow: 0;
 	padding: 10px;
 	margin: 10px;
 	border: 0;
 	border-radius: 2em;
-	background-color: $sColor;
+	background-color: darken($sColor, 40%);
 	font-size: 16px;
 	font-weight: bold;
 	color: #fff;
@@ -67,7 +76,7 @@ header {
 	flex-direction: column;
 	align-items: center;
 	h1 {
-		font: bold 2.3em 'Dancing Script', cursive;
+		font: bold 2.5em 'Amatic SC', cursive;
 	}
 	p {
 		display: flex;

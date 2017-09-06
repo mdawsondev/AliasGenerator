@@ -30,19 +30,26 @@ aside {
   border-right: 0.2em solid #004f5e; }
 
 button {
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s ease-in-out, background-color 0.2s;
   box-shadow: 0;
   padding: 10px;
   margin: 10px;
   border: 0;
   border-radius: 2em;
-  background-color: #00cff7;
+  background-color: #00242b;
   font-size: 16px;
   font-weight: bold;
   color: #fff; }
   button:hover {
     box-shadow: 0 0 0.5em #00cff7;
-    transition: box-shadow 0.2s; }
+    background-color: #003945;
+    transition: box-shadow 0.2s, background-color 0.2s; }
+  button:active {
+    box-shadow: 0 0 0.5em #00cff7;
+    background-color: #00cff7;
+    transition: background-color 0.2s; }
+  button:focus {
+    outline: 0; }
 
 content {
   width: 100%;
@@ -55,7 +62,7 @@ header {
   flex-direction: column;
   align-items: center; }
   header h1 {
-    font: bold 2.3em 'Dancing Script', cursive; }
+    font: bold 2.5em 'Amatic SC', cursive; }
   header p {
     display: flex;
     align-items: center;

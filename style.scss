@@ -144,13 +144,54 @@ textarea, select, select option {
 	height: 100%;
 }
 
+#genreddit {
+	border-radius: 2em;
+	padding: 2em;
+	align-items: center;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	& * { 
+		color: #000;
+	}
+	div {
+		width: 310px;
+		height: 115px;
+		background: #d4e6f9;
+		border-top-left-radius: 0.3em;
+		border-top-right-radius: 0.3em;
+	}
+	img {
+		margin: auto;
+		height: auto;
+		width: 90px;
+		border: 0.3em solid #fff;
+		border-radius: 0.7em;
+		margin: -45px 0 0 0;
+	}
+	p {
+		margin: 0.3em;
+		&:not(#user) {
+			font-size: 0.8em;
+		}
+	}
+	.fa-info-circle {
+		margin-left: 0.5em;
+		color: #aaa;
+	}
+	#user {
+		font-weight: 900;		
+	}
+}
+
 .gencontent:not(#gendefault) {
 	display: none;
 }
 
 #hub {
 	width: 100%;
-	height: auto;
+	height: 2em;
 	font-size: 0.8em;
 	background-color: darken($sColor, 50%);
 	display: flex;

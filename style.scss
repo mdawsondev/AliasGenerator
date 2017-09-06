@@ -35,6 +35,7 @@ body {
 aside {
 	background-color: darken($sColor, 50%);
 	padding: 0.5em;
+	border-right: 0.2em solid darken($sColor, 30%);
 }
 
 button {

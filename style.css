@@ -26,7 +26,8 @@ body {
 
 aside {
   background-color: black;
-  padding: 0.5em; }
+  padding: 0.5em;
+  border-right: 0.2em solid #004f5e; }
 
 button {
   transition: box-shadow 0.2s;

@@ -187,22 +187,23 @@ textarea, select, select option {
 .gencontent:not(#gendefault) {
   display: none; }
 
-#hub {
-  width: 100%;
-  height: 2em;
-  font-size: 0.8em;
-  background-color: black;
-  display: flex;
-  justify-content: center; }
-  #hub p {
-    display: flex;
-    align-items: center; }
-    #hub p i {
-      margin-left: 0.5em; }
-
 #selections {
   display: flex;
   flex-direction: column; }
+
+#hub p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1em;
+  height: 1em;
+  border: 0.2em solid #000;
+  border-radius: 100%;
+  background: #000;
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+  font-size: 2.5em; }
 
 #tbar {
   display: flex;

@@ -209,6 +209,7 @@ textarea, select, select option {
   flex-direction: column; }
 
 #hub {
+  z-index: 10;
   position: relative; }
   #hub p {
     display: flex;

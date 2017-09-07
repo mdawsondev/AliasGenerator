@@ -253,6 +253,7 @@ textarea, select, select option {
 }
 
 #hub {
+	z-index: 10;
 	position: relative;
 	p {
 		display: flex;

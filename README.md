@@ -19,3 +19,13 @@ This project is open source!
 * Reddit Preview Card
 * Twitter Preview Card
 * On-Page Editing
+
+### To-Do
+------
+* Compatability tests.
+* Redesign for mobile users.
+* Rename HTML classes and ids for readability.
+* Restructure CSS for simplicity.
+* Restructure JS for modular use.
+* Additional tabs.
+* Random option feature.

@@ -64,6 +64,14 @@ form {
 .fa-toggle-on {
   color: #00cff7; }
 
+.cat {
+  position: relative;
+  left: -100px;
+  animation: slide 0.3s forwards; }
+
+@keyframes slide {
+  100% {
+    left: 0; } }
 header {
   margin: 20px auto;
   display: flex;
@@ -96,8 +104,10 @@ input[type=checkbox] {
   input[type=checkbox]:disabled + label {
     color: #555; }
 
-label:hover {
-  color: #91edff; }
+label {
+  transition: color 0.3s; }
+  label:hover {
+    color: #91edff; }
 
 textarea, select, select option {
   color: #000; }

@@ -44,13 +44,17 @@ function harvest() {
 
     				var wrapper = document.createElement("div"), 
     				  checkbox = document.createElement("input"),
-    				  label = document.createElement("label");
+    				  label = document.createElement("label"),
+              toggle = document.createElement("i");
     				checkbox.type = "checkbox"
     				checkbox.id = data[i].name;
     				label.htmlFor = data[i].name;
+            label.setAttribute ("onclick", "change(this)");
+            toggle.className = "fa fa-toggle-on";
     				wrapper.className = "cat";
     				wrapper.style.display = "none";
-    				label.appendChild(document.createTextNode(data[i].name.charAt(0).toUpperCase() + data[i].name.slice(1)));
+            label.appendChild(toggle);
+    				label.appendChild(document.createTextNode(" " + data[i].name.charAt(0).toUpperCase() + data[i].name.slice(1)));
     				wrapper.appendChild(checkbox).checked = true;
     				wrapper.appendChild(label);
     				document.getElementById("selections").appendChild(wrapper);
@@ -172,7 +176,10 @@ window.onload = function () {
       	rdmThing = goCaps(rdmThing);
       alias += rdmThing;
   }
-  document.getElementById("alias0").innerHTML = alias;
+  if (alias.length == 0)
+    alias = "Select a Word Count!"
+  for (i in document.getElementsByClassName("alias0"))
+    document.getElementsByClassName("alias0")[i].innerHTML = alias;
   document.getElementById("alias1").innerHTML = alias;
   loader.unshift(alias);
   if (loader.length > 4)
@@ -186,7 +193,8 @@ window.onload = function () {
 }
 }
 
-function list () {
+function list (el) {
+  var icon = el.childNodes[0]
 	var elems = document.getElementsByClassName("cat")
 	for (var i = 0 ; i < elems.length; i+=1){
 		if (elems[i].style.display !== "none")
@@ -194,6 +202,10 @@ function list () {
 		else
 			elems[i].style.display = "initial";
 	}
+  if ( icon.classList.contains('fa-plus') )
+    icon.className = 'fa fa-minus';
+  else
+    icon.className = 'fa fa-plus';
 }
 
 function swap (id) {

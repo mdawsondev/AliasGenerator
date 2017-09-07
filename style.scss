@@ -1,7 +1,6 @@
 $sColor: #00cff7;
 $aSize: 3em;
 $aPercent: 5%;
-    
 
 #generated:before {
   content: "\f0c0"; 
@@ -21,22 +20,13 @@ $aPercent: 5%;
 	color: white;
 }
 
-html {
+html, body {
 	height: 100%;
-}
-
-body {
-	height: 100%;
-	box-sizing: border-box;
-	background-color: darken($sColor, 40%);
-	border-top: 0.2em solid lighten($sColor, 10%);
-	border-bottom: 0.2em solid lighten($sColor, 10%);
 }
 
 aside {
 	background-color: darken($sColor, 50%);
 	padding: 0.5em;
-	border-right: 0.2em solid darken($sColor, 30%);
 }
 
 button {
@@ -66,9 +56,12 @@ button {
 }
 
 content {
+	background-color: darken($sColor, 40%);
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	box-sizing: border-box;
+	border: 0.2em solid lighten($sColor, 10%);
 }
 
 header {
@@ -157,7 +150,7 @@ textarea, select, select option {
 #content-wrapper {
 	display: flex;
 	flex-direction: row;
-	height: 100%;
+	min-height: 100%;
 }
 
 #count {
@@ -180,6 +173,7 @@ textarea, select, select option {
 	justify-content: center;
 	width: 100%;
 	height: 100%;
+	z-index: 1;
 }
 
 #genreddit {
@@ -258,19 +252,22 @@ textarea, select, select option {
 	flex-direction: column;
 }
 
-#hub p {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 1em;
-	height: 1em;
-	border: 0.2em solid #000;
-	border-radius: 100%;
-	background: #000;
-	position: absolute;
-	bottom: 0.5em;
-	right: 0.5em;
-	font-size: 2.5em;
+#hub {
+	position: relative;
+	p {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 1em;
+		height: 1em;
+		border: 0.2em solid #000;
+		border-radius: 100%;
+		background: #000;
+		position: absolute;
+		bottom: 0.5em;
+		right: 0.5em;
+		font-size: 2.5em;
+	}
 }
 
 #tbar {

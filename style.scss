@@ -113,8 +113,11 @@ header {
 
 input[type=checkbox] {
 	display: none;
-		&:checked + label {
+	&:checked + label {
 		color: $sColor;
+	}
+	&:disabled + label {
+		color: #555;
 	}
 }
 

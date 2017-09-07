@@ -235,6 +235,8 @@ textarea, select, select option {
 	}
 }
 
+
+
 #gentwitter {
 	background: #e6ecf0;
 	padding: 2em;
@@ -242,8 +244,21 @@ textarea, select, select option {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	a {
+		text-decoration: none;
+		color: #1da1f2;
+	}
 	* {
+		color: #777;
+	}
+	.black {
 		color: #000;
+	}
+	p {
+		font-size: 0.9em;
+	}
+	#spacer > * {
+		margin: 0.5em 0;
 	}
 	img {
 		width: 12em;

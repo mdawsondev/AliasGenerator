@@ -203,8 +203,17 @@ textarea, select, select option {
   display: flex;
   flex-direction: column;
   justify-content: center; }
+  #gentwitter a {
+    text-decoration: none;
+    color: #1da1f2; }
   #gentwitter * {
+    color: #777; }
+  #gentwitter .black {
     color: #000; }
+  #gentwitter p {
+    font-size: 0.9em; }
+  #gentwitter #spacer > * {
+    margin: 0.5em 0; }
   #gentwitter img {
     width: 12em;
     height: auto;

@@ -205,6 +205,16 @@ function swap (id) {
 	document.getElementById("gen" + id).style.display = "flex";
 }
 
+function change(el) {
+  if (el.textContent.includes("Grammar") && document.getElementById("grammar").disabled)
+    return;
+  el = el.childNodes[0];
+  if ( el.classList.contains('fa-toggle-off') )
+    el.className = 'fa fa-toggle-on';
+  else
+    el.className = 'fa fa-toggle-off';
+}
+
 //Disable options so checkboxes don't conflict.
 function custCheck (id) {
 	var cOnly = document.getElementById("c-only"),
@@ -213,17 +223,22 @@ function custCheck (id) {
 
 	grammar.checked = false;
 	grammar.disabled = true;
+  grammar.nextElementSibling.childNodes[0].className = 'fa fa-toggle-off'
 
 	switch(id) {
 		case "c-only":
-		if (cPlus.checked)
+		if (cPlus.checked) {
+      change(cPlus.nextElementSibling)
 			cPlus.checked = false;
+    }
 		if (!cOnly.checked)
 			grammar.disabled = false;
 		break;
 		case "c-plus":
-		if (cOnly.checked)
+		if (cOnly.checked){
+      change(cOnly.nextElementSibling)
 			cOnly.checked = false;
+    }
 		if (!cPlus.checked)
 			grammar.disabled = false;
 		break;

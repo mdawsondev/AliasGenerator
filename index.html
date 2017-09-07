@@ -18,19 +18,20 @@
 						<p id="desc">Alias Generator is a tool for generating usernames. Clicking "Toggle List" opens a list to toggle word usage, custom words must be separated by a comma, and options can be turned on or off. Clicking on the generated alias will allow direct editing!</p>
 					</header>
 					<div id="selections">
-						<p class="title clickable" onclick="list()"><i class="fa fa-plus"></i> Toggle List</p>
+						<p class="title clickable" onclick="list()"><i class="fa fa-plus"></i> Toggle Lists</p>
 						<!--Dynamic-->
 					</div>
 					<div id="custom">
+						<p class="title"><i class="fa fa fa-file-text-o"></i> Custom Words</p>
 						<textarea id="c-list" rows="3" cols="28" placeholder="custom word, custom word 2 . . ."></textarea>
 						<div class="col-wrap">
 							<div class="c-feature">
 								<input id="c-only" type="checkbox" onclick="custCheck(this.id)" />
-								<label for="c-only">Use Custom Only <i class="fa fa-chevron-left"></i></label>
+								<label for="c-only" onclick="change(this)"><i class="fa fa-toggle-off"></i> Use Custom Only</label>
 							</div>
 							<div class="c-feature">
-								<input id="c-plus" type="checkbox" onclick="custCheck(this.id)" />
-								<label for="c-plus">Include Custom <i class="fa fa-chevron-left"></i></label>
+								<input id="c-plus" type="checkbox" onclick="custCheck(this.id)"/>
+								<label for="c-plus" onclick="change(this)"><i class="fa fa-toggle-off"></i> Include Custom</label>
 							</div>
 						</div>
 					</div>
@@ -45,27 +46,27 @@
 						</select>
 						<div>
 							<input id="grammar" type="checkbox">
-							<label for="grammar"><i class="fa fa-chevron-right"></i> Use Grammar</label>
+							<label for="grammar" onclick="change(this)"><i class="fa fa-toggle-off"></i> Use Grammar</label>
 						</div>
 						<div>
 							<input id="norepeats" type="checkbox">
-							<label for="norepeats"><i class="fa fa-chevron-right"></i> No Repeated Words</label>
+							<label for="norepeats" onclick="change(this)"><i class="fa fa-toggle-off"></i> No Repeated Words</label>
 						</div>
 						<div>
 							<input id="caps" type="checkbox" checked>
-							<label for="caps"><i class="fa fa-chevron-right"></i> Capital Words</label>
+							<label for="caps" onclick="change(this)"><i class="fa fa-toggle-on"></i> Capital Words</label>
 						</div>
 						<div>
 							<input id="caps-random" type="checkbox">
-							<label for="caps-random"><i class="fa fa-chevron-right"></i> Random Caps</label>
+							<label for="caps-random" onclick="change(this)"><i class="fa fa-toggle-off"></i> Random Caps</label>
 						</div>
 						<div>
 							<input id="caps-only" type="checkbox">
-							<label for="caps-only"><i class="fa fa-chevron-right"></i> Caps Lock</label>
+							<label for="caps-only" onclick="change(this)"><i class="fa fa fa-toggle-off"></i> Caps Lock</label>
 						</div>
 						<div>
 							<input id="leet" type="checkbox">
-							<label for="leet"><i class="fa fa-chevron-right"></i> Leet</label>
+							<label for="leet" onclick="change(this)"><i class="fa fa fa-toggle-off"></i> Leet</label>
 						</div>
 					</div>
 					<button class="clickable" id="go"><i class="fa fa-spin fa-cog fa-lg" aria-hidden="true"></i> Generate</button>

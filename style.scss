@@ -72,6 +72,14 @@ form {
 	justify-content: space-between;
 }
 
+.fa-toggle-off {
+	color: #555;
+}
+
+.fa-toggle-on {
+	color: $sColor;
+}
+
 header {
 	margin: 20px auto;
 	display: flex;
@@ -119,11 +127,6 @@ label {
 
 textarea, select, select option {
 	color: #000;
-}
-
-.c-feature {
-	display: flex;
-	justify-content: flex-end;
 }
 
 .clickable {

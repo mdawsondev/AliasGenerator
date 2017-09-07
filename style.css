@@ -21,26 +21,27 @@ aside {
   background-color: black;
   padding: 0.5em; }
 
-button {
+#go {
   transition: box-shadow 0.2s ease-in-out, background-color 0.2s;
   box-shadow: 0;
-  padding: 10px;
-  margin: 10px;
+  padding: 1em;
+  margin: 1em 0;
   border: 0;
   border-radius: 2em;
   background-color: #004f5e;
   font-size: 16px;
   font-weight: bold;
-  color: #fff; }
-  button:hover {
+  color: #fff;
+  width: 100%; }
+  #go:hover {
     box-shadow: 0 0 0.5em #00cff7;
     background-color: #006478;
     transition: box-shadow 0.2s, background-color 0.2s; }
-  button:active {
+  #go:active {
     box-shadow: 0 0 0.5em #00cff7;
     background-color: #00cff7;
     transition: background-color 0.2s; }
-  button:focus {
+  #go:focus {
     outline: 0; }
 
 content {
@@ -50,6 +51,12 @@ content {
   flex-direction: column;
   box-sizing: border-box;
   border: 0.2em solid #2bddff; }
+
+form {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between; }
 
 header {
   margin: 20px auto;
@@ -93,11 +100,6 @@ textarea, select, select option {
 
 .clickable, label, #tbar p {
   cursor: pointer; }
-
-.col-wrap {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; }
 
 .title {
   display: flex;

@@ -10,32 +10,31 @@
 	<body>
 		<div id="content-wrapper">
 			<aside>
-				<header>
-					<h1>Alias Generator</h1>
-					<p id="author">by <a href="mailto:mdawsondev@gmail.com">mdawsondev</a></i></p>
-					<p id="desc">Alias Generator is a tool for generating usernames. Clicking "Toggle List" opens a list to toggle word usage, custom words must be separated by a comma, and options can be turned on or off. Clicking on the generated alias will allow direct editing!</p>
-				</header>
-				
-				<div id="selections">
-					<p class="title clickable" onclick="list()"><i class="fa fa-plus"></i> Toggle List</p>
-					<!--Dynamic-->
-				</div>
-				<div id="custom">
-					<textarea id="c-list" rows="3" cols="28" placeholder="custom word, custom word 2 . . ."></textarea>
-					<div class="col-wrap">
-						<div class="c-feature">
-							<input id="c-only" type="checkbox" onclick="custCheck(this.id)" />
-							<label for="c-only">Use Custom Only <i class="fa fa-chevron-left"></i></label>
-						</div>
-						<div class="c-feature">
-							<input id="c-plus" type="checkbox" onclick="custCheck(this.id)" />
-							<label for="c-plus">Include Custom <i class="fa fa-chevron-left"></i></label>
+				<form id="options" onsubmit="return false">
+				<div id="formbreak">
+					<header>
+						<h1>Alias Generator</h1>
+						<p id="author">by <a href="mailto:mdawsondev@gmail.com">mdawsondev</a></i></p>
+						<p id="desc">Alias Generator is a tool for generating usernames. Clicking "Toggle List" opens a list to toggle word usage, custom words must be separated by a comma, and options can be turned on or off. Clicking on the generated alias will allow direct editing!</p>
+					</header>
+					<div id="selections">
+						<p class="title clickable" onclick="list()"><i class="fa fa-plus"></i> Toggle List</p>
+						<!--Dynamic-->
+					</div>
+					<div id="custom">
+						<textarea id="c-list" rows="3" cols="28" placeholder="custom word, custom word 2 . . ."></textarea>
+						<div class="col-wrap">
+							<div class="c-feature">
+								<input id="c-only" type="checkbox" onclick="custCheck(this.id)" />
+								<label for="c-only">Use Custom Only <i class="fa fa-chevron-left"></i></label>
+							</div>
+							<div class="c-feature">
+								<input id="c-plus" type="checkbox" onclick="custCheck(this.id)" />
+								<label for="c-plus">Include Custom <i class="fa fa-chevron-left"></i></label>
+							</div>
 						</div>
 					</div>
-				</div>
-				<p class="title"><i class="fa fa-flask"></i> Options</p>
-				<form id="options" onsubmit="return false">
-					<div class="col-wrap">
+					<p class="title"><i class="fa fa-flask"></i> Options</p>
 						<select id="count" placeholder="Number of Words" required>
 							<option value="" disabled selected>Word Count</option>
 							<option value="1">1</option>
@@ -68,8 +67,8 @@
 							<input id="leet" type="checkbox">
 							<label for="leet"><i class="fa fa-chevron-right"></i> Leet</label>
 						</div>
-					    <button class="clickable" id="go"><i class="fa fa-spin fa-cog fa-lg" aria-hidden="true"></i> Generate</button>
 					</div>
+					<button class="clickable" id="go"><i class="fa fa-spin fa-cog fa-lg" aria-hidden="true"></i> Generate</button>
 				</form>
 			</aside>
 			<content>

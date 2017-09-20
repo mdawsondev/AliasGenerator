@@ -4,10 +4,10 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
 }*/
 
-var nrmlAdjs = ["normal", "adjective", ["adjectives", "colors", "numbers"]],
-nrmlNouns = ["normal", "noun", ["animals", "food", "nature"]],
-nrmlTtl = ["normal", "title", ["titles"]],
-verbs = ["normal", "verb", ["verbs"]],
+var nrmlAdjs = ['normal', 'adjective', ['adjectives', 'colors', 'numbers']],
+nrmlNouns = ['normal', 'noun', ['animals', 'food', 'nature']],
+nrmlTtl = ['normal', 'title', ['titles']],
+verbs = ['normal', 'verb', ['verbs']],
 categories = [nrmlAdjs, nrmlNouns, nrmlTtl, verbs],
 data = []
 loader = [];
@@ -22,7 +22,7 @@ class Category {
 }
 
 //Establish available categories; custom must come first.
-data.push(new Category("custom", "custom", "custom"))
+data.push(new Category('custom', 'custom', 'custom'))
 
 for (i in categories) {
 	for (j in categories[i][2])
@@ -32,62 +32,62 @@ for (i in categories) {
 //Import external lists and inject them into categories.
 function harvest() {
 	for (i in data) {
-    if (data[i].name === "custom") //Ignore custom, it's internalized!
+    if (data[i].name === 'custom') //Ignore custom, it's internalized!
     	continue;
     function readTextFile(file) {
     	var rawFile = new XMLHttpRequest();
-    	rawFile.open("GET", file, false);
+    	rawFile.open('GET', file, false);
     	rawFile.onreadystatechange = function () {
     		if (rawFile.readyState === 4) {
     			if (rawFile.status === 200 || rawFile.status === 0) {
     				data[i].content = rawFile.responseText.split('\n');
 
-    				var wrapper = document.createElement("div"), 
-    				  checkbox = document.createElement("input"),
-    				  label = document.createElement("label"),
-              toggle = document.createElement("i");
-    				checkbox.type = "checkbox"
+    				var wrapper = document.createElement('div'), 
+    				  checkbox = document.createElement('input'),
+    				  label = document.createElement('label'),
+              toggle = document.createElement('i');
+    				checkbox.type = 'checkbox'
     				checkbox.id = data[i].name;
     				label.htmlFor = data[i].name;
-            label.setAttribute ("onclick", "change(this)");
-            toggle.className = "fa fa-toggle-on";
-    				wrapper.className = "cat";
-    				wrapper.style.display = "none";
+            label.setAttribute ('onclick', 'change(this)');
+            toggle.className = 'fa fa-toggle-on';
+    				wrapper.className = 'cat';
+    				wrapper.style.display = 'none';
             label.appendChild(toggle);
-    				label.appendChild(document.createTextNode(" " + data[i].name.charAt(0).toUpperCase() + data[i].name.slice(1)));
+    				label.appendChild(document.createTextNode(' ' + data[i].name.charAt(0).toUpperCase() + data[i].name.slice(1)));
     				wrapper.appendChild(checkbox).checked = true;
     				wrapper.appendChild(label);
-    				document.getElementById("selections").appendChild(wrapper);
+    				document.getElementById('selections').appendChild(wrapper);
     			}
     		}
     	}
     	rawFile.send(null);
     }
-    readTextFile("https://raw.githubusercontent.com/mdawsondev/alias-generator/master/src/data/" + data[i].name + ".txt");
+    readTextFile('https://raw.githubusercontent.com/mdawsondev/alias-generator/master/src/data/' + data[i].name + '.txt');
 }
 }
 
 window.onload = function () {
 	harvest();
 
-	document.getElementById("go").onclick = function () {
-		var count = document.getElementById("count").value,
-		cOnly = document.getElementById("c-only"),
-		cPlus = document.getElementById("c-plus"),
-		caps = document.getElementById("caps"),
-		capsRand = document.getElementById("caps-random"),
-		capsLock = document.getElementById("caps-only"),
-		grammar = document.getElementById("grammar"),
-		leet = document.getElementById("leet"),
-		norepeats = document.getElementById("norepeats"),
-		alias = "",
+	document.getElementById('go').onclick = function () {
+		var count = document.getElementById('count').value,
+		cOnly = document.getElementById('c-only'),
+		cPlus = document.getElementById('c-plus'),
+		caps = document.getElementById('caps'),
+		capsRand = document.getElementById('caps-random'),
+		capsLock = document.getElementById('caps-only'),
+		grammar = document.getElementById('grammar'),
+		leet = document.getElementById('leet'),
+		norepeats = document.getElementById('norepeats'),
+		alias = '',
 		custom = data[0],
 		library = [];
 
 
     //Add selected words to the library.
     if (cOnly.checked || cPlus.checked) {
-    	custom.content = document.getElementById("c-list").value.split(', ');
+    	custom.content = document.getElementById('c-list').value.split(', ');
     	library.push(custom);
     }
 
@@ -107,7 +107,7 @@ window.onload = function () {
     if (library[0].content.length === 0)
     	library.shift();
     for (i=0; i<library.length; i++) {
-    	if (library[i].grammar === "title") {
+    	if (library[i].grammar === 'title') {
     		titleLoc = i;
     		title = true;
     	}
@@ -131,13 +131,13 @@ window.onload = function () {
   	  //Leet speek before caps!
   	  function goLeet (input) {
   	  	var leetOutput = input;
-  	  	if (input.endsWith("ed"))
-  	  		leetOutput = input.slice(0, -2) + "d";
-  	  	if (input.endsWith("er"))
-  	  		leetOutput = input.slice(0, -2) + "xor";
-  	  	if (library[rdmCat].grammar === "verb")
-  	  		leetOutput += "age";
-  	  	leetOutput = leetOutput.replace(/a/g, "4").replace(/e/g, "3").replace(/f/g, "ph").replace(/i/g, "1").replace(/t/g, "7").replace(/o/g, "0").replace(/s/g, "5").replace(/ate/g, "8");
+  	  	if (input.endsWith('ed'))
+  	  		leetOutput = input.slice(0, -2) + 'd';
+  	  	if (input.endsWith('er'))
+  	  		leetOutput = input.slice(0, -2) + 'xor';
+  	  	if (library[rdmCat].grammar === 'verb')
+  	  		leetOutput += 'age';
+  	  	leetOutput = leetOutput.replace(/a/g, '4').replace(/e/g, '3').replace(/f/g, 'ph').replace(/i/g, '1').replace(/t/g, '7').replace(/o/g, '0').replace(/s/g, '5').replace(/ate/g, '8');
   	  	return leetOutput;
   	  }
 
@@ -148,7 +148,7 @@ window.onload = function () {
   	  	if (capsLock.checked)
   	  		input = input.toUpperCase();
   	  	if (capsRand.checked) {
-  	  		var randOutput = "";
+  	  		var randOutput = '';
   	  		for (letter in input) {
   	  			if (Math.floor(Math.random() * 2))
   	  				randOutput += input[letter].toUpperCase();
@@ -164,7 +164,7 @@ window.onload = function () {
       if (grammar.checked) {
       	if (title && i === 0)
       		rdmThing = library[titleLoc].content[Math.floor(Math.random() * library[titleLoc].content.length)];
-      	if (i === count-1 && library[rdmCat].grammar !== "noun") {
+      	if (i === count-1 && library[rdmCat].grammar !== 'noun') {
       		i -= 1;
       		continue;
       	}
@@ -177,30 +177,30 @@ window.onload = function () {
       alias += rdmThing;
   }
   if (alias.length == 0)
-    alias = "Select a Word Count!"
-  for (i in document.getElementsByClassName("alias0"))
-    document.getElementsByClassName("alias0")[i].innerHTML = alias;
-  document.getElementById("alias1").innerHTML = alias;
+    alias = 'Select a Word Count!'
+  for (i in document.getElementsByClassName('alias0'))
+    document.getElementsByClassName('alias0')[i].innerHTML = alias;
+  document.getElementById('alias1').innerHTML = alias;
   loader.unshift(alias);
   if (loader.length > 4)
   	loader.pop();
   if (loader[1])
-	  document.getElementById("alias2").innerHTML = loader[1];
+	  document.getElementById('alias2').innerHTML = loader[1];
   if (loader[2])
-	  document.getElementById("alias3").innerHTML = loader[2];
+	  document.getElementById('alias3').innerHTML = loader[2];
   if (loader[3])
-	  document.getElementById("alias4").innerHTML = loader[3];
+	  document.getElementById('alias4').innerHTML = loader[3];
 }
 }
 
 function list (el) {
   var icon = el.childNodes[0]
-	var elems = document.getElementsByClassName("cat")
+	var elems = document.getElementsByClassName('cat')
 	for (var i = 0 ; i < elems.length; i+=1){
-		if (elems[i].style.display !== "none")
-			elems[i].style.display = "none";
+		if (elems[i].style.display !== 'none')
+			elems[i].style.display = 'none';
 		else
-			elems[i].style.display = "initial";
+			elems[i].style.display = 'initial';
 	}
   if ( icon.classList.contains('fa-plus') )
     icon.className = 'fa fa-minus';
@@ -210,15 +210,15 @@ function list (el) {
 
 function swap (id) {
 	console.log(id);
-	var mute =document.getElementsByClassName("gencontent");
+	var mute =document.getElementsByClassName('gencontent');
 	for (i=0; i<mute.length; i++){
-		mute[i].style.display = "none";
+		mute[i].style.display = 'none';
 	}
-	document.getElementById("gen" + id).style.display = "flex";
+	document.getElementById('gen' + id).style.display = 'flex';
 }
 
 function change(el) {
-  if (el.textContent.includes("Grammar") && document.getElementById("grammar").disabled)
+  if (el.textContent.includes('Grammar') && document.getElementById('grammar').disabled)
     return;
   el = el.childNodes[0];
   if ( el.classList.contains('fa-toggle-off') )
@@ -229,16 +229,16 @@ function change(el) {
 
 //Disable options so checkboxes don't conflict.
 function custCheck (id) {
-	var cOnly = document.getElementById("c-only"),
-	cPlus = document.getElementById("c-plus"),
-	grammar = document.getElementById("grammar");
+	var cOnly = document.getElementById('c-only'),
+	cPlus = document.getElementById('c-plus'),
+	grammar = document.getElementById('grammar');
 
 	grammar.checked = false;
 	grammar.disabled = true;
   grammar.nextElementSibling.childNodes[0].className = 'fa fa-toggle-off'
 
 	switch(id) {
-		case "c-only":
+		case 'c-only':
 		if (cPlus.checked) {
       change(cPlus.nextElementSibling)
 			cPlus.checked = false;
@@ -246,7 +246,7 @@ function custCheck (id) {
 		if (!cOnly.checked)
 			grammar.disabled = false;
 		break;
-		case "c-plus":
+		case 'c-plus':
 		if (cOnly.checked){
       change(cOnly.nextElementSibling)
 			cOnly.checked = false;

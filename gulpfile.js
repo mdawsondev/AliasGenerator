@@ -12,7 +12,7 @@ gulp.task('autoprefixer', function() {
   return gulp.src('dist/**/*.css')
     .pipe(postcss([autoprefixer()]))
     .pipe(gulp.dest('dist'));
-})
+});
 
 gulp.task('browserSync', function(){
   browserSync.init({
@@ -47,7 +47,7 @@ gulp.task('build:remove', ['build:process'], function() {
 
 gulp.task('html', function(){
   gulp.src('src/**/*.html')
-  .pipe(browserSync.stream())
+  .pipe(browserSync.stream());
 })
 
 gulp.task('minify-css', ['autoprefixer'], function() {

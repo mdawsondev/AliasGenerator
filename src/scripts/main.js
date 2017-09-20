@@ -97,7 +97,7 @@ window.onload = function () {
       if (!cPlus.checked) {
         custom.content = [];
       }
-      for (i in data) {
+      for (var i in data) {
         if (document.getElementById(data[i].name).checked) {
           library.push(data[i]);
         }
@@ -111,7 +111,7 @@ window.onload = function () {
     if (library[0].content.length === 0) {
       library.shift();
     }
-    for (i=0; i<library.length; i++) {
+    for (var i = 0; i < library.length; i++) {
       if (library[i].grammar === 'title') {
         titleLoc = i;
         title = true;
@@ -120,7 +120,7 @@ window.onload = function () {
 
     var used = [];
 
-    for (i=0; i<count; i++){
+    for (var i = 0; i < count; i++){
       var rdmCat = Math.floor(Math.random() * library.length),
       rdmItem = Math.floor(Math.random() * library[rdmCat].content.length),
       rdmThing = library[rdmCat].content[rdmItem];
@@ -160,7 +160,7 @@ window.onload = function () {
         }
         if (capsRand.checked) {
           var randOutput = '';
-          for (letter in input) {
+          for (var letter in input) {
             if (Math.floor(Math.random() * 2)) {
               randOutput += input[letter].toUpperCase();
             } else {
@@ -194,7 +194,7 @@ window.onload = function () {
   if (alias.length == 0) {
     alias = 'Select a Word Count!'
   }
-  for (i in document.getElementsByClassName('alias0')) {
+  for (var i in document.getElementsByClassName('alias0')) {
     document.getElementsByClassName('alias0')[i].innerHTML = alias;
   }
   document.getElementById('alias1').innerHTML = alias;
@@ -234,7 +234,7 @@ function list (el) {
 function swap (id) {
   console.log(id);
   var mute =document.getElementsByClassName('gencontent');
-  for (i=0; i<mute.length; i++) {
+  for (var i = 0; i < mute.length; i++) {
     mute[i].style.display = 'none';
   }
   document.getElementById('gen' + id).style.display = 'flex';

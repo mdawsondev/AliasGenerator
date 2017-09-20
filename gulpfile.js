@@ -1,9 +1,9 @@
 var gulp = require('gulp'),
   autoprefixer = require('autoprefixer'),
   browserSync = require('browser-sync').create(),
-  compiler = require('google-closure-compiler-js').gulp();
-  cleanCSS = require('gulp-clean-css')
-  del = require('del');
+  compiler = require('google-closure-compiler-js').gulp(),
+  cleanCSS = require('gulp-clean-css'),
+  del = require('del'),
   postcss = require('gulp-postcss'),
   sass = require('gulp-sass'),
   sorucemaps = require('gulp-sourcemaps');

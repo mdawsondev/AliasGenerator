@@ -43,7 +43,7 @@ gulp.task('build:remove', ['build:process'], function() {
     'dist/**/*.scss',
     'dist/scripts/!(*.min.js)'
   ]);
-})
+});
 
 gulp.task('html', function(){
   gulp.src('src/**/*.html')

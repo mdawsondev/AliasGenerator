@@ -24,14 +24,15 @@ class Category {
 //Establish available categories; custom must come first.
 data.push(new Category('custom', 'custom', 'custom'))
 
-for (i in categories) {
-	for (j in categories[i][2])
+for (var i in categories) {
+	for (var j in categories[i][2]) {
 		data.push(new Category(categories[i][2][j], categories[i][0], categories[i][1]));
+	}
 }
 
 //Import external lists and inject them into categories.
 function harvest() {
-	for (i in data) {
+	for (var i in data) {
     if (data[i].name === 'custom') //Ignore custom, it's internalized!
     	continue;
     function readTextFile(file) {

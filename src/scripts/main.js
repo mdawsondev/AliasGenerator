@@ -9,7 +9,7 @@ nrmlNouns = ['normal', 'noun', ['animals', 'food', 'nature']],
 nrmlTtl = ['normal', 'title', ['titles']],
 verbs = ['normal', 'verb', ['verbs']],
 categories = [nrmlAdjs, nrmlNouns, nrmlTtl, verbs],
-data = []
+data = [],
 loader = [];
 
 class Category {
@@ -22,7 +22,7 @@ class Category {
 }
 
 //Establish available categories; custom must come first.
-data.push(new Category('custom', 'custom', 'custom'))
+data.push(new Category('custom', 'custom', 'custom'));
 
 for (var i in categories) {
   for (var j in categories[i][2]) {
@@ -48,7 +48,7 @@ function harvest() {
               checkbox = document.createElement('input'),
               label = document.createElement('label'),
               toggle = document.createElement('i');
-            checkbox.type = 'checkbox'
+            checkbox.type = 'checkbox';
             checkbox.id = data[i].name;
             label.htmlFor = data[i].name;
             label.setAttribute ('onclick', 'change(this)');
@@ -169,7 +169,7 @@ window.onload = function () {
           }
           input = randOutput;
         }
-        return input
+        return input;
       }
 
       //Grammar logic; needs work!
@@ -191,8 +191,8 @@ window.onload = function () {
       }
       alias += rdmThing;
   }
-  if (alias.length == 0) {
-    alias = 'Select a Word Count!'
+  if (alias.length === 0) {
+    alias = 'Select a Word Count!';
   }
   for (var i in document.getElementsByClassName('alias0')) {
     document.getElementsByClassName('alias0')[i].innerHTML = alias;
@@ -211,7 +211,7 @@ window.onload = function () {
   if (loader[3]) {
     document.getElementById('alias4').innerHTML = loader[3];
   }
-}
+};
 }
 
 function list (el) {

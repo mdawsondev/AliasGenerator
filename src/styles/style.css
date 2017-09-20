@@ -1,6 +1,7 @@
 @keyframes slide {
   100% {
     left: 0; } }
+
 * {
   margin: 0;
   padding: 0;
@@ -269,5 +270,3 @@ textarea, select, select option {
     #tbar p:hover {
       transition: padding-top 0.2s;
       padding-top: 1em; }
-
-/*# sourceMappingURL=_style.css.map */

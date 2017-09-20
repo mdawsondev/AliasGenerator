@@ -63,7 +63,7 @@ function harvest() {
     	}
     	rawFile.send(null);
     }
-    readTextFile("https://raw.githubusercontent.com/mdawsondev/AliasGenerator/master/data/" + data[i].name + ".txt");
+    readTextFile("https://raw.githubusercontent.com/mdawsondev/alias-generator/master/data/" + data[i].name + ".txt");
 }
 }
 

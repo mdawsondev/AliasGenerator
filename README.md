@@ -4,7 +4,7 @@
 ------
 Alias Generator is a word generator focused on the creation of unique usernames. Using a series of controlled properties, users can generate content from predefined words, or by using custom input. Alias Generator also features "preview cards," allowing users to see what the generated name "feels like" in the wild.
 
-This project is open source, and can be used [right here on GitHub](https://mdawsondev.github.io/AliasGenerator/)!
+This project is open source, and can be used [right here on GitHub](https://mdawsondev.github.io/alias-generator/)!
 
 ### Features
 ------

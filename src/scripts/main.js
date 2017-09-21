@@ -126,10 +126,11 @@ window.onload = function () {
     }
 
     if (!cOnly.checked) {
+      var i = 0;
       if (!cPlus.checked) {
         custom.content = [];
       }
-      for (var i = 0; i < data.length; i++) {
+      for (i; i < data.length; i++) {
         if (document.getElementById(data[i].name).checked) {
           library.push(data[i]);
         }

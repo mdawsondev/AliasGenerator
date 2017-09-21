@@ -195,7 +195,7 @@ function begin () {
     if (!cPlus.checked) {
       custom.content = [];
     }
-    for (var i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       if (document.getElementById(data[i].name).checked) {
         library.push(data[i]);
       }
@@ -208,7 +208,7 @@ function begin () {
   if (library[0].content.length === 0) {
     library.shift();
   }
-  for (var i = 0; i < library.length; i++) {
+  for (let i = 0; i < library.length; i++) {
     if (library[i].grammar === 'title') {
       titleLoc = i;
       title = true;
@@ -217,7 +217,7 @@ function begin () {
 
   var used = [];
 
-  for (var i = 0; i < count; i++){
+  for (let i = 0; i < count; i++){
     var rdmCat = Math.floor(Math.random() * library.length),
         rdmItem = Math.floor(Math.random() * library[rdmCat].content.length),
         rdmThing = library[rdmCat].content[rdmItem];
@@ -252,7 +252,7 @@ function begin () {
   if (alias.length === 0) {
     alias = 'Select a Word Count!';
   }
-  for (var i = 0; i < document.getElementsByClassName('alias0').length; i++) {
+  for (let i = 0; i < document.getElementsByClassName('alias0').length; i++) {
     document.getElementsByClassName('alias0')[i].innerHTML = alias;
   }
   document.getElementById('alias1').innerHTML = alias;

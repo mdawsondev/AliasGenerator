@@ -129,7 +129,7 @@ window.onload = function () {
       if (!cPlus.checked) {
         custom.content = [];
       }
-      for (var i in data) {
+      for (var i = 0; i < data.length; i++) {
         if (document.getElementById(data[i].name).checked) {
           library.push(data[i]);
         }
@@ -186,7 +186,7 @@ window.onload = function () {
     if (alias.length === 0) {
       alias = 'Select a Word Count!';
     }
-    for (var i in document.getElementsByClassName('alias0')) {
+    for (var i = 0; i < document.getElementsByClassName('alias0').length; i++) {
       document.getElementsByClassName('alias0')[i].innerHTML = alias;
     }
     document.getElementById('alias1').innerHTML = alias;
@@ -251,12 +251,12 @@ function custCheck (id) {
 
   grammar.checked = false;
   grammar.disabled = true;
-  grammar.nextElementSibling.childNodes[0].className = 'fa fa-toggle-off'
+  grammar.nextElementSibling.childNodes[0].className = 'fa fa-toggle-off';
 
   switch(id) {
     case 'c-only':
     if (cPlus.checked) {
-      change(cPlus.nextElementSibling)
+      change(cPlus.nextElementSibling);
       cPlus.checked = false;
     }
     if (!cOnly.checked) {
@@ -265,7 +265,7 @@ function custCheck (id) {
     break;
     case 'c-plus':
     if (cOnly.checked) {
-      change(cOnly.nextElementSibling)
+      change(cOnly.nextElementSibling);
       cOnly.checked = false;
     }
     if (!cPlus.checked) {

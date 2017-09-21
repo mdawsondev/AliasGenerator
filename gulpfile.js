@@ -20,7 +20,7 @@ gulp.task('browserSync', function(){
       baseDir: 'src/'
     },
   });
-})
+});
 
 gulp.task('build', ['build:remove']);
 

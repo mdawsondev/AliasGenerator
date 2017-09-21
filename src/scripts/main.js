@@ -170,8 +170,6 @@ window.onload = function () {
         }
       }
 
-
-
       //Grammar logic; needs work!
       if (grammar.checked) {
         if (title && i === 0) {

@@ -5,12 +5,12 @@
 }*/
 
 var nrmlAdjs = ['normal', 'adjective', ['adjectives', 'colors', 'numbers']],
-nrmlNouns = ['normal', 'noun', ['animals', 'food', 'nature']],
-nrmlTtl = ['normal', 'title', ['titles']],
-verbs = ['normal', 'verb', ['verbs']],
-categories = [nrmlAdjs, nrmlNouns, nrmlTtl, verbs],
-data = [],
-loader = [];
+    nrmlNouns = ['normal', 'noun', ['animals', 'food', 'nature']],
+    nrmlTtl = ['normal', 'title', ['titles']],
+    verbs = ['normal', 'verb', ['verbs']],
+    categories = [nrmlAdjs, nrmlNouns, nrmlTtl, verbs],
+    data = [],
+    loader = [];
 
 class Category {
   constructor(name, genre, grammar) {
@@ -30,43 +30,44 @@ for (var i in categories) {
   }
 }
 
+function readTextFile(file, inData) {
+  var rawFile = new XMLHttpRequest();
+  rawFile.open('GET', file, false);
+  rawFile.onreadystatechange = function () {
+    if (rawFile.readyState === 4) {
+      if (rawFile.status === 200 || rawFile.status === 0) {
+        inData.content = rawFile.responseText.split('\n');
+
+        var wrapper = document.createElement('div'), 
+            checkbox = document.createElement('input'),
+            label = document.createElement('label'),
+            toggle = document.createElement('i');
+        checkbox.type = 'checkbox';
+        checkbox.id = inData.name;
+        label.htmlFor = inData.name;
+        label.setAttribute ('onclick', 'change(this)');
+        toggle.className = 'fa fa-toggle-on';
+        wrapper.className = 'cat';
+        wrapper.style.display = 'none';
+        label.appendChild(toggle);
+        label.appendChild(document.createTextNode(' ' + inData.name.charAt(0).toUpperCase() + inData.name.slice(1)));
+        wrapper.appendChild(checkbox).checked = true;
+        wrapper.appendChild(label);
+        document.getElementById('selections').appendChild(wrapper);
+      }
+    }
+  };
+  rawFile.send(null);
+}
+
 //Import external lists and inject them into categories.
 function harvest() {
   for (var i in data) {
     if (data[i].name === 'custom') { //Ignore custom, it's internalized!
       continue;
     }
-    function readTextFile(file) {
-      var rawFile = new XMLHttpRequest();
-      rawFile.open('GET', file, false);
-      rawFile.onreadystatechange = function () {
-        if (rawFile.readyState === 4) {
-          if (rawFile.status === 200 || rawFile.status === 0) {
-            data[i].content = rawFile.responseText.split('\n');
-
-            var wrapper = document.createElement('div'), 
-              checkbox = document.createElement('input'),
-              label = document.createElement('label'),
-              toggle = document.createElement('i');
-            checkbox.type = 'checkbox';
-            checkbox.id = data[i].name;
-            label.htmlFor = data[i].name;
-            label.setAttribute ('onclick', 'change(this)');
-            toggle.className = 'fa fa-toggle-on';
-            wrapper.className = 'cat';
-            wrapper.style.display = 'none';
-            label.appendChild(toggle);
-            label.appendChild(document.createTextNode(' ' + data[i].name.charAt(0).toUpperCase() + data[i].name.slice(1)));
-            wrapper.appendChild(checkbox).checked = true;
-            wrapper.appendChild(label);
-            document.getElementById('selections').appendChild(wrapper);
-          }
-        }
-      };
-      rawFile.send(null);
-    }
-    readTextFile('https://raw.githubusercontent.com/mdawsondev/alias-generator/master/src/data/' + data[i].name + '.txt');
-}
+    readTextFile('https://raw.githubusercontent.com/mdawsondev/alias-generator/master/src/data/' + data[i].name + '.txt', data[i]);
+  }
 }
 
 window.onload = function () {
@@ -74,17 +75,17 @@ window.onload = function () {
 
   document.getElementById('go').onclick = function () {
     var count = document.getElementById('count').value,
-    cOnly = document.getElementById('c-only'),
-    cPlus = document.getElementById('c-plus'),
-    caps = document.getElementById('caps'),
-    capsRand = document.getElementById('caps-random'),
-    capsLock = document.getElementById('caps-only'),
-    grammar = document.getElementById('grammar'),
-    leet = document.getElementById('leet'),
-    norepeats = document.getElementById('norepeats'),
-    alias = '',
-    custom = data[0],
-    library = [];
+        cOnly = document.getElementById('c-only'),
+        cPlus = document.getElementById('c-plus'),
+        caps = document.getElementById('caps'),
+        capsRand = document.getElementById('caps-random'),
+        capsLock = document.getElementById('caps-only'),
+        grammar = document.getElementById('grammar'),
+        leet = document.getElementById('leet'),
+        norepeats = document.getElementById('norepeats'),
+        alias = '',
+        custom = data[0],
+        library = [];
 
 
     //Add selected words to the library.
@@ -104,7 +105,6 @@ window.onload = function () {
       }
     }
 
-
     //Pick words at random matching our grammar rules.
     var title = false,
     titleLoc = 0;
@@ -122,8 +122,8 @@ window.onload = function () {
 
     for (var i = 0; i < count; i++){
       var rdmCat = Math.floor(Math.random() * library.length),
-      rdmItem = Math.floor(Math.random() * library[rdmCat].content.length),
-      rdmThing = library[rdmCat].content[rdmItem];
+          rdmItem = Math.floor(Math.random() * library[rdmCat].content.length),
+          rdmThing = library[rdmCat].content[rdmItem];
       //Repeat logic.
       if (norepeats.checked) {
         if (used.indexOf(rdmThing) < 0) {

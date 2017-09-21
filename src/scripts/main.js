@@ -70,6 +70,44 @@ function harvest() {
   }
 }
 
+//Leet speek before caps!
+function goLeet (input, inLibrary) {
+  var leetOutput = input;
+  if (input.endsWith('ed')) {
+    leetOutput = input.slice(0, -2) + 'd';
+  }
+  if (input.endsWith('er')) {
+    leetOutput = input.slice(0, -2) + 'xor';
+  }
+  if (inLibrary.grammar === 'verb') {
+    leetOutput += 'age';
+  }
+  leetOutput = leetOutput.replace(/a/g, '4').replace(/e/g, '3').replace(/f/g, 'ph').replace(/i/g, '1').replace(/t/g, '7').replace(/o/g, '0').replace(/s/g, '5').replace(/ate/g, '8');
+  return leetOutput;
+}
+
+//Caps logic.
+function goCaps (input, capsOn, capsLockOn, capsRandOn) {
+  if (capsOn) {
+    input = input.charAt(0).toUpperCase() + input.slice(1);
+  }
+  if (capsLockOn) {
+    input = input.toUpperCase();
+  }
+  if (capsRandOn) {
+    var randOutput = '';
+    for (var letter in input) {
+      if (Math.floor(Math.random() * 2)) {
+        randOutput += input[letter].toUpperCase();
+      } else {
+        randOutput += input[letter];
+      }
+    }
+    input = randOutput;
+  }
+  return input;
+}
+
 window.onload = function () {
   harvest();
 
@@ -132,27 +170,7 @@ window.onload = function () {
         }
       }
 
-      //Caps logic.
-      function goCaps (input) {
-        if (caps.checked) {
-          input = input.charAt(0).toUpperCase() + input.slice(1);
-        }
-        if (capsLock.checked) {
-          input = input.toUpperCase();
-        }
-        if (capsRand.checked) {
-          var randOutput = '';
-          for (var letter in input) {
-            if (Math.floor(Math.random() * 2)) {
-              randOutput += input[letter].toUpperCase();
-            } else {
-              randOutput += input[letter];
-            }
-          }
-          input = randOutput;
-        }
-        return input;
-      }
+
 
       //Grammar logic; needs work!
       if (grammar.checked) {
@@ -169,7 +187,7 @@ window.onload = function () {
         rdmThing = goLeet(rdmThing, library[rdmCat]);
       }
       if (caps.checked || capsLock.checked || capsRand.checked) {
-        rdmThing = goCaps(rdmThing);
+        rdmThing = goCaps(rdmThing, caps.checked, capsLock.checked, capsRand.checked);
       }
       alias += rdmThing;
     }
@@ -195,23 +213,6 @@ window.onload = function () {
     }
   };
 };
-
-//Leet speek before caps!
-function goLeet (input, inLibrary) {
-  var leetOutput = input;
-  if (input.endsWith('ed')) {
-    leetOutput = input.slice(0, -2) + 'd';
-  }
-  if (input.endsWith('er')) {
-    leetOutput = input.slice(0, -2) + 'xor';
-  }
-  if (inLibrary.grammar === 'verb') {
-    leetOutput += 'age';
-  }
-  leetOutput = leetOutput.replace(/a/g, '4').replace(/e/g, '3').replace(/f/g, 'ph').replace(/i/g, '1').replace(/t/g, '7').replace(/o/g, '0').replace(/s/g, '5').replace(/ate/g, '8');
-  return leetOutput;
-}
-
 
 function list (el) {
   var icon = el.childNodes[0];

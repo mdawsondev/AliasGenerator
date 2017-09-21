@@ -55,7 +55,7 @@ gulp.task('minify-css', ['autoprefixer'], function() {
   .pipe(cleanCSS({debug: true}, function(details) {
     console.log(details.name + ': ' + details.stats.originalSize);
     console.log(details.name + ': ' + details.stats.minifiedSize);
-  }));
+  }))
   .pipe(gulp.dest('dist/styles'));
 });
 
@@ -67,7 +67,7 @@ gulp.task('minify-js', function() {
     outputWrapper: '(function(){\n\n}).call(this)',
     jsOutputFile: 'output.min.js',  // outputs single file
     createSourceMap: true,
-  }));
+  }))
   .pipe(gulp.dest('dist/scripts'));
 });
 

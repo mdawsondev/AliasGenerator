@@ -54,30 +54,48 @@ function readTextFile(file, inData) {
   rawFile.send(null);
 }
 
-//Import external lists and inject them into categories.
-function harvest() {
-  for (var i in data) {
-    if (data[i].name === 'custom') { //Ignore custom, it's internalized!
-      continue;
-    }
-    readTextFile('https://raw.githubusercontent.com/mdawsondev/alias-generator/master/src/data/' + data[i].name + '.txt', data[i]);
+function change (el) {
+  if (el.textContent.includes('Grammar') && document.getElementById('grammar').disabled) {
+    return;
+  }
+  el = el.childNodes[0];
+  if (el.classList.contains('fa-toggle-off')) {
+    el.className = 'fa fa-toggle-on';
+  } else {
+    el.className = 'fa fa-toggle-off';
   }
 }
 
-//Leet speek before caps!
-function goLeet (input, inLibrary) {
-  var leetOutput = input;
-  if (input.endsWith('ed')) {
-    leetOutput = input.slice(0, -2) + 'd';
+//Disable options so checkboxes don't conflict.
+function custCheck (id) {
+  var cOnly = document.getElementById('c-only'),
+  cPlus = document.getElementById('c-plus'),
+  grammar = document.getElementById('grammar');
+
+  grammar.checked = false;
+  grammar.disabled = true;
+  grammar.nextElementSibling.childNodes[0].className = 'fa fa-toggle-off';
+
+  switch(id) {
+    case 'c-only':
+    if (cPlus.checked) {
+      change(cPlus.nextElementSibling);
+      cPlus.checked = false;
+    }
+    if (!cOnly.checked) {
+      grammar.disabled = false;
+    }
+    break;
+    case 'c-plus':
+    if (cOnly.checked) {
+      change(cOnly.nextElementSibling);
+      cOnly.checked = false;
+    }
+    if (!cPlus.checked) {
+      grammar.disabled = false;
+    }
+    break;
   }
-  if (input.endsWith('er')) {
-    leetOutput = input.slice(0, -2) + 'xor';
-  }
-  if (inLibrary.grammar === 'verb') {
-    leetOutput += 'age';
-  }
-  leetOutput = leetOutput.replace(/a/g, '4').replace(/e/g, '3').replace(/f/g, 'ph').replace(/i/g, '1').replace(/t/g, '7').replace(/o/g, '0').replace(/s/g, '5').replace(/ate/g, '8');
-  return leetOutput;
 }
 
 //Caps logic.
@@ -100,6 +118,57 @@ function goCaps (input, capsOn, capsLockOn, capsRandOn) {
     input = randOutput;
   }
   return input;
+}
+
+//Leet speek before caps!
+function goLeet (input, inLibrary) {
+  var leetOutput = input;
+  if (input.endsWith('ed')) {
+    leetOutput = input.slice(0, -2) + 'd';
+  }
+  if (input.endsWith('er')) {
+    leetOutput = input.slice(0, -2) + 'xor';
+  }
+  if (inLibrary.grammar === 'verb') {
+    leetOutput += 'age';
+  }
+  leetOutput = leetOutput.replace(/a/g, '4').replace(/e/g, '3').replace(/f/g, 'ph').replace(/i/g, '1').replace(/t/g, '7').replace(/o/g, '0').replace(/s/g, '5').replace(/ate/g, '8');
+  return leetOutput;
+}
+
+//Import external lists and inject them into categories.
+function harvest() {
+  for (var i in data) {
+    if (data[i].name === 'custom') { //Ignore custom, it's internalized!
+      continue;
+    }
+    readTextFile('https://raw.githubusercontent.com/mdawsondev/alias-generator/master/src/data/' + data[i].name + '.txt', data[i]);
+  }
+}
+
+function list (el) {
+  var icon = el.childNodes[0];
+  var elems = document.getElementsByClassName('cat');
+  for (var i = 0 ; i < elems.length; i+=1) {
+    if (elems[i].style.display !== 'none') {
+      elems[i].style.display = 'none';
+    } else {
+      elems[i].style.display = 'initial';
+    }
+  }
+  if (icon.classList.contains('fa-plus')) {
+    icon.className = 'fa fa-minus';
+  } else {
+    icon.className = 'fa fa-plus'; 
+  }
+}
+
+function swap (id) {
+  var mute =document.getElementsByClassName('gencontent');
+  for (var i = 0; i < mute.length; i++) {
+    mute[i].style.display = 'none';
+  }
+  document.getElementById('gen' + id).style.display = 'flex';
 }
 
 function begin () {
@@ -199,75 +268,6 @@ function begin () {
   }
   if (loader[3]) {
     document.getElementById('alias4').innerHTML = loader[3];
-  }
-}
-
-function list (el) {
-  var icon = el.childNodes[0];
-  var elems = document.getElementsByClassName('cat');
-  for (var i = 0 ; i < elems.length; i+=1) {
-    if (elems[i].style.display !== 'none') {
-      elems[i].style.display = 'none';
-    } else {
-      elems[i].style.display = 'initial';
-    }
-  }
-  if (icon.classList.contains('fa-plus')) {
-    icon.className = 'fa fa-minus';
-  } else {
-    icon.className = 'fa fa-plus'; 
-  }
-}
-
-function swap (id) {
-  var mute =document.getElementsByClassName('gencontent');
-  for (var i = 0; i < mute.length; i++) {
-    mute[i].style.display = 'none';
-  }
-  document.getElementById('gen' + id).style.display = 'flex';
-}
-
-function change (el) {
-  if (el.textContent.includes('Grammar') && document.getElementById('grammar').disabled) {
-    return;
-  }
-  el = el.childNodes[0];
-  if (el.classList.contains('fa-toggle-off')) {
-    el.className = 'fa fa-toggle-on';
-  } else {
-    el.className = 'fa fa-toggle-off';
-  }
-}
-
-//Disable options so checkboxes don't conflict.
-function custCheck (id) {
-  var cOnly = document.getElementById('c-only'),
-  cPlus = document.getElementById('c-plus'),
-  grammar = document.getElementById('grammar');
-
-  grammar.checked = false;
-  grammar.disabled = true;
-  grammar.nextElementSibling.childNodes[0].className = 'fa fa-toggle-off';
-
-  switch(id) {
-    case 'c-only':
-    if (cPlus.checked) {
-      change(cPlus.nextElementSibling);
-      cPlus.checked = false;
-    }
-    if (!cOnly.checked) {
-      grammar.disabled = false;
-    }
-    break;
-    case 'c-plus':
-    if (cOnly.checked) {
-      change(cOnly.nextElementSibling);
-      cOnly.checked = false;
-    }
-    if (!cPlus.checked) {
-      grammar.disabled = false;
-    }
-    break;
   }
 }
 

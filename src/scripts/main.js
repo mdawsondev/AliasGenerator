@@ -102,109 +102,105 @@ function goCaps (input, capsOn, capsLockOn, capsRandOn) {
   return input;
 }
 
-window.onload = function () {
-  harvest();
+function begin () {
+  var count = document.getElementById('count').value,
+      cOnly = document.getElementById('c-only'),
+      cPlus = document.getElementById('c-plus'),
+      caps = document.getElementById('caps'),
+      capsRand = document.getElementById('caps-random'),
+      capsLock = document.getElementById('caps-only'),
+      grammar = document.getElementById('grammar'),
+      leet = document.getElementById('leet'),
+      norepeats = document.getElementById('norepeats'),
+      alias = '',
+      custom = data[0],
+      library = [];
 
-  document.getElementById('go').onclick = function () {
-    var count = document.getElementById('count').value,
-        cOnly = document.getElementById('c-only'),
-        cPlus = document.getElementById('c-plus'),
-        caps = document.getElementById('caps'),
-        capsRand = document.getElementById('caps-random'),
-        capsLock = document.getElementById('caps-only'),
-        grammar = document.getElementById('grammar'),
-        leet = document.getElementById('leet'),
-        norepeats = document.getElementById('norepeats'),
-        alias = '',
-        custom = data[0],
-        library = [];
+  //Add selected words to the library.
+  if (cOnly.checked || cPlus.checked) {
+    custom.content = document.getElementById('c-list').value.split(', ');
+    library.push(custom);
+  }
 
-    //Add selected words to the library.
-    if (cOnly.checked || cPlus.checked) {
-      custom.content = document.getElementById('c-list').value.split(', ');
-      library.push(custom);
+  if (!cOnly.checked) {
+    if (!cPlus.checked) {
+      custom.content = [];
     }
-
-    if (!cOnly.checked) {
-      if (!cPlus.checked) {
-        custom.content = [];
-      }
-      for (var i = 0; i < data.length; i++) {
-        if (document.getElementById(data[i].name).checked) {
-          library.push(data[i]);
-        }
+    for (var i = 0; i < data.length; i++) {
+      if (document.getElementById(data[i].name).checked) {
+        library.push(data[i]);
       }
     }
+  }
 
-    //Pick words at random matching our grammar rules.
-    var title = false,
-    titleLoc = 0;
-    if (library[0].content.length === 0) {
-      library.shift();
+  //Pick words at random matching our grammar rules.
+  var title = false,
+  titleLoc = 0;
+  if (library[0].content.length === 0) {
+    library.shift();
+  }
+  for (var i = 0; i < library.length; i++) {
+    if (library[i].grammar === 'title') {
+      titleLoc = i;
+      title = true;
     }
-    for (var i = 0; i < library.length; i++) {
-      if (library[i].grammar === 'title') {
-        titleLoc = i;
-        title = true;
+  }
+
+  var used = [];
+
+  for (var i = 0; i < count; i++){
+    var rdmCat = Math.floor(Math.random() * library.length),
+        rdmItem = Math.floor(Math.random() * library[rdmCat].content.length),
+        rdmThing = library[rdmCat].content[rdmItem];
+    //Repeat logic.
+    if (norepeats.checked) {
+      if (used.indexOf(rdmThing) < 0) {
+        used.push(rdmThing);
+      } else {
+        continue;
       }
     }
 
-    var used = [];
+    //Grammar logic; needs work!
+    if (grammar.checked) {
+      if (title && i === 0) {
+        rdmThing = library[titleLoc].content[Math.floor(Math.random() * library[titleLoc].content.length)];
+      }
+      if (i === count-1 && library[rdmCat].grammar !== 'noun') {
+        i -= 1;
+        continue;
+      }
+    }
 
-    for (var i = 0; i < count; i++){
-      var rdmCat = Math.floor(Math.random() * library.length),
-          rdmItem = Math.floor(Math.random() * library[rdmCat].content.length),
-          rdmThing = library[rdmCat].content[rdmItem];
-      //Repeat logic.
-      if (norepeats.checked) {
-        if (used.indexOf(rdmThing) < 0) {
-          used.push(rdmThing);
-        } else {
-          continue;
-        }
-      }
-
-      //Grammar logic; needs work!
-      if (grammar.checked) {
-        if (title && i === 0) {
-          rdmThing = library[titleLoc].content[Math.floor(Math.random() * library[titleLoc].content.length)];
-        }
-        if (i === count-1 && library[rdmCat].grammar !== 'noun') {
-          i -= 1;
-          continue;
-        }
-      }
-
-      if (leet.checked) {
-        rdmThing = goLeet(rdmThing, library[rdmCat]);
-      }
-      if (caps.checked || capsLock.checked || capsRand.checked) {
-        rdmThing = goCaps(rdmThing, caps.checked, capsLock.checked, capsRand.checked);
-      }
-      alias += rdmThing;
+    if (leet.checked) {
+      rdmThing = goLeet(rdmThing, library[rdmCat]);
     }
-    if (alias.length === 0) {
-      alias = 'Select a Word Count!';
+    if (caps.checked || capsLock.checked || capsRand.checked) {
+      rdmThing = goCaps(rdmThing, caps.checked, capsLock.checked, capsRand.checked);
     }
-    for (var i = 0; i < document.getElementsByClassName('alias0').length; i++) {
-      document.getElementsByClassName('alias0')[i].innerHTML = alias;
-    }
-    document.getElementById('alias1').innerHTML = alias;
-    loader.unshift(alias);
-    if (loader.length > 4) {
-      loader.pop();
-    }
-    if (loader[1]) {
-      document.getElementById('alias2').innerHTML = loader[1];
-    }
-    if (loader[2]) {
-      document.getElementById('alias3').innerHTML = loader[2];
-    }
-    if (loader[3]) {
-      document.getElementById('alias4').innerHTML = loader[3];
-    }
-  };
-};
+    alias += rdmThing;
+  }
+  if (alias.length === 0) {
+    alias = 'Select a Word Count!';
+  }
+  for (var i = 0; i < document.getElementsByClassName('alias0').length; i++) {
+    document.getElementsByClassName('alias0')[i].innerHTML = alias;
+  }
+  document.getElementById('alias1').innerHTML = alias;
+  loader.unshift(alias);
+  if (loader.length > 4) {
+    loader.pop();
+  }
+  if (loader[1]) {
+    document.getElementById('alias2').innerHTML = loader[1];
+  }
+  if (loader[2]) {
+    document.getElementById('alias3').innerHTML = loader[2];
+  }
+  if (loader[3]) {
+    document.getElementById('alias4').innerHTML = loader[3];
+  }
+}
 
 function list (el) {
   var icon = el.childNodes[0];
@@ -231,7 +227,7 @@ function swap (id) {
   document.getElementById('gen' + id).style.display = 'flex';
 }
 
-function change(el) {
+function change (el) {
   if (el.textContent.includes('Grammar') && document.getElementById('grammar').disabled) {
     return;
   }
@@ -274,3 +270,7 @@ function custCheck (id) {
     break;
   }
 }
+
+window.onload = function () {
+  harvest();
+};

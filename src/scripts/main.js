@@ -1,9 +1,3 @@
-/*Ideas: x_HXC_x?
-  Needs modular conversion, see example below:
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}*/
-
 var nrmlAdjs = ['normal', 'adjective', ['adjectives', 'colors', 'numbers']],
     nrmlNouns = ['normal', 'noun', ['animals', 'food', 'nature']],
     nrmlTtl = ['normal', 'title', ['titles']],
@@ -24,8 +18,8 @@ class Category {
 //Establish available categories; custom must come first.
 data.push(new Category('custom', 'custom', 'custom'));
 
-for (var i in categories) {
-  for (var j in categories[i][2]) {
+for (var i = 0; i < categories.length; i++) {
+  for (var j = 0; j < categories[i][2].length; j++) {
     data.push(new Category(categories[i][2][j], categories[i][0], categories[i][1]));
   }
 }

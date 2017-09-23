@@ -56,11 +56,11 @@ header {
     text-align: justify;
     width: 20em; }
 
-input [type='checkbox'] {
+input[type='checkbox'] {
   display: none; }
-  input [type='checkbox']:checked + label {
+  input[type='checkbox']:checked + label {
     color: #00cff7; }
-  input [type='checkbox']:disabled + label {
+  input[type='checkbox']:disabled + label {
     color: #555; }
 
 label {

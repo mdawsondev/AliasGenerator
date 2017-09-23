@@ -86,7 +86,7 @@ header {
 }
 
 input {
-  [type='checkbox'] {
+  &[type='checkbox'] {
     display: none;
 
     &:checked + label {

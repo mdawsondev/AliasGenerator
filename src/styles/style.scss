@@ -1,331 +1,376 @@
-$sColor: #00cff7;
-$aSize: 3em;
-$aPercent: 5%;
+$s-color: #00cff7;
+$a-size: 3em;
+$a-percent: 5%;
+$c-aaa: #aaa;
+$c-000: #000;
+$c-fff: #fff;
+$c-555: #555;
+$c-777: #777;
+$c-999: #999;
+$c-d4e6f9: #d4e6f9;
+$c-e6ecf0: #e6ecf0;
+$c-1da1f2: #1da1f2;
 
 @keyframes slide {
-    100% { left: 0; }
+  100% { left: 0; }
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	font-family: 'Raleway', sans-serif;
-	color: white;
+  color: $c-fff;
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-html, body {
-	height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 aside {
-	background-color: darken($sColor, 50%);
-	padding: 0.5em;
+  background-color: darken($s-color, 50%);
+  padding: .5em;
 }
 
 content {
-	background-color: darken($sColor, 40%);
-	height: 100%;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	box-sizing: border-box;
-	border: 0.2em solid lighten($sColor, 10%);
+  background-color: darken($s-color, 40%);
+  border: .2em solid lighten($s-color, 10%);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 form {
-	display: flex;
-	height: 100%;
-	flex-direction: column;
-	justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
 }
 
 header {
-	margin: 20px auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	h1 {
-		font: bold 2.5em 'Amatic SC', cursive;
-	}
-	#author {
-		display: flex;
-		align-items: center;
-		font-size: 0.7em;
-		color: darken($sColor, 10%);
-		a {
-			text-decoration: none;
-			margin: 0 0.2em;
-			color: inherit;
-			&:hover {
-				color: lighten($sColor, 30%);
-			}
-		}
-	}
-	#desc {
-		width: 20em;
-		font-size: 0.7em;
-		text-align: justify;
-		color: #999;
-		margin-top: 0.5em;
-	}
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+
+  h1 {
+    font: bold 2.5em 'Amatic SC', cursive;
+  }
+
+  #author {
+    align-items: center;
+    color: darken($s-color, 10%);
+    display: flex;
+    font-size: .7em;
+
+    a {
+      color: inherit;
+      margin: 0 .2em;
+      text-decoration: none;
+
+      &:hover {
+        color: lighten($s-color, 30%);
+      }
+    }
+  }
+
+  #desc {
+    color: $c-999;
+    font-size: .7em;
+    margin-top: .5em;
+    text-align: justify;
+    width: 20em;
+  }
 }
 
-input[type=checkbox] {
-	display: none;
-	&:checked + label {
-		color: $sColor;
-	}
-	&:disabled + label {
-		color: #555;
-	}
+input {
+  [type='checkbox'] {
+    display: none;
+
+    &:checked + label {
+      color: $s-color;
+    }
+
+    &:disabled + label {
+      color: $c-555;
+    }
+  }
 }
 
 label {
-	transition: color 0.3s;
-	@extend .clickable;
-	&:hover {
-		color: lighten($sColor, 30%);
-	}
+  @extend .clickable;
+  transition: color .3s;
+
+  &:hover {
+    color: lighten($s-color, 30%);
+  }
 }
 
-textarea, select, select option {
-	color: #000;
+textarea,
+select,
+select option {
+  color: $c-000;
 }
 
 .cat {
-    position: relative;
-    left: -100px;
-    animation: slide 0.3s forwards;
+  animation: slide .3s forwards;
+  left: -100px;
+  position: relative;
 }
 
 .clickable {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .fa-toggle-off {
-	color: #555;
+  color: $c-555;
 }
 
 .fa-toggle-on {
-	color: $sColor;
+  color: $s-color;
 }
 
-.gencontent:not(#gendefault) {
-	display: none;
+.gencontent {
+  &:not(#gendefault) {
+    display: none;
+  }
 }
 
 .title {
-	display: flex;
-	justify-content: center;
-	font-weight: bolder;
-	margin: 0.5em;
-	i {
-		margin: 0 0.5em 0 0;
-	}
+  display: flex;
+  font-weight: bolder;
+  justify-content: center;
+  margin: .5em;
+
+  i {
+    margin: 0 .5em 0 0;
+  }
 }
 
-@for $i from 1 through 4{
-	#alias#{$i} {
-		color: lighten(darken($sColor, $aPercent), 50%);
-		font-size: $aSize - 0.5em;
-		$aSize: $aSize - 0.5;
-		$aPercent: $aPercent + 10%;
-	}
+@for $i from 1 through 4 {
+  #alias#{$i} {
+    color: lighten(darken($s-color, $a-percent), 50%);
+    font-size: $a-size - .5em;
+    $a-size: $a-size - .5;
+    $a-percent: $a-percent + 10%;
+  }
 }
 
 #content-wrapper {
-	display: flex;
-	flex-direction: row;
-	min-height: 100%;
-	height: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  min-height: 100%;
 }
 
 #count {
-	margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 #custom {
-	margin: 1em 0;
+  margin: 1em 0;
 }
 
 
 #gendefault {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 #generated {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	&:before {
-	  content: "\f0c0"; 
-	  font-family: FontAwesome;
-	  position: absolute;
-	  font-size: 30vw;
-	  color: darken($sColor, 38%);
-	  display: flex;
-	  justify-content: center;
-	  z-index: -1;
-	}
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+
+  &::before {
+    color: darken($s-color, 38%);
+    content: '\f0c0';
+    display: flex;
+    font-family: FontAwesome;
+    font-size: 30vw;
+    justify-content: center;
+    position: absolute;
+    z-index: -1;
+  }
 }
 
 #genreddit {
-	border-radius: 2em;
-	padding: 2em;
-	align-items: center;
-	background-color: #fff;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	& * { 
-		color: #000;
-	}
-	div {
-		width: 310px;
-		height: 115px;
-		background: #d4e6f9;
-		border-top-left-radius: 0.3em;
-		border-top-right-radius: 0.3em;
-	}
-	img {
-		margin: auto;
-		height: auto;
-		width: 90px;
-		border: 0.3em solid #fff;
-		border-radius: 0.7em;
-		margin: -45px 0 0 0;
-	}
-	p {
-		margin: 0.3em;
-		&:not(#user) {
-			font-size: 0.8em;
-		}
-	}
-	.fa-info-circle {
-		margin-left: 0.5em;
-		color: #aaa;
-	}
-	#user {
-		font-weight: 900;		
-	}
+  align-items: center;
+  background-color: $c-fff;
+  border-radius: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2em;
+
+  & * {
+    color: $c-000;
+  }
+
+  div {
+    background: $c-d4e6f9;
+    border-top-left-radius: .3em;
+    border-top-right-radius: .3em;
+    height: 115px;
+    width: 310px;
+  }
+
+  img {
+    border: .3em solid $c-fff;
+    border-radius: .7em;
+    height: auto;
+    margin: -45px 0 0;
+    width: 90px;
+  }
+
+  p {
+    margin: .3em;
+
+    &:not(#user) {
+      font-size: .8em;
+    }
+  }
+
+  .fa-info-circle {
+    color: $c-aaa;
+    margin-left: .5em;
+  }
+
+  #user {
+    font-weight: 900;
+  }
 }
 
 #gentwitter {
-	background: #e6ecf0;
-	padding: 2em;
-	border-radius: 2em;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	a {
-		text-decoration: none;
-		color: #1da1f2;
-	}
-	* {
-		color: #777;
-	}
-	.black {
-		color: #000;
-	}
-	p {
-		font-size: 0.9em;
-	}
-	#spacer > * {
-		margin: 0.5em 0;
-	}
-	img {
-		width: 12em;
-		height: auto;
-		border: 0.4em solid #fff;
-		border-radius: 100%;
-		margin: auto;
-	}
-	#tname {
-		font-size: 1.3em;
-		font-weight: 900;
-	}
-	.fa-check-circle {
-		color: #1da1f2;
-	}
+  background: $c-e6ecf0;
+  border-radius: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2em;
+
+  a {
+    color: $c-1da1f2;
+    text-decoration: none;
+  }
+
+  * {
+    color: $c-777;
+  }
+
+  .black {
+    color: $c-000;
+  }
+
+  p {
+    font-size: .9em;
+  }
+
+  #spacer > * {
+    margin: .5em 0;
+  }
+
+  img {
+    border: .4em solid $c-fff;
+    border-radius: 100%;
+    height: auto;
+    margin: auto;
+    width: 12em;
+  }
+
+  #tname {
+    font-size: 1.3em;
+    font-weight: 900;
+  }
+
+  .fa-check-circle {
+    color: $c-1da1f2;
+  }
 }
 
 #go {
-	&:hover {
-		box-shadow: 0 0 0.5em $sColor;
-		background-color: darken($sColor, 25%);
-		transition: box-shadow 0.2s, background-color 0.2s;
-	}
-	&:active {
-		box-shadow: 0 0 0.5em $sColor;
-		background-color: $sColor;
-		transition: background-color 0.2s;
-	}
-	&:focus {
-		outline: 0;
-	}
-	transition: box-shadow 0.2s ease-in-out, background-color 0.2s;
-	box-shadow: 0;
-	padding: 1em;
-	margin: 1em 0;
-	border: 0;
-	border-radius: 2em;
-	background-color: darken($sColor, 30%);
-	font-size: 16px;
-	font-weight: bold;
-	color: #fff;
-	width: 100%;
+  background-color: darken($s-color, 30%);
+  border: 0;
+  border-radius: 2em;
+  box-shadow: 0;
+  color: $c-fff;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 1em 0;
+  padding: 1em;
+  transition: box-shadow .2s ease-in-out, background-color .2s;
+  width: 100%;
+
+  &:hover {
+    background-color: darken($s-color, 25%);
+    box-shadow: 0 0 .5em $s-color;
+    transition: box-shadow .2s, background-color .2s;
+  }
+
+  &:active {
+    background-color: $s-color;
+    box-shadow: 0 0 .5em $s-color;
+    transition: background-color .2s;
+  }
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 #hub {
-	z-index: 10;
-	position: relative;
-	p {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 1em;
-		height: 1em;
-		border: 0.2em solid #000;
-		border-radius: 100%;
-		background: #000;
-		position: absolute;
-		bottom: 0.5em;
-		right: 0.5em;
-		font-size: 2.5em;
-	}
+  position: relative;
+  z-index: 10;
+
+  p {
+    align-items: center;
+    background: $c-000;
+    border: .2em solid $c-000;
+    border-radius: 100%;
+    bottom: .5em;
+    display: flex;
+    font-size: 2.5em;
+    height: 1em;
+    justify-content: center;
+    position: absolute;
+    right: .5em;
+    width: 1em;
+  }
 }
 
 #selections {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 #tbar {
-	display: flex;
-	justify-content: space-around;
-	background: darken($sColor, 40%);
-	background: linear-gradient(darken($sColor, 30%), darken($sColor, 40%));
-	padding-bottom: 1.5em;
-	height: 2.5em;
-	p {
-		&:hover {
-			transition: padding-top 0.2s;
-			padding-top: 1em;
-		}
-		@extend .clickable;
-		text-align: center;
-		width: 8em;
-		color: #000;
-		font-weight: bold;
-		background-color: lighten($sColor, 10%);
-		padding: 0.5em 0 0.8em 0;
-		border-bottom-left-radius: 1em;
-		border-bottom-right-radius: 1em;
-		transition: padding 0.2s;
-	}
+  background: linear-gradient(darken($s-color, 30%), darken($s-color, 40%));
+  display: flex;
+  height: 2.5em;
+  justify-content: space-around;
+  padding-bottom: 1.5em;
+
+  p {
+    @extend .clickable;
+    background-color: lighten($s-color, 10%);
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    color: $c-000;
+    font-weight: bold;
+    padding: .5em 0 .8em;
+    text-align: center;
+    transition: padding .2s;
+    width: 8em;
+
+    &:hover {
+      padding-top: 1em;
+      transition: padding-top .2s;
+    }
+  }
 }

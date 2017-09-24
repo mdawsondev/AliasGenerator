@@ -1,120 +1,120 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Alias Generator</title>
-		<link href="styles/style.css" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
-		<script src="https://use.fontawesome.com/31b02488b8.js" async></script>
-		<script src="scripts/main.js" defer></script>
-	</head>
-	<body>
-		<div id="content-wrapper">
-			<aside>
-				<form id="options" onsubmit="return false">
-				<div id="formbreak">
-					<header>
-						<h1>Alias Generator</h1>
-						<p id="author">by <a href="mailto:mdawsondev@gmail.com">mdawsondev</a></i></p>
-						<p id="desc">Alias Generator is a tool for generating usernames. Clicking "Toggle List" opens a list to toggle word usage, custom words must be separated by a comma, and options can be turned on or off. Clicking on the generated alias will allow direct editing!</p>
-					</header>
-					<div id="selections">
-						<p class="title clickable" onclick="list(this)"><i class="fa fa-plus"></i> Toggle Lists</p>
-					</div>
-					<div id="custom">
-						<p class="title"><i class="fa fa fa-file-text-o"></i> Custom Words</p>
-						<textarea id="c-list" rows="3" cols="28" placeholder="custom word, custom word 2 . . ."></textarea>
-						<div class="col-wrap">
-							<div class="c-feature">
-								<input id="c-only" type="checkbox" onclick="custCheck(this.id)" />
-								<label for="c-only" onclick="change(this)"><i class="fa fa-toggle-off"></i> Use Custom Only</label>
-							</div>
-							<div class="c-feature">
-								<input id="c-plus" type="checkbox" onclick="custCheck(this.id)"/>
-								<label for="c-plus" onclick="change(this)"><i class="fa fa-toggle-off"></i> Include Custom</label>
-							</div>
-						</div>
-					</div>
-					<p class="title"><i class="fa fa-flask"></i> Options</p>
-						<select id="count" placeholder="Number of Words" required>
-							<option value="" disabled selected>Word Count</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-						<div>
-							<input id="grammar" type="checkbox">
-							<label for="grammar" onclick="change(this)"><i class="fa fa-toggle-off"></i> Use Grammar</label>
-						</div>
-						<div>
-							<input id="norepeats" type="checkbox">
-							<label for="norepeats" onclick="change(this)"><i class="fa fa-toggle-off"></i> No Repeated Words</label>
-						</div>
-						<div>
-							<input id="caps" type="checkbox" checked>
-							<label for="caps" onclick="change(this)"><i class="fa fa-toggle-on"></i> Capital Words</label>
-						</div>
-						<div>
-							<input id="caps-random" type="checkbox">
-							<label for="caps-random" onclick="change(this)"><i class="fa fa-toggle-off"></i> Random Caps</label>
-						</div>
-						<div>
-							<input id="caps-only" type="checkbox">
-							<label for="caps-only" onclick="change(this)"><i class="fa fa fa-toggle-off"></i> Caps Lock</label>
-						</div>
-						<div>
-							<input id="leet" type="checkbox">
-							<label for="leet" onclick="change(this)"><i class="fa fa fa-toggle-off"></i> Leet</label>
-						</div>
-					</div>
-					<button class="clickable" id="go" onclick="begin()"><i class="fa fa-spin fa-cog fa-lg" aria-hidden="true"></i> Generate</button>
-				</form>
-			</aside>
-			<content>
-				<div id="tbar">
-					<div>
-						<p id="default" onclick="swap(this.id)"><i class="fa fa-home"></i> Default</p>
-					</div>
-					<div>
-						<p id="reddit" onclick="swap(this.id)"><i class="fa fa-reddit"></i> Reddit</p>
-					</div>
-					<div>
-						<p id="twitter" onclick="swap(this.id)"><i class="fa fa-twitter"></i> Twitter</p>
-					</div>
-				</div>
-				<div id="generated">
-					<div class="gencontent" id="gendefault">
-						<h2 class="names" id="alias1" contenteditable="true" spellcheck="false">Press Generate</h2>
-						<h3 class="names" id="alias2" contenteditable="true" spellcheck="false">...</h3>
-						<h4 class="names" id="alias3" contenteditable="true" spellcheck="false">...</h4>
-						<h5 class="names" id="alias4" contenteditable="true" spellcheck="false">...</h5>
-					</div>
-					<div class="gencontent" id="genreddit">
-						<div></div>
-						<img src="https://b.thumbs.redditmedia.com/7AlpvErovtQ160o9FyIIdHCzfL2k-ejc982U6uPCuzI.png"" />
-						<p id="user">u/<span class="alias0" contenteditable="true" spellcheck="false">AliasGenerator</span></p>
-						<p>21,521 Karma<i class="fa fa-info-circle"></i></p>
-						<p>Say something about yourself!</p>
-					</div>
-					<div class="gencontent" id="gentwitter">
-						<img src="https://pbs.twimg.com/profile_images/446914475426205696/LN6HayFM_400x400.png" />
-						<div id="spacer">
-							<div>
-								<p class="black" id="tname">Your Name <i class="fa fa-check-circle"></i></p>
-								<p>@<span class="alias0">AliasGenerator</span></p>
-							</div>
-							<p class="black">Say something about yourself!</p>
-							<p><i class="fa fa-link"></i> <a href="#">aliasgenerator</a></p>
-							<p><i class="fa fa-calendar"></i> Joined April 2008</i>
-							<p><i class="fa fa-image"></i> <a href="#">190 Photos and videos</a></p>
-						</div>
-					</div>
-				</div>
-			</content>
-			<div id="hub">
-				<p><a href="http://github.com/mdawsondev/alias-generator"><i class="fa fa-github"></i></a></p>
-			</div>
-		</div>
-	</body>
+<head>
+  <title>Alias Generator</title>
+  <link href="styles/main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
+  <script src="https://use.fontawesome.com/31b02488b8.js" async></script>
+  <script src="scripts/main.js" defer></script>
+</head>
+<body>
+  <div class="content-wrapper">
+    <aside>
+      <form class="options" onsubmit="return false">
+      <div class="formbreak">
+        <header>
+          <h1>Alias Generator</h1>
+          <p class="author">by <a href="mailto:mdawsondev@gmail.com">mdawsondev</a></p>
+          <p class="desc">Alias Generator is a tool for generating usernames. Clicking "Toggle List" opens a list to toggle word usage, custom words must be separated by a comma, and options can be turned on or off. Clicking on the generated alias will allow direct editing!</p>
+        </header>
+        <div class="selections" id="selections">
+          <p class="title clickable" onclick="list(this)"><i class="fa fa-plus"></i> Toggle Lists</p>
+        </div>
+        <div class="custom" id="custom">
+          <p class="title"><i class="fa fa fa-file-text-o"></i> Custom Words</p>
+          <textarea class="c-list" rows="3" cols="28" placeholder="custom word, custom word 2 . . ."></textarea>
+          <div class="col-wrap">
+            <div class="c-feature">
+              <input class="c-only" id="c-only" type="checkbox" onclick="custCheck(this.id)" />
+              <label for="c-only" onclick="change(this)"><i class="fa fa-toggle-off"></i> Use Custom Only</label>
+            </div>
+            <div class="c-feature">
+              <input class="c-plus" id="c-plus" type="checkbox" onclick="custCheck(this.id)"/>
+              <label for="c-plus" onclick="change(this)"><i class="fa fa-toggle-off"></i> Include Custom</label>
+            </div>
+          </div>
+        </div>
+        <p class="title"><i class="fa fa-flask"></i> Options</p>
+          <select class="count" id="count" placeholder="Number of Words" required>
+            <option value="" disabled selected>Word Count</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <div>
+            <input class="grammar" id="grammar" type="checkbox">
+            <label for="grammar" onclick="change(this)"><i class="fa fa-toggle-off"></i> Use Grammar</label>
+          </div>
+          <div>
+            <input class="norepeats" id="norepeats" type="checkbox">
+            <label for="norepeats" onclick="change(this)"><i class="fa fa-toggle-off"></i> No Repeated Words</label>
+          </div>
+          <div>
+            <input class="caps" id="caps" type="checkbox" checked>
+            <label for="caps" onclick="change(this)"><i class="fa fa-toggle-on"></i> Capital Words</label>
+          </div>
+          <div>
+            <input class="caps-random" id="caps-random" type="checkbox">
+            <label for="caps-random" onclick="change(this)"><i class="fa fa-toggle-off"></i> Random Caps</label>
+          </div>
+          <div>
+            <input class="caps-only" id="caps-only" type="checkbox">
+            <label for="caps-only" onclick="change(this)"><i class="fa fa fa-toggle-off"></i> Caps Lock</label>
+          </div>
+          <div>
+            <input class="leet" id="leet" type="checkbox">
+            <label for="leet" onclick="change(this)"><i class="fa fa fa-toggle-off"></i> Leet</label>
+          </div>
+        </div>
+        <button class="clickable go" onclick="begin()"><i class="fa fa-spin fa-cog fa-lg" aria-hidden="true"></i> Generate</button>
+      </form>
+    </aside>
+    <content>
+      <div class="tbar">
+        <div>
+          <p class="default" id="default" onclick="swap(this.id)"><i class="fa fa-home"></i> Default</p>
+        </div>
+        <div>
+          <p class="reddit" id="reddit" onclick="swap(this.id)"><i class="fa fa-reddit"></i> Reddit</p>
+        </div>
+        <div>
+          <p class="twitter" id="twitter" onclick="swap(this.id)"><i class="fa fa-twitter"></i> Twitter</p>
+        </div>
+      </div>
+      <div class="generated">
+        <div class="gencontent gendefault" id="gendefault">
+          <h2 class="names alias1" id="alias1" contenteditable="true" spellcheck="false">Press Generate</h2>
+          <h3 class="names alias2" id="alias2" contenteditable="true" spellcheck="false">...</h3>
+          <h4 class="names alias3" id="alias3" contenteditable="true" spellcheck="false">...</h4>
+          <h5 class="names alias4" id="alias4" contenteditable="true" spellcheck="false">...</h5>
+        </div>
+        <div class="gencontent genreddit" id="genreddit">
+          <div></div>
+          <img src="https://b.thumbs.redditmedia.com/7AlpvErovtQ160o9FyIIdHCzfL2k-ejc982U6uPCuzI.png"" />
+          <p class="user">u/<span class="alias0" contenteditable="true" spellcheck="false">AliasGenerator</span></p>
+          <p>21,521 Karma<i class="fa fa-info-circle"></i></p>
+          <p>Say something about yourself!</p>
+        </div>
+        <div class="gencontent gentwitter" id="gentwitter">
+          <img src="https://pbs.twimg.com/profile_images/446914475426205696/LN6HayFM_400x400.png" />
+          <div class="spacer">
+            <div>
+              <p class="black tname">Your Name <i class="fa fa-check-circle"></i></p>
+              <p>@<span class="alias0">AliasGenerator</span></p>
+            </div>
+            <p class="black">Say something about yourself!</p>
+            <p><i class="fa fa-link"></i> <a href="#">aliasgenerator</a></p>
+            <p><i class="fa fa-calendar"></i> Joined April 2008</i>
+            <p><i class="fa fa-image"></i> <a href="#">190 Photos and videos</a></p>
+          </div>
+        </div>
+      </div>
+    </content>
+    <div class="hub">
+      <p><a href="http://github.com/mdawsondev/alias-generator"><i class="fa fa-github"></i></a></p>
+    </div>
+  </div>
+</body>
 </html>

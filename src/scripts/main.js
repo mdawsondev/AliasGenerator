@@ -164,7 +164,7 @@ function list (el) {
 }
 
 function swap (id) {
-  var mute =document.getElementsByClassName('gencontent');
+  var mute = document.getElementsByClassName('gencontent');
   for (var i = 0; i < mute.length; i++) {
     mute[i].style.display = 'none';
   }
@@ -196,6 +196,7 @@ function begin () {
       custom.content = [];
     }
     for (let i = 0; i < data.length; i++) {
+      console.log(data[i].name)
       if (document.getElementById(data[i].name).checked) {
         library.push(data[i]);
       }

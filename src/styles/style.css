@@ -73,31 +73,6 @@ select,
 select option {
   color: #000; }
 
-.cat {
-  animation: slide .3s forwards;
-  left: -100px;
-  position: relative; }
-
-.clickable, label, .tbar p {
-  cursor: pointer; }
-
-.fa-toggle-off {
-  color: #555; }
-
-.fa-toggle-on {
-  color: #00cff7; }
-
-.gencontent:not(.gendefault) {
-  display: none; }
-
-.title {
-  display: flex;
-  font-weight: bolder;
-  justify-content: center;
-  margin: .5em; }
-  .title i {
-    margin: 0 .5em 0 0; }
-
 .alias1 {
   color: #defaff;
   font-size: 2.5em; }
@@ -114,6 +89,14 @@ select option {
   color: #45e1ff;
   font-size: 1em; }
 
+.cat {
+  animation: slide .3s forwards;
+  left: -100px;
+  position: relative; }
+
+.clickable, label, .tbar p {
+  cursor: pointer; }
+
 .content-wrapper {
   display: flex;
   flex-direction: row;
@@ -125,6 +108,15 @@ select option {
 
 .custom {
   margin: 1em 0; }
+
+.fa-toggle-off {
+  color: #555; }
+
+.fa-toggle-on {
+  color: #00cff7; }
+
+.gencontent:not(.gendefault) {
+  display: none; }
 
 .gendefault {
   align-items: center;
@@ -273,3 +265,11 @@ select option {
     .tbar p:hover {
       padding-top: 1em;
       transition: padding-top .2s; }
+
+.title {
+  display: flex;
+  font-weight: bolder;
+  justify-content: center;
+  margin: .5em; }
+  .title i {
+    margin: 0 .5em 0 0; }

@@ -114,6 +114,15 @@ select option {
   color: $c-000;
 }
 
+@for $i from 1 through 4 {
+  .alias#{$i} {
+    color: lighten(darken($s-color, $a-percent), 50%);
+    font-size: $a-size - .5em;
+    $a-size: $a-size - .5;
+    $a-percent: $a-percent + 10%;
+  }
+}
+
 .cat {
   animation: slide .3s forwards;
   left: -100px;
@@ -122,40 +131,6 @@ select option {
 
 .clickable {
   cursor: pointer;
-}
-
-.fa-toggle-off {
-  color: $c-555;
-}
-
-.fa-toggle-on {
-  color: $s-color;
-}
-
-.gencontent {
-  &:not(.gendefault) {
-    display: none;
-  }
-}
-
-.title {
-  display: flex;
-  font-weight: bolder;
-  justify-content: center;
-  margin: .5em;
-
-  i {
-    margin: 0 .5em 0 0;
-  }
-}
-
-@for $i from 1 through 4 {
-  .alias#{$i} {
-    color: lighten(darken($s-color, $a-percent), 50%);
-    font-size: $a-size - .5em;
-    $a-size: $a-size - .5;
-    $a-percent: $a-percent + 10%;
-  }
 }
 
 .content-wrapper {
@@ -173,6 +148,19 @@ select option {
   margin: 1em 0;
 }
 
+.fa-toggle-off {
+  color: $c-555;
+}
+
+.fa-toggle-on {
+  color: $s-color;
+}
+
+.gencontent {
+  &:not(.gendefault) {
+    display: none;
+  }
+}
 
 .gendefault {
   align-items: center;
@@ -372,5 +360,16 @@ select option {
       padding-top: 1em;
       transition: padding-top .2s;
     }
+  }
+}
+
+.title {
+  display: flex;
+  font-weight: bolder;
+  justify-content: center;
+  margin: .5em;
+
+  i {
+    margin: 0 .5em 0 0;
   }
 }

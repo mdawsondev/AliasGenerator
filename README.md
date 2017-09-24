@@ -30,3 +30,8 @@ This project is open source, and can be used [right here on GitHub](https://mdaw
 * Additional tabs.
 * Random option feature.
 * "Hardcore" feature.
+
+### Folders
+------
+* **dist**: Build folder; all files minimized and tidy.
+* **src**: Source folder holding the original code.

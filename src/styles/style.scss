@@ -59,7 +59,7 @@ header {
     font: bold 2.5em 'Amatic SC', cursive;
   }
 
-  #author {
+  .author {
     align-items: center;
     color: darken($s-color, 10%);
     display: flex;
@@ -76,7 +76,7 @@ header {
     }
   }
 
-  #desc {
+  .desc {
     color: $c-999;
     font-size: .7em;
     margin-top: .5em;
@@ -133,7 +133,7 @@ select option {
 }
 
 .gencontent {
-  &:not(#gendefault) {
+  &:not(.gendefault) {
     display: none;
   }
 }
@@ -150,7 +150,7 @@ select option {
 }
 
 @for $i from 1 through 4 {
-  #alias#{$i} {
+  .alias#{$i} {
     color: lighten(darken($s-color, $a-percent), 50%);
     font-size: $a-size - .5em;
     $a-size: $a-size - .5;
@@ -158,29 +158,29 @@ select option {
   }
 }
 
-#content-wrapper {
+.content-wrapper {
   display: flex;
   flex-direction: row;
   height: 100%;
   min-height: 100%;
 }
 
-#count {
+.count {
   margin-bottom: 1em;
 }
 
-#custom {
+.custom {
   margin: 1em 0;
 }
 
 
-#gendefault {
+.gendefault {
   align-items: center;
   display: flex;
   flex-direction: column;
 }
 
-#generated {
+.generated {
   align-items: center;
   display: flex;
   height: 100%;
@@ -200,7 +200,7 @@ select option {
   }
 }
 
-#genreddit {
+.genreddit {
   align-items: center;
   background-color: $c-fff;
   border-radius: 2em;
@@ -232,7 +232,7 @@ select option {
   p {
     margin: .3em;
 
-    &:not(#user) {
+    &:not(.user) {
       font-size: .8em;
     }
   }
@@ -242,12 +242,12 @@ select option {
     margin-left: .5em;
   }
 
-  #user {
+  .user {
     font-weight: 900;
   }
 }
 
-#gentwitter {
+.gentwitter {
   background: $c-e6ecf0;
   border-radius: 2em;
   display: flex;
@@ -272,7 +272,7 @@ select option {
     font-size: .9em;
   }
 
-  #spacer > * {
+  .spacer > * {
     margin: .5em 0;
   }
 
@@ -284,7 +284,7 @@ select option {
     width: 12em;
   }
 
-  #tname {
+  .tname {
     font-size: 1.3em;
     font-weight: 900;
   }
@@ -294,7 +294,7 @@ select option {
   }
 }
 
-#go {
+.go {
   background-color: darken($s-color, 30%);
   border: 0;
   border-radius: 2em;
@@ -324,7 +324,7 @@ select option {
   }
 }
 
-#hub {
+.hub {
   position: relative;
   z-index: 10;
 
@@ -344,12 +344,12 @@ select option {
   }
 }
 
-#selections {
+.selections {
   display: flex;
   flex-direction: column;
 }
 
-#tbar {
+.tbar {
   background: linear-gradient(darken($s-color, 30%), darken($s-color, 40%));
   display: flex;
   height: 2.5em;

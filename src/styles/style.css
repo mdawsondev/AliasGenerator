@@ -38,18 +38,18 @@ header {
   margin: 20px auto; }
   header h1 {
     font: bold 2.5em 'Amatic SC', cursive; }
-  header #author {
+  header .author {
     align-items: center;
     color: #00a4c4;
     display: flex;
     font-size: .7em; }
-    header #author a {
+    header .author a {
       color: inherit;
       margin: 0 .2em;
       text-decoration: none; }
-      header #author a:hover {
+      header .author a:hover {
         color: #91edff; }
-  header #desc {
+  header .desc {
     color: #999;
     font-size: .7em;
     margin-top: .5em;
@@ -78,7 +78,7 @@ select option {
   left: -100px;
   position: relative; }
 
-.clickable, label, #tbar p {
+.clickable, label, .tbar p {
   cursor: pointer; }
 
 .fa-toggle-off {
@@ -87,7 +87,7 @@ select option {
 .fa-toggle-on {
   color: #00cff7; }
 
-.gencontent:not(#gendefault) {
+.gencontent:not(.gendefault) {
   display: none; }
 
 .title {
@@ -98,47 +98,47 @@ select option {
   .title i {
     margin: 0 .5em 0 0; }
 
-#alias1 {
+.alias1 {
   color: #defaff;
   font-size: 2.5em; }
 
-#alias2 {
+.alias2 {
   color: #abf1ff;
   font-size: 2em; }
 
-#alias3 {
+.alias3 {
   color: #78e9ff;
   font-size: 1.5em; }
 
-#alias4 {
+.alias4 {
   color: #45e1ff;
   font-size: 1em; }
 
-#content-wrapper {
+.content-wrapper {
   display: flex;
   flex-direction: row;
   height: 100%;
   min-height: 100%; }
 
-#count {
+.count {
   margin-bottom: 1em; }
 
-#custom {
+.custom {
   margin: 1em 0; }
 
-#gendefault {
+.gendefault {
   align-items: center;
   display: flex;
   flex-direction: column; }
 
-#generated {
+.generated {
   align-items: center;
   display: flex;
   height: 100%;
   justify-content: center;
   width: 100%;
   z-index: 1; }
-  #generated::before {
+  .generated::before {
     color: #002d35;
     content: '\f0c0';
     display: flex;
@@ -148,7 +148,7 @@ select option {
     position: absolute;
     z-index: -1; }
 
-#genreddit {
+.genreddit {
   align-items: center;
   background-color: #fff;
   border-radius: 2em;
@@ -156,61 +156,61 @@ select option {
   flex-direction: column;
   justify-content: center;
   padding: 2em; }
-  #genreddit * {
+  .genreddit * {
     color: #000; }
-  #genreddit div {
+  .genreddit div {
     background: #d4e6f9;
     border-top-left-radius: .3em;
     border-top-right-radius: .3em;
     height: 115px;
     width: 310px; }
-  #genreddit img {
+  .genreddit img {
     border: 0.3em solid #fff;
     border-radius: .7em;
     height: auto;
     margin: -45px 0 0;
     width: 90px; }
-  #genreddit p {
+  .genreddit p {
     margin: .3em; }
-    #genreddit p:not(#user) {
+    .genreddit p:not(.user) {
       font-size: .8em; }
-  #genreddit .fa-info-circle {
+  .genreddit .fa-info-circle {
     color: #aaa;
     margin-left: .5em; }
-  #genreddit #user {
+  .genreddit .user {
     font-weight: 900; }
 
-#gentwitter {
+.gentwitter {
   background: #e6ecf0;
   border-radius: 2em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 2em; }
-  #gentwitter a {
+  .gentwitter a {
     color: #1da1f2;
     text-decoration: none; }
-  #gentwitter * {
+  .gentwitter * {
     color: #777; }
-  #gentwitter .black {
+  .gentwitter .black {
     color: #000; }
-  #gentwitter p {
+  .gentwitter p {
     font-size: .9em; }
-  #gentwitter #spacer > * {
+  .gentwitter .spacer > * {
     margin: .5em 0; }
-  #gentwitter img {
+  .gentwitter img {
     border: 0.4em solid #fff;
     border-radius: 100%;
     height: auto;
     margin: auto;
     width: 12em; }
-  #gentwitter #tname {
+  .gentwitter .tname {
     font-size: 1.3em;
     font-weight: 900; }
-  #gentwitter .fa-check-circle {
+  .gentwitter .fa-check-circle {
     color: #1da1f2; }
 
-#go {
+.go {
   background-color: #004f5e;
   border: 0;
   border-radius: 2em;
@@ -222,21 +222,21 @@ select option {
   padding: 1em;
   transition: box-shadow .2s ease-in-out, background-color .2s;
   width: 100%; }
-  #go:hover {
+  .go:hover {
     background-color: #006478;
     box-shadow: 0 0 0.5em #00cff7;
     transition: box-shadow .2s, background-color .2s; }
-  #go:active {
+  .go:active {
     background-color: #00cff7;
     box-shadow: 0 0 0.5em #00cff7;
     transition: background-color .2s; }
-  #go:focus {
+  .go:focus {
     outline: 0; }
 
-#hub {
+.hub {
   position: relative;
   z-index: 10; }
-  #hub p {
+  .hub p {
     align-items: center;
     background: #000;
     border: 0.2em solid #000;
@@ -250,17 +250,17 @@ select option {
     right: .5em;
     width: 1em; }
 
-#selections {
+.selections {
   display: flex;
   flex-direction: column; }
 
-#tbar {
+.tbar {
   background: linear-gradient(#004f5e, #00242b);
   display: flex;
   height: 2.5em;
   justify-content: space-around;
   padding-bottom: 1.5em; }
-  #tbar p {
+  .tbar p {
     background-color: #2bddff;
     border-bottom-left-radius: 1em;
     border-bottom-right-radius: 1em;
@@ -270,6 +270,6 @@ select option {
     text-align: center;
     transition: padding .2s;
     width: 8em; }
-    #tbar p:hover {
+    .tbar p:hover {
       padding-top: 1em;
       transition: padding-top .2s; }

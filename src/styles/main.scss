@@ -1,15 +1,4 @@
-$s-color: #00cff7;
-$a-size: 3em;
-$a-percent: 5%;
-$c-aaa: #aaa;
-$c-000: #000;
-$c-fff: #fff;
-$c-555: #555;
-$c-777: #777;
-$c-999: #999;
-$c-d4e6f9: #d4e6f9;
-$c-e6ecf0: #e6ecf0;
-$c-1da1f2: #1da1f2;
+@import 'variables';
 
 @keyframes slide {
   100% { left: 0; }

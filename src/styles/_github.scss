@@ -1,0 +1,19 @@
+.hub {
+  position: relative;
+  z-index: 10;
+
+  p {
+    align-items: center;
+    background: $c-000;
+    border: .2em solid $c-000;
+    border-radius: 100%;
+    bottom: .5em;
+    display: flex;
+    font-size: 2.5em;
+    height: 1em;
+    justify-content: center;
+    position: absolute;
+    right: .5em;
+    width: 1em;
+  }
+}

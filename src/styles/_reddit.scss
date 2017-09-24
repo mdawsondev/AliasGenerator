@@ -1,0 +1,46 @@
+.genreddit {
+    align-items: center;
+    background-color: $c-fff;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2em;
+  
+    & * {
+      color: $c-000;
+    }
+  
+    div {
+      background: $c-d4e6f9;
+      border-top-left-radius: .3em;
+      border-top-right-radius: .3em;
+      height: 115px;
+      width: 310px;
+    }
+  
+    img {
+      border: .3em solid $c-fff;
+      border-radius: .7em;
+      height: auto;
+      margin: -45px 0 0;
+      width: 90px;
+    }
+  
+    p {
+      margin: .3em;
+  
+      &:not(.user) {
+        font-size: .8em;
+      }
+    }
+  
+    .fa-info-circle {
+      color: $c-aaa;
+      margin-left: .5em;
+    }
+  
+    .user {
+      font-weight: 900;
+    }
+  }

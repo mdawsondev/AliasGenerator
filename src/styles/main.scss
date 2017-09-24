@@ -48,23 +48,6 @@ header {
     font: bold 2.5em 'Amatic SC', cursive;
   }
 
-  .author {
-    align-items: center;
-    color: darken($s-color, 10%);
-    display: flex;
-    font-size: .7em;
-
-    a {
-      color: inherit;
-      margin: 0 .2em;
-      text-decoration: none;
-
-      &:hover {
-        color: lighten($s-color, 30%);
-      }
-    }
-  }
-
   .desc {
     color: $c-999;
     font-size: .7em;
@@ -109,6 +92,23 @@ select option {
     font-size: $a-size - .5em;
     $a-size: $a-size - .5;
     $a-percent: $a-percent + 10%;
+  }
+}
+
+.author {
+  align-items: center;
+  color: darken($s-color, 10%);
+  display: flex;
+  font-size: .7em;
+
+  a {
+    color: inherit;
+    margin: 0 .2em;
+    text-decoration: none;
+
+    &:hover {
+      color: lighten($s-color, 30%);
+    }
   }
 }
 
@@ -177,149 +177,10 @@ select option {
   }
 }
 
-.genreddit {
-  align-items: center;
-  background-color: $c-fff;
-  border-radius: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2em;
-
-  & * {
-    color: $c-000;
-  }
-
-  div {
-    background: $c-d4e6f9;
-    border-top-left-radius: .3em;
-    border-top-right-radius: .3em;
-    height: 115px;
-    width: 310px;
-  }
-
-  img {
-    border: .3em solid $c-fff;
-    border-radius: .7em;
-    height: auto;
-    margin: -45px 0 0;
-    width: 90px;
-  }
-
-  p {
-    margin: .3em;
-
-    &:not(.user) {
-      font-size: .8em;
-    }
-  }
-
-  .fa-info-circle {
-    color: $c-aaa;
-    margin-left: .5em;
-  }
-
-  .user {
-    font-weight: 900;
-  }
-}
-
-.gentwitter {
-  background: $c-e6ecf0;
-  border-radius: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2em;
-
-  a {
-    color: $c-1da1f2;
-    text-decoration: none;
-  }
-
-  * {
-    color: $c-777;
-  }
-
-  .black {
-    color: $c-000;
-  }
-
-  p {
-    font-size: .9em;
-  }
-
-  .spacer > * {
-    margin: .5em 0;
-  }
-
-  img {
-    border: .4em solid $c-fff;
-    border-radius: 100%;
-    height: auto;
-    margin: auto;
-    width: 12em;
-  }
-
-  .tname {
-    font-size: 1.3em;
-    font-weight: 900;
-  }
-
-  .fa-check-circle {
-    color: $c-1da1f2;
-  }
-}
-
-.go {
-  background-color: darken($s-color, 30%);
-  border: 0;
-  border-radius: 2em;
-  box-shadow: 0;
-  color: $c-fff;
-  font-size: 16px;
-  font-weight: bold;
-  margin: 1em 0;
-  padding: 1em;
-  transition: box-shadow .2s ease-in-out, background-color .2s;
-  width: 100%;
-
-  &:hover {
-    background-color: darken($s-color, 25%);
-    box-shadow: 0 0 .5em $s-color;
-    transition: box-shadow .2s, background-color .2s;
-  }
-
-  &:active {
-    background-color: $s-color;
-    box-shadow: 0 0 .5em $s-color;
-    transition: background-color .2s;
-  }
-
-  &:focus {
-    outline: 0;
-  }
-}
-
-.hub {
-  position: relative;
-  z-index: 10;
-
-  p {
-    align-items: center;
-    background: $c-000;
-    border: .2em solid $c-000;
-    border-radius: 100%;
-    bottom: .5em;
-    display: flex;
-    font-size: 2.5em;
-    height: 1em;
-    justify-content: center;
-    position: absolute;
-    right: .5em;
-    width: 1em;
-  }
-}
+@import 'reddit';
+@import 'twitter';
+@import 'button';
+@import 'github';
 
 .selections {
   display: flex;

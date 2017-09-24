@@ -196,7 +196,6 @@ function begin () {
       custom.content = [];
     }
     for (let i = 0; i < data.length; i++) {
-      console.log(data[i].name)
       if (document.getElementById(data[i].name).checked) {
         library.push(data[i]);
       }

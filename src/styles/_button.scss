@@ -1,0 +1,30 @@
+.go {
+    background-color: darken($s-color, 30%);
+    border: 0;
+    border-radius: 2em;
+    box-shadow: 0;
+    color: $c-fff;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 1em 0;
+    padding: 1em;
+    transition: box-shadow .2s ease-in-out, background-color .2s;
+    width: 100%;
+  
+    &:hover {
+      background-color: darken($s-color, 25%);
+      box-shadow: 0 0 .5em $s-color;
+      transition: box-shadow .2s, background-color .2s;
+    }
+  
+    &:active {
+      background-color: $s-color;
+      box-shadow: 0 0 .5em $s-color;
+      transition: background-color .2s;
+    }
+  
+    &:focus {
+      outline: 0;
+    }
+  }
+  

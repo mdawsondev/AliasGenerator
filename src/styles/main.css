@@ -38,17 +38,6 @@ header {
   margin: 20px auto; }
   header h1 {
     font: bold 2.5em 'Amatic SC', cursive; }
-  header .author {
-    align-items: center;
-    color: #00a4c4;
-    display: flex;
-    font-size: .7em; }
-    header .author a {
-      color: inherit;
-      margin: 0 .2em;
-      text-decoration: none; }
-      header .author a:hover {
-        color: #91edff; }
   header .desc {
     color: #999;
     font-size: .7em;
@@ -88,6 +77,18 @@ select option {
 .alias4 {
   color: #45e1ff;
   font-size: 1em; }
+
+.author {
+  align-items: center;
+  color: #00a4c4;
+  display: flex;
+  font-size: .7em; }
+  .author a {
+    color: inherit;
+    margin: 0 .2em;
+    text-decoration: none; }
+    .author a:hover {
+      color: #91edff; }
 
 .cat {
   animation: slide .3s forwards;

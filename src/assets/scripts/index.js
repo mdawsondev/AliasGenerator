@@ -94,16 +94,31 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/*  -- Appendix --
+    - class Generator
+    - constructor
+    - #Init
+    - #Logic
+    - #Interface
+  
+    * Sections can be found via #Section!
+    * "Cats" is "Categories".
+*/
+
 var Generator = function () {
   function Generator() {
     _classCallCheck(this, Generator);
 
     this.activeCats = [];
     this.data = null;
-    this.username = '';
     this.output = document.querySelector('.output__username');
+    this.settings = ['capsrandom'];
+    this.username = [];
+    this.wordCount = 3;
     this.init();
   }
+
+  /* #Init -- Begin the initialization process; this code only runs once at startup! */
 
   _createClass(Generator, [{
     key: 'init',
@@ -132,17 +147,109 @@ var Generator = function () {
         _this2.activeCats.push(item);
       });
     }
+
+    /* End #Init */
+    /* #Logic -- Methods that are called for data manipulation. */
+
+  }, {
+    key: 'clearGen',
+    value: function clearGen() {
+      this.setName();
+      this.setOutput('');
+    }
+  }, {
+    key: 'setName',
+    value: function setName() {
+      this.username = [];
+    }
+  }, {
+    key: 'setOutput',
+    value: function setOutput(arg) {
+      this.output.textContent = arg;
+    }
+  }, {
+    key: 'transformOutput',
+    value: function transformOutput(settings) {
+      var _this3 = this;
+
+      settings.forEach(function (setting) {
+        switch (setting) {
+          case 'capsfirst':
+            _this3.toCapsFirst();
+            break;
+          case 'capslock':
+            _this3.toCapsLock();
+            break;
+          case 'capsrandom':
+            _this3.toCapsRandom();
+            break;
+          case 'leet':
+            _this3.toLeet();
+            break;
+        }
+      });
+    }
+  }, {
+    key: 'toCapsFirst',
+    value: function toCapsFirst() {
+      var _this4 = this;
+
+      this.username.forEach(function (word, i) {
+        _this4.username[i] = word.charAt(0).toUpperCase() + word.slice(1);
+      });
+    }
+  }, {
+    key: 'toCapsLock',
+    value: function toCapsLock() {
+      var _this5 = this;
+
+      this.username.forEach(function (word, i) {
+        _this5.username[i] = word.toUpperCase();
+      });
+    }
+  }, {
+    key: 'toCapsRandom',
+    value: function toCapsRandom() {
+      var _this6 = this;
+
+      this.username.forEach(function (word, i) {
+        var temp = '';
+        for (var letter in word) {
+          var rand = Math.floor(Math.random() * 2);
+          if (rand) {
+            temp += word[letter].toUpperCase();
+          } else {
+            temp += word[letter];
+          }
+        }
+        _this6.username[i] = temp;
+      });
+    }
+
+    /* End #Logic */
+    /* #Interface -- .addEventListener functionality to enable user inputs. */
+
   }, {
     key: 'generate',
     value: function generate() {
-      var _this3 = this;
+      var _this7 = this;
 
       document.querySelector('#generate').addEventListener('click', function () {
-        var randCat = Math.floor(Math.random() * _this3.activeCats.length);
-        var randWord = Math.floor(Math.random() * _this3.activeCats[randCat].content.length);
-        _this3.output.textContent = _this3.activeCats[randCat].content[randWord];
+        _this7.clearGen();
+        var i = 0;
+        while (i < _this7.wordCount) {
+          var randCat = Math.floor(Math.random() * _this7.activeCats.length);
+          var randWord = Math.floor(Math.random() * _this7.activeCats[randCat].content.length);
+          _this7.username.push(_this7.activeCats[randCat].content[randWord]);
+          i++;
+        }
+        _this7.transformOutput(_this7.settings);
+        _this7.setOutput(_this7.username.join(''));
       });
     }
+
+    /* End #Interface */
+
   }]);
 
   return Generator;

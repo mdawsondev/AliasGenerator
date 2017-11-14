@@ -2,7 +2,7 @@
   "name": "Incognime",
   "version": "1.0.1",
   "description": "Generates unique usernames.",
-  "main": "gulpfile.js",
+  "main": "/src/assets/scripts/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

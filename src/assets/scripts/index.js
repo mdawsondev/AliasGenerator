@@ -74,11 +74,14 @@ var _generator = __webpack_require__(1);
 
 var _generator2 = _interopRequireDefault(_generator);
 
-__webpack_require__(2);
+var _displaySettings = __webpack_require__(2);
+
+var _displaySettings2 = _interopRequireDefault(_displaySettings);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var gen = new _generator2.default();
+var disp = new _displaySettings2.default();
 
 /***/ }),
 /* 1 */
@@ -347,12 +350,45 @@ exports.default = Generator;
 "use strict";
 
 
-console.log("wheee");
-
-document.querySelector('.btn--options').addEventListener('click', function (e) {
-  var el = document.querySelector('.features__settings');
-  el.style.display = 'block';
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/* This file is tied into the HTML and CSS, and can function without the generator.js module,
+   however, that would be pretty silly, wouldn't it?
+*/
+
+var Display = function () {
+  function Display() {
+    _classCallCheck(this, Display);
+
+    this.container = document.querySelector('.container');
+    this.features = document.querySelector('.features');
+    this.settingsButton = document.querySelector('.btn--options');
+    this.titleHeight = window.getComputedStyle(document.querySelector('.title'), null).getPropertyValue("height"); // Tied to _container.sass to compensate for title height!
+    this.init();
+  }
+
+  _createClass(Display, [{
+    key: 'init',
+    value: function init() {
+      var _this = this;
+
+      this.settingsButton.addEventListener('click', function (e) {
+        _this.features.classList.toggle('features--hidden');
+      });
+      this.container.style.top = 'calc(50% - ' + this.titleHeight + ')';
+    }
+  }]);
+
+  return Display;
+}();
+
+exports.default = Display;
 
 /***/ })
 /******/ ]);

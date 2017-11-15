@@ -53,7 +53,7 @@ body {
 }
 
 .features__categories {
-  display: none;
+  width: 33%;
 }
 
 .category--enabled {
@@ -69,21 +69,33 @@ body {
   margin: 0 auto;
   padding: 2rem;
   position: relative;
-  top: 30%;
-  transform: translate(-50%, -30%);
+  top: 0;
+  transform: translate(-50%, -50%);
   width: 100%;
-}
-
-.features__custom {
-  display: none;
 }
 
 .features {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.25);
+  border: .125rem solid white;
+  border-radius: .5rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  max-height: 100%;
+  margin-top: 5rem;
+  padding: 1rem;
+  position: absolute;
+  transition: 1s all ease-in;
+  width: 100%;
+}
+
+.features--hidden {
+  max-height: 0;
+  opacity: 0;
 }
 
 .output {
-  width: 100%;
+  max-width: 100%;
 }
 
 .output__username {
@@ -94,12 +106,9 @@ body {
   text-align: center;
 }
 
-.features__settings {
-  display: none;
-}
-
 .setting {
   color: #000;
+  transition: .3s all linear;
 }
 
 .setting--enabled {
@@ -130,4 +139,5 @@ body {
   height: 100%;
   margin: 0 auto;
   max-width: 50rem;
+  position: relative;
 }

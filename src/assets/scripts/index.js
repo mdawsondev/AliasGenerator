@@ -74,6 +74,8 @@ var _generator = __webpack_require__(1);
 
 var _generator2 = _interopRequireDefault(_generator);
 
+__webpack_require__(2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var gen = new _generator2.default();
@@ -115,7 +117,7 @@ var Generator = function () {
     this.history = document.querySelector('.history__log'); // Tethered to this.log!
     this.settings = [];
     this.username = [];
-    this.wordCount = 3;
+    this.wordCount = 3; // Default, not updated until change is fired.
     this.init();
   }
 
@@ -132,8 +134,8 @@ var Generator = function () {
     key: 'getButtons',
     value: function getButtons() {
       this.generate();
-      this.toggleOptions('.setting', this.settings);
-      this.toggleOptions('.category', this.activeCats);
+      this.toggleOptions('setting', this.settings);
+      this.toggleOptions('category', this.activeCats);
     }
   }, {
     key: 'getData',
@@ -233,6 +235,7 @@ var Generator = function () {
             break;
         }
       });
+      this.username = this.username.join('');
     }
   }, {
     key: 'toCaps',
@@ -297,24 +300,24 @@ var Generator = function () {
         _this7.clearGen();
         _this7.createName();
         _this7.transformOutput(_this7.settings);
-        var output = _this7.username.join('');
-        _this7.setOutput(output);
-        _this7.addLog(output);
+        _this7.setOutput(_this7.username);
+        _this7.addLog(_this7.username);
       });
     }
   }, {
     key: 'toggleOptions',
     value: function toggleOptions(query, arr) {
-      var elements = document.querySelectorAll(query);
+      var elements = document.querySelectorAll('.' + query);
       elements.forEach(function (element) {
         element.addEventListener('click', function (e) {
-          var feature = e.currentTarget.id;
-          var location = arr.indexOf(feature);
+          var feature = e.currentTarget;
+          var location = arr.indexOf(feature.id);
           if (location === -1) {
-            arr.push(feature);
+            arr.push(feature.id);
           } else {
             arr.splice(location, 1);
           }
+          feature.classList.toggle(query + '--enabled'); // Toggle the style!        
         });
       });
     }
@@ -336,6 +339,20 @@ var Generator = function () {
 }();
 
 exports.default = Generator;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+console.log("wheee");
+
+document.querySelector('.btn--options').addEventListener('click', function (e) {
+  var el = document.querySelector('.features__settings');
+  el.style.display = 'block';
+});
 
 /***/ })
 /******/ ]);

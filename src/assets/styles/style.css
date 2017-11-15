@@ -5,9 +5,129 @@ html {
 }
 
 body {
+  background: url("../img/bg-temp.jpeg") center center no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   margin: 0;
   overflow: hidden;
-  padding: 0;
+  padding: 1rem;
+}
+
+.btn {
+  border: 0;
+  border-radius: .5rem;
+  cursor: pointer;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 500;
+  outline: none;
+  margin: .125rem;
+  padding: .5rem 1rem;
+}
+
+.btn--generate {
+  background-color: rgba(100, 149, 237, 0.5);
+  border: 0.125rem solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 auto;
+}
+
+.btn--generate:hover {
+  background-color: rgba(100, 149, 237, 0.75);
+  border: 0.125rem solid white;
+  color: white;
+}
+
+.btn--options {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  margin: -2rem 0;
+  position: absolute;
+  right: 0;
+}
+
+.btn--t-l {
+  transition: all .3s linear;
+}
+
+.features__categories {
+  display: none;
+}
+
+.category--enabled {
+  color: #f00;
+}
+
+.container {
+  background: rgba(0, 0, 0, 0.25);
+  border: 0.125rem solid rgba(0, 0, 0, 0.5);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  left: 50%;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  top: 30%;
+  transform: translate(-50%, -30%);
+  width: 100%;
+}
+
+.features__custom {
+  display: none;
+}
+
+.features {
+  background: #fff;
+}
+
+.output {
+  width: 100%;
+}
+
+.output__username {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.features__settings {
+  display: none;
+}
+
+.setting {
+  color: #000;
+}
+
+.setting--enabled {
+  color: #f00;
+}
+
+.title--common {
+  color: #fff;
+  font-family: 'Homemade Apple', Arial, Helvetica, sans-serif;
+  text-align: center;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.subtitle {
+  opacity: .6;
+  font-size: 1rem;
+  margin-left: 12rem;
+  margin-top: -2.5rem;
+}
+
+.wrapper {
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 50rem;
 }

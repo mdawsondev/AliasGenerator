@@ -18,7 +18,7 @@ export default class Generator {
     this.history = document.querySelector('.history__log'); // Tethered to this.log!
     this.settings = [];
     this.username = []; 
-    this.wordCount = 3;
+    this.wordCount = 3; // Default, not updated until change is fired.
     this.init();
   }
 
@@ -32,8 +32,8 @@ export default class Generator {
 
   getButtons() {
     this.generate();
-    this.toggleOptions('.setting', this.settings);
-    this.toggleOptions('.category', this.activeCats);
+    this.toggleOptions('setting', this.settings);
+    this.toggleOptions('category', this.activeCats);
   }
 
   getData() {
@@ -108,7 +108,8 @@ export default class Generator {
           this.toTitle();
           break;
       }
-    })
+    });
+    this.username = this.username.join('')
   }
 
   toCaps(style) {
@@ -163,23 +164,23 @@ export default class Generator {
       this.clearGen();
       this.createName();
       this.transformOutput(this.settings);
-      let output = this.username.join('');
-      this.setOutput(output);
-      this.addLog(output);
+      this.setOutput(this.username);
+      this.addLog(this.username);
     });
   }
 
   toggleOptions(query, arr) {
-    const elements = document.querySelectorAll(query);
+    const elements = document.querySelectorAll(`.${query}`);
     elements.forEach((element) => {
       element.addEventListener('click', (e) => {
-        let feature = e.currentTarget.id;
-        let location = arr.indexOf(feature);
+        let feature = e.currentTarget;
+        let location = arr.indexOf(feature.id);
         if (location === -1) {
-          arr.push(feature);
+          arr.push(feature.id);
         } else {
           arr.splice(location, 1);
         }
+        feature.classList.toggle(`${query}--enabled`) // Toggle the style!        
       });
     });
   }

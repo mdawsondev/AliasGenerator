@@ -7,40 +7,59 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Incognime - Username Generator</title>
   <link rel="stylesheet" href="./assets/styles/style.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Homemade+Apple:regular">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-  <h1>Incogni.me</h1>
+  <div class="wrapper">
+    <h1 class="title title--common">Incogni .me</h1>
+    <h3 class="subtitle title--common">Username Generator</h3>
 
-  <button class="generate" id="generate">Generate</button>
+    <div class="features">
+      <div class="features__settings">
+        <div class="setting" id="leet">Leet</div>
+        <div class="setting" id="capsfirst">Caps - First Letters</div>
+        <div class="setting" id="capslock">Caps - Lock</div>
+        <div class="setting" id="capsrandom">Caps - Random</div>
+        <label for="wordcount">Word Count</label>
+        <input type="number" name="wordcount" id="wordcount" min="1" max="5" value="3">
+      </div>
 
-  <div class="setup">
-    <div class="setting" id="leet">Leet</div>
-    <div class="setting" id="capsfirst">Caps - First Letters</div>
-    <div class="setting" id="capslock">Caps - Lock</div>
-    <div class="setting" id="capsrandom">Caps - Random</div>
-    <label for="wordcount">Word Count</label>
-    <input type="number" name="wordcount" id="wordcount" min="1" max="5" value="3">
+      <div class="features__custom">
+        <label for="custom__input">Custom Words</label>
+        <textarea name="custom__input" id="custom__input" cols="30" rows="10"></textarea>
+      </div>
+
+      <div class="features__categories">
+        <div class="category category--enabled" id="animals">Animals</div>
+        <div class="category category--enabled" id="colors">Colors</div>
+        <div class="category category--enabled" id="food">Food</div>
+        <div class="category category--enabled" id="nature">Nature</div>
+        <div class="category category--enabled" id="titles">Titles</div>
+        <div class="category category--enabled" id="verbs">Verbs</div>
+        <div class="category category--enabled" id="adjectives">Adjectives</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="options">
+        <button class="btn btn--options">
+          <i class="fa fa-gear fa-spin" aria-hidden="true"></i> Settings
+        </button>
+      </div>
+
+      <div class="output">
+        <p class="output__username">Username</p>
+      </div>
+
+      <button class="btn btn--generate btn--t-l" id="generate">Generate</button>
+
+      <!-- <div class="history">
+        <p class="history__log">History</p>
+      </div> -->
+    </div>
   </div>
-
-  <div class="categories">
-    <div class="category" id="animals">Animals</div>
-    <div class="category" id="colors">Colors</div>
-    <div class="category" id="food">Food</div>
-    <div class="category" id="nature">Nature</div>
-    <div class="category" id="titles">Titles</div>
-    <div class="category" id="verbs">Verbs</div>
-    <div class="category" id="adjectives">Adjectives</div>
-  </div>
-
-  <div class="output">
-    <p class="output__username">Username</p>
-  </div>
-
-  <div class="history">
-    <p class="history__log">History</p>
-  </div>
-
   <script src="./assets/scripts/index.js"></script>
 </body>
 

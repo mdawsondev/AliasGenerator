@@ -78,6 +78,8 @@ var _displaySettings = __webpack_require__(2);
 
 var _displaySettings2 = _interopRequireDefault(_displaySettings);
 
+__webpack_require__(3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var gen = new _generator2.default();
@@ -389,6 +391,32 @@ var Display = function () {
 }();
 
 exports.default = Display;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+setInterval(function () {
+  var x = Math.floor(Math.random() * window.innerWidth);
+  var y = Math.floor(Math.random() * window.innerHeight);
+  var quote = document.createElement('p');
+  var username = document.querySelector('.output__username').textContent;
+  quote.textContent = username + ' is a total scrub.';
+  quote.classList.add("quote");
+  quote.style.color = "white";
+  quote.style.left = y + 'px';
+  quote.style.top = x + 'px';
+  document.querySelector('body').prepend(quote);
+  setTimeout(function () {
+    quote.classList.add('quote--hidden');
+    setTimeout(function () {
+      quote.remove();
+    }, 4000);
+  }, 1000);
+}, 2000);
 
 /***/ })
 /******/ ]);

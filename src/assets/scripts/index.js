@@ -70,7 +70,7 @@
 "use strict";
 
 
-var _generator = __webpack_require__(2);
+var _generator = __webpack_require__(1);
 
 var _generator2 = _interopRequireDefault(_generator);
 
@@ -79,8 +79,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var gen = new _generator2.default();
 
 /***/ }),
-/* 1 */,
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -111,8 +110,10 @@ var Generator = function () {
 
     this.activeCats = [];
     this.data = null;
-    this.output = document.querySelector('.output__username');
-    this.settings = ['capsrandom'];
+    this.log = [];
+    this.output = document.querySelector('.output__username'); // Tethered to this.username!
+    this.history = document.querySelector('.history__log'); // Tethered to this.log!
+    this.settings = [];
     this.username = [];
     this.wordCount = 3;
     this.init();
@@ -124,7 +125,15 @@ var Generator = function () {
     key: 'init',
     value: function init() {
       this.getData();
+      this.getButtons();
+      this.getWordCount();
+    }
+  }, {
+    key: 'getButtons',
+    value: function getButtons() {
       this.generate();
+      this.toggleOptions('.setting', this.settings);
+      this.toggleOptions('.category', this.activeCats);
     }
   }, {
     key: 'getData',
@@ -144,7 +153,7 @@ var Generator = function () {
       var _this2 = this;
 
       this.data.forEach(function (item) {
-        _this2.activeCats.push(item);
+        _this2.activeCats.push(item.name);
       });
     }
 
@@ -158,6 +167,31 @@ var Generator = function () {
       this.setOutput('');
     }
   }, {
+    key: 'createName',
+    value: function createName() {
+      var _this3 = this;
+
+      var i = 0;
+
+      var _loop = function _loop() {
+        var randCat = _this3.activeCats[Math.floor(Math.random() * _this3.activeCats.length)]; // Pull random available category.
+        var dataCat = _this3.data.find(function (arg) {
+          // Connect random category to object data.
+          return arg.name === randCat;
+        });
+        var selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)]; // Select random word from object.
+        if (_this3.username.indexOf(selection) === -1) {
+          // No repeated words allowed! Decided to force this feature.
+          _this3.username.push(selection);
+          i++;
+        }
+      };
+
+      while (i < this.wordCount) {
+        _loop();
+      }
+    }
+  }, {
     key: 'setName',
     value: function setName() {
       this.username = [];
@@ -168,62 +202,87 @@ var Generator = function () {
       this.output.textContent = arg;
     }
   }, {
+    key: 'addLog',
+    value: function addLog(arg) {
+      if (this.log.length >= 10) {
+        this.log.shift();
+      }
+      this.log.push(arg);
+    }
+  }, {
     key: 'transformOutput',
     value: function transformOutput(settings) {
-      var _this3 = this;
+      var _this4 = this;
 
       settings.forEach(function (setting) {
         switch (setting) {
           case 'capsfirst':
-            _this3.toCapsFirst();
+            _this4.toCaps('first');
             break;
           case 'capslock':
-            _this3.toCapsLock();
+            _this4.toCaps('lock');
             break;
           case 'capsrandom':
-            _this3.toCapsRandom();
+            _this4.toCaps('random');
             break;
           case 'leet':
-            _this3.toLeet();
+            _this4.toLeet();
+            break;
+          case 'title':
+            _this4.toTitle();
             break;
         }
       });
     }
   }, {
-    key: 'toCapsFirst',
-    value: function toCapsFirst() {
-      var _this4 = this;
-
-      this.username.forEach(function (word, i) {
-        _this4.username[i] = word.charAt(0).toUpperCase() + word.slice(1);
-      });
-    }
-  }, {
-    key: 'toCapsLock',
-    value: function toCapsLock() {
+    key: 'toCaps',
+    value: function toCaps(style) {
       var _this5 = this;
 
       this.username.forEach(function (word, i) {
-        _this5.username[i] = word.toUpperCase();
+
+        if (style === 'first') {
+          // 'capsfirst' is enabled.
+          _this5.username[i] = word.charAt(0).toUpperCase() + word.slice(1);
+        }
+
+        if (style === 'lock') {
+          // 'capslock' is enabled.
+          _this5.username[i] = word.toUpperCase();
+        }
+
+        if (style === 'random') {
+          // 'capsrandom' is enabled.
+          var temp = '';
+          for (var letter in word) {
+            var rand = Math.floor(Math.random() * 2);
+            if (rand) {
+              temp += word[letter].toUpperCase();
+            } else {
+              temp += word[letter];
+            }
+          }
+          _this5.username[i] = temp;
+        }
       });
     }
   }, {
-    key: 'toCapsRandom',
-    value: function toCapsRandom() {
+    key: 'toLeet',
+    value: function toLeet() {
       var _this6 = this;
 
       this.username.forEach(function (word, i) {
-        var temp = '';
-        for (var letter in word) {
-          var rand = Math.floor(Math.random() * 2);
-          if (rand) {
-            temp += word[letter].toUpperCase();
-          } else {
-            temp += word[letter];
-          }
-        }
-        _this6.username[i] = temp;
+        _this6.username[i] = word.replace(/a/gi, '4').replace(/e/gi, '3').replace(/f/gi, 'ph').replace(/i/gi, '1').replace(/t/gi, '7').replace(/o/gi, '0').replace(/s/gi, '5').replace(/ate/gi, '8');
       });
+    }
+  }, {
+    key: 'toTitle',
+    value: function toTitle() {
+      var title = this.activeCats.find(function (e) {
+        return e.name === 'titles';
+      });
+      var rand = Math.floor(Math.random() * title.content.length);
+      this.username[0] = title.content[rand];
     }
 
     /* End #Logic */
@@ -236,15 +295,36 @@ var Generator = function () {
 
       document.querySelector('#generate').addEventListener('click', function () {
         _this7.clearGen();
-        var i = 0;
-        while (i < _this7.wordCount) {
-          var randCat = Math.floor(Math.random() * _this7.activeCats.length);
-          var randWord = Math.floor(Math.random() * _this7.activeCats[randCat].content.length);
-          _this7.username.push(_this7.activeCats[randCat].content[randWord]);
-          i++;
-        }
+        _this7.createName();
         _this7.transformOutput(_this7.settings);
-        _this7.setOutput(_this7.username.join(''));
+        var output = _this7.username.join('');
+        _this7.setOutput(output);
+        _this7.addLog(output);
+      });
+    }
+  }, {
+    key: 'toggleOptions',
+    value: function toggleOptions(query, arr) {
+      var elements = document.querySelectorAll(query);
+      elements.forEach(function (element) {
+        element.addEventListener('click', function (e) {
+          var feature = e.currentTarget.id;
+          var location = arr.indexOf(feature);
+          if (location === -1) {
+            arr.push(feature);
+          } else {
+            arr.splice(location, 1);
+          }
+        });
+      });
+    }
+  }, {
+    key: 'getWordCount',
+    value: function getWordCount() {
+      var _this8 = this;
+
+      document.querySelector('#wordcount').addEventListener('change', function (e) {
+        _this8.wordCount = e.currentTarget.value;
       });
     }
 

@@ -10,14 +10,35 @@
 </head>
 
 <body>
-  <h1>Incognime</h1>
+  <h1>Incogni.me</h1>
+
+  <button class="generate" id="generate">Generate</button>
 
   <div class="setup">
-    <button class="setup__generate" id="generate">Generate</button>
+    <div class="setting" id="leet">Leet</div>
+    <div class="setting" id="capsfirst">Caps - First Letters</div>
+    <div class="setting" id="capslock">Caps - Lock</div>
+    <div class="setting" id="capsrandom">Caps - Random</div>
+    <label for="wordcount">Word Count</label>
+    <input type="number" name="wordcount" id="wordcount" min="1" max="5" value="3">
+  </div>
+
+  <div class="categories">
+    <div class="category" id="animals">Animals</div>
+    <div class="category" id="colors">Colors</div>
+    <div class="category" id="food">Food</div>
+    <div class="category" id="nature">Nature</div>
+    <div class="category" id="titles">Titles</div>
+    <div class="category" id="verbs">Verbs</div>
+    <div class="category" id="adjectives">Adjectives</div>
   </div>
 
   <div class="output">
-    <p class="output__username">Mister Nacho</p>
+    <p class="output__username">Username</p>
+  </div>
+
+  <div class="history">
+    <p class="history__log">History</p>
   </div>
 
   <script src="./assets/scripts/index.js"></script>

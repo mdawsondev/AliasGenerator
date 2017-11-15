@@ -13,9 +13,11 @@ export default class Generator {
   constructor() {
     this.activeCats = [];
     this.data = null;
-    this.output = document.querySelector('.output__username');
-    this.settings = ['capsrandom'];
-    this.username = [];
+    this.log = [];
+    this.output = document.querySelector('.output__username'); // Tethered to this.username!
+    this.history = document.querySelector('.history__log'); // Tethered to this.log!
+    this.settings = [];
+    this.username = []; 
     this.wordCount = 3;
     this.init();
   }
@@ -24,7 +26,14 @@ export default class Generator {
 
   init() {
     this.getData();
+    this.getButtons();
+    this.getWordCount();
+  }
+
+  getButtons() {
     this.generate();
+    this.toggleOptions('.setting', this.settings);
+    this.toggleOptions('.category', this.activeCats);
   }
 
   getData() {
@@ -38,7 +47,7 @@ export default class Generator {
 
   enableCats() {
     this.data.forEach((item) => {
-      this.activeCats.push(item);
+      this.activeCats.push(item.name);
     })
   }
 
@@ -50,6 +59,21 @@ export default class Generator {
     this.setOutput('');
   }
 
+  createName() {
+    let i = 0;    
+    while (i < this.wordCount) {
+      let randCat = this.activeCats[Math.floor(Math.random() * this.activeCats.length)]; // Pull random available category.
+      let dataCat = this.data.find(arg => { // Connect random category to object data.
+        return arg.name === randCat;
+      });
+      let selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)] // Select random word from object.
+      if (this.username.indexOf(selection) === -1) { // No repeated words allowed! Decided to force this feature.
+        this.username.push(selection);
+        i++;
+      }
+    }
+  }
+
   setName() {
     this.username = [];
   }
@@ -58,50 +82,77 @@ export default class Generator {
     this.output.textContent = arg;
   }
 
+  addLog(arg) {
+    if (this.log.length >= 10) {
+      this.log.shift();
+    }
+    this.log.push(arg);
+  }
+
   transformOutput(settings) {
     settings.forEach((setting) => {
       switch (setting) {
         case 'capsfirst':
-          this.toCapsFirst();
+          this.toCaps('first');
           break;
         case 'capslock':
-          this.toCapsLock();
+          this.toCaps('lock');
           break;
         case 'capsrandom':
-          this.toCapsRandom();
+          this.toCaps('random');
           break;
         case 'leet':
           this.toLeet();
+          break;
+        case 'title':
+          this.toTitle();
           break;
       }
     })
   }
 
-  toCapsFirst() {
+  toCaps(style) {
     this.username.forEach((word, i) => {
-      this.username[i] = word.charAt(0).toUpperCase() + word.slice(1);
-    });
-  }
 
-  toCapsLock() {
-    this.username.forEach((word, i) => {
-      this.username[i] = word.toUpperCase();
-    });
-  }
-
-  toCapsRandom() {
-    this.username.forEach((word, i) => {
-      let temp = '';
-      for (let letter in word) {
-        let rand = (Math.floor(Math.random() * 2));
-        if (rand) {
-          temp += word[letter].toUpperCase();
-        } else {
-          temp += word[letter];
-        }
+      if (style === 'first') { // 'capsfirst' is enabled.
+        this.username[i] = word.charAt(0).toUpperCase() + word.slice(1);
       }
-      this.username[i] = temp;
+
+      if (style === 'lock') { // 'capslock' is enabled.
+        this.username[i] = word.toUpperCase();
+      }
+
+      if (style === 'random') { // 'capsrandom' is enabled.
+        let temp = '';
+        for (let letter in word) {
+          let rand = (Math.floor(Math.random() * 2));
+          if (rand) {
+            temp += word[letter].toUpperCase();
+          } else {
+            temp += word[letter];
+          }
+        }
+        this.username[i] = temp;
+      }
+
     });
+  }
+
+  toLeet() {
+    this.username.forEach((word, i) => {
+      this.username[i] = word.replace(/a/gi, '4').replace(/e/gi, '3')
+        .replace(/f/gi, 'ph').replace(/i/gi, '1')
+        .replace(/t/gi, '7').replace(/o/gi, '0')
+        .replace(/s/gi, '5').replace(/ate/gi, '8');
+    });
+  }
+
+  toTitle() {
+    let title = this.activeCats.find((e) => {
+      return e.name === 'titles';
+    });
+    let rand = Math.floor(Math.random() * title.content.length);
+    this.username[0] = title.content[rand];
   }
 
   /* End #Logic */
@@ -110,15 +161,32 @@ export default class Generator {
   generate() {
     document.querySelector('#generate').addEventListener('click', () => {
       this.clearGen();
-      let i = 0;
-      while (i < this.wordCount) {
-        let randCat = Math.floor(Math.random() * this.activeCats.length);
-        let randWord = Math.floor(Math.random() * this.activeCats[randCat].content.length)
-        this.username.push(this.activeCats[randCat].content[randWord]);
-        i++;
-      }
+      this.createName();
       this.transformOutput(this.settings);
-      this.setOutput(this.username.join(''));
+      let output = this.username.join('');
+      this.setOutput(output);
+      this.addLog(output);
+    });
+  }
+
+  toggleOptions(query, arr) {
+    const elements = document.querySelectorAll(query);
+    elements.forEach((element) => {
+      element.addEventListener('click', (e) => {
+        let feature = e.currentTarget.id;
+        let location = arr.indexOf(feature);
+        if (location === -1) {
+          arr.push(feature);
+        } else {
+          arr.splice(location, 1);
+        }
+      });
+    });
+  }
+
+  getWordCount() {
+    document.querySelector('#wordcount').addEventListener('change', (e) => {
+      this.wordCount = e.currentTarget.value;
     });
   }
 

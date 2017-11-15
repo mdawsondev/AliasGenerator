@@ -101,7 +101,7 @@ function custCheck (id) {
 //Caps logic.
 function goCaps (input, capsOn, capsLockOn, capsRandOn) {
   if (capsOn) {
-    input = input.charAt(0).toUpperCase() + input.slice(1);
+    input = input.charAt(0).toUpperCase() 
   }
   if (capsLockOn) {
     input = input.toUpperCase();

@@ -180,7 +180,9 @@ export default class Generator {
         } else {
           arr.splice(location, 1);
         }
-        feature.classList.toggle(`${query}--enabled`) // Toggle the style!        
+        feature.classList.toggle(`${query}--enabled`) // Toggle the style!
+        feature.children[0].classList.toggle('fa-toggle-on')
+        feature.children[0].classList.toggle('fa-toggle-off')
       });
     });
   }

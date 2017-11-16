@@ -74,16 +74,24 @@ var _generator = __webpack_require__(1);
 
 var _generator2 = _interopRequireDefault(_generator);
 
-var _displaySettings = __webpack_require__(2);
+var _display = __webpack_require__(2);
 
-var _displaySettings2 = _interopRequireDefault(_displaySettings);
+var _display2 = _interopRequireDefault(_display);
 
-__webpack_require__(3);
+var _quotes = __webpack_require__(3);
+
+var _quotes2 = _interopRequireDefault(_quotes);
+
+var _title = __webpack_require__(4);
+
+var _title2 = _interopRequireDefault(_title);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var gen = new _generator2.default();
-var disp = new _displaySettings2.default();
+var disp = new _display2.default();
+var quote = new _quotes2.default();
+var title = new _title2.default();
 
 /***/ }),
 /* 1 */
@@ -322,7 +330,9 @@ var Generator = function () {
           } else {
             arr.splice(location, 1);
           }
-          feature.classList.toggle(query + '--enabled'); // Toggle the style!        
+          feature.classList.toggle(query + '--enabled'); // Toggle the style!
+          feature.children[0].classList.toggle('fa-toggle-on');
+          feature.children[0].classList.toggle('fa-toggle-off');
         });
       });
     }
@@ -371,7 +381,6 @@ var Display = function () {
     this.container = document.querySelector('.container');
     this.features = document.querySelector('.features');
     this.settingsButton = document.querySelector('.btn--options');
-    this.titleHeight = window.getComputedStyle(document.querySelector('.title'), null).getPropertyValue("height"); // Tied to _container.sass to compensate for title height!
     this.init();
   }
 
@@ -383,7 +392,6 @@ var Display = function () {
       this.settingsButton.addEventListener('click', function (e) {
         _this.features.classList.toggle('features--hidden');
       });
-      this.container.style.top = 'calc(50% - ' + this.titleHeight + ')';
     }
   }]);
 
@@ -399,24 +407,114 @@ exports.default = Display;
 "use strict";
 
 
-setInterval(function () {
-  var x = Math.floor(Math.random() * window.innerWidth);
-  var y = Math.floor(Math.random() * window.innerHeight);
-  var quote = document.createElement('p');
-  var username = document.querySelector('.output__username').textContent;
-  quote.textContent = username + ' is a total scrub.';
-  quote.classList.add("quote");
-  quote.style.color = "white";
-  quote.style.left = y + 'px';
-  quote.style.top = x + 'px';
-  document.querySelector('body').prepend(quote);
-  setTimeout(function () {
-    quote.classList.add('quote--hidden');
-    setTimeout(function () {
-      quote.remove();
-    }, 4000);
-  }, 1000);
-}, 2000);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Quotes = function () {
+  function Quotes() {
+    _classCallCheck(this, Quotes);
+
+    this.data = [];
+    this.getData();
+  }
+
+  _createClass(Quotes, [{
+    key: 'getData',
+    value: function getData() {
+      var _this = this;
+
+      fetch('./assets/data/quotes.json').then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        for (var key in data.quotes.quote) {
+          _this.data.push(data.quotes.quote[key]);
+        }
+        _this.triggerOutput();
+      });
+    }
+  }, {
+    key: 'triggerOutput',
+    value: function triggerOutput() {
+      var _this2 = this;
+
+      setInterval(function () {
+        var output = _this2.data[Math.floor(Math.random() * _this2.data.length)];
+        var quote = document.createElement('p');
+        var username = document.querySelector('.output__username').textContent;
+        var x = Math.floor(Math.random() * window.innerWidth);
+        var y = Math.floor(Math.random() * window.innerHeight);
+        output = output.replace('username', username);
+
+        quote.classList.add('quote'); // Build output element.
+        quote.style.left = y + 'px';
+        quote.style.top = x + 'px';
+        quote.textContent = '"' + output + '"';
+
+        document.querySelector('body').prepend(quote);
+
+        setTimeout(function () {
+          quote.classList.add('quote--show');
+          setTimeout(function () {
+            quote.classList.remove('quote--show');
+            setTimeout(function () {
+              quote.remove();
+            }, 5000); // Destroy output element after x seconds.
+          }, 3000); // Hide output after x seconds.
+        }, 100); // Toggle fade-in transition on load.
+      }, 3000); // Create new element every tick.
+    }
+  }]);
+
+  return Quotes;
+}();
+
+exports.default = Quotes;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Title = function () {
+  function Title() {
+    _classCallCheck(this, Title);
+
+    this.title = document.querySelector('.title');
+    this.colorize();
+  }
+
+  _createClass(Title, [{
+    key: 'colorize',
+    value: function colorize() {
+      var _this = this;
+
+      var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+      setInterval(function (e) {
+        var select = Math.floor(Math.random() * colors.length);
+        _this.title.style.color = colors[select];
+      }, 2000);
+    }
+  }]);
+
+  return Title;
+}();
+
+exports.default = Title;
 
 /***/ })
 /******/ ]);

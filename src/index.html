@@ -5,43 +5,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Incognime - Username Generator</title>
+  <title>Incogni.me - Username Generator</title>
   <link rel="stylesheet" href="./assets/styles/style.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Homemade+Apple:regular">
+  <link href="https://fonts.googleapis.com/css?family=Fredoka+One:regular" rel="stylesheet" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
   <div class="wrapper">
-    <h1 class="title title--common">Incogni .me</h1>
+    <h1 class="title title--common"><i class="fa fa-user" aria-hidden="true"></i> Incognime</h1>
     <h3 class="subtitle title--common">Username Generator</h3>
 
     <div class="features features--hidden">
-      <div class="features__settings">
-        <div class="setting" id="leet">Leet</div>
-        <div class="setting" id="capsfirst">Caps - First Letters</div>
-        <div class="setting" id="capslock">Caps - Lock</div>
-        <div class="setting" id="capsrandom">Caps - Random</div>
-        <label for="wordcount">Word Count</label>
-        <input type="number" name="wordcount" id="wordcount" min="1" max="5" value="3">
+      <div class="features__header features--flex">
+        <p>Morphs</p>
+        <p>Custom Words</p>
+        <p>Active Words</p>
       </div>
+      <div class="features__body features--flex">
+        <div class="features__settings">
+          <div class="setting" id="leet"><i class="fa fa-toggle-off" aria-hidden="true"></i> Leet</div>
+          <div class="setting" id="capsfirst"><i class="fa fa-toggle-off" aria-hidden="true"></i> Caps - First Letters</div>
+          <div class="setting" id="capslock"><i class="fa fa-toggle-off" aria-hidden="true"></i> Caps - LOCK</div>
+          <div class="setting" id="capsrandom"><i class="fa fa-toggle-off" aria-hidden="true"></i> Caps - RaNdoM</div>
+          <label for="wordcount">Word Count </label>
+          <input class="setting--number" type="number" name="wordcount" id="wordcount" min="1" max="5" value="3">
+        </div>
 
-      <div class="features__custom">
-        <label for="custom__input">Custom Words</label>
-        <textarea name="custom__input" id="custom__input" cols="30" rows="5"></textarea>
-      </div>
+        <div class="features__custom">
+          <textarea name="custom__input" id="custom__input" cols="30" rows="5"></textarea>
+        </div>
 
-      <div class="features__categories">
-        <div class="category category--enabled" id="animals">Animals</div>
-        <div class="category category--enabled" id="colors">Colors</div>
-        <div class="category category--enabled" id="food">Food</div>
-        <div class="category category--enabled" id="nature">Nature</div>
-        <div class="category category--enabled" id="titles">Titles</div>
-        <div class="category category--enabled" id="verbs">Verbs</div>
-        <div class="category category--enabled" id="adjectives">Adjectives</div>
+        <div class="features__categories">
+          <div class="category category--enabled" id="animals"><i class="fa fa-toggle-on" aria-hidden="true"></i> Animals</div>
+          <div class="category category--enabled" id="colors"><i class="fa fa-toggle-on" aria-hidden="true"></i> Colors</div>
+          <div class="category category--enabled" id="food"><i class="fa fa-toggle-on" aria-hidden="true"></i> Food</div>
+          <div class="category category--enabled" id="nature"><i class="fa fa-toggle-on" aria-hidden="true"></i> Nature</div>
+          <div class="category category--enabled" id="titles"><i class="fa fa-toggle-on" aria-hidden="true"></i> Titles</div>
+          <div class="category category--enabled" id="verbs"><i class="fa fa-toggle-on" aria-hidden="true"></i> Verbs</div>
+          <div class="category category--enabled" id="adjectives"><i class="fa fa-toggle-on" aria-hidden="true"></i> Adjectives</div>
+          <div class="category category--enabled" id="numbers"><i class="fa fa-toggle-on" aria-hidden="true"></i> Numbers</div>
+        </div>
       </div>
     </div>
-
     <div class="container">
       <div class="options">
         <button class="btn btn--options">
@@ -50,7 +56,7 @@
       </div>
 
       <div class="output">
-        <p class="output__username">Username</p>
+        <p class="output__username" contenteditable="true" spellcheck="false">Username</p>
       </div>
 
       <button class="btn btn--generate btn--t-l" id="generate">Generate</button>

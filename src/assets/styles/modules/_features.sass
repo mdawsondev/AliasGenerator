@@ -1,17 +1,27 @@
 .features
-  background: rgba(#000, .25)
+  background: rgba(#000, .75)
   border: .125rem solid rgba(black, .25)
   border-radius: .5rem
   box-sizing: border-box
-  display: flex
-  justify-content: space-between
   max-height: 100%
-  margin-top: 5rem
+  margin: 2rem 0
   padding: 1rem
-  position: absolute
   transition: 1s all ease-in
   width: 100%
+
+.features__header
+  color: #fff
+  font-size: 1.5rem
+  font-weight: 700
+  margin: -1rem
+
+.features__body
+  color: #aaa
 
 .features--hidden
   max-height: 0
   opacity: 0
+
+.features--flex
+  display: flex
+  justify-content: space-around

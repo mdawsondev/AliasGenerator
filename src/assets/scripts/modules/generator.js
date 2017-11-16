@@ -12,12 +12,13 @@
 export default class Generator {
   constructor() {
     this.activeCats = [];
+    this.custom = document.querySelector('#custom__input')
     this.data = null;
     this.log = [];
     this.output = document.querySelector('.output__username'); // Tethered to this.username!
     this.history = document.querySelector('.history__log'); // Tethered to this.log!
     this.settings = [];
-    this.username = []; 
+    this.username = [];
     this.wordCount = 3; // Default, not updated until change is fired.
     this.init();
   }
@@ -60,13 +61,19 @@ export default class Generator {
   }
 
   createName() {
-    let i = 0;    
+    let customs = this.custom.value.replace(/ /g, '').split(',');
+    let i = 0;
     while (i < this.wordCount) {
       let randCat = this.activeCats[Math.floor(Math.random() * this.activeCats.length)]; // Pull random available category.
-      let dataCat = this.data.find(arg => { // Connect random category to object data.
-        return arg.name === randCat;
-      });
-      let selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)] // Select random word from object.
+      let selection = null;
+      if (randCat === 'somecustom') { // Use custom words if enabled.
+        selection = customs[Math.floor(Math.random() * customs.length)];
+      } else { // Custom word wasn't selected.
+        let dataCat = this.data.find(arg => { // Connect random category to object data.
+          return arg.name === randCat;
+        })
+        selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)] // Select random word from object.
+      };
       if (this.username.indexOf(selection) === -1) { // No repeated words allowed! Decided to force this feature.
         this.username.push(selection);
         i++;

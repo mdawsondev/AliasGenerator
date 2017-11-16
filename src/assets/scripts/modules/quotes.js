@@ -30,7 +30,7 @@ export default class Quotes {
       quote.style.top = `${x}px`;
       quote.textContent = `"${output}"`;
 
-      document.querySelector('body').prepend(quote);
+      document.querySelector('body').append(quote);
 
       setTimeout(() => {
         quote.classList.add('quote--show');

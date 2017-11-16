@@ -124,6 +124,7 @@ var Generator = function () {
     _classCallCheck(this, Generator);
 
     this.activeCats = [];
+    this.custom = document.querySelector('#custom__input');
     this.data = null;
     this.log = [];
     this.output = document.querySelector('.output__username'); // Tethered to this.username!
@@ -186,15 +187,23 @@ var Generator = function () {
     value: function createName() {
       var _this3 = this;
 
+      var customs = this.custom.value.replace(/ /g, '').split(',');
       var i = 0;
 
       var _loop = function _loop() {
         var randCat = _this3.activeCats[Math.floor(Math.random() * _this3.activeCats.length)]; // Pull random available category.
-        var dataCat = _this3.data.find(function (arg) {
-          // Connect random category to object data.
-          return arg.name === randCat;
-        });
-        var selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)]; // Select random word from object.
+        var selection = null;
+        if (randCat === 'somecustom') {
+          // Use custom words if enabled.
+          selection = customs[Math.floor(Math.random() * customs.length)];
+        } else {
+          // Custom word wasn't selected.
+          var dataCat = _this3.data.find(function (arg) {
+            // Connect random category to object data.
+            return arg.name === randCat;
+          });
+          selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)]; // Select random word from object.
+        };
         if (_this3.username.indexOf(selection) === -1) {
           // No repeated words allowed! Decided to force this feature.
           _this3.username.push(selection);
@@ -455,7 +464,7 @@ var Quotes = function () {
         quote.style.top = x + 'px';
         quote.textContent = '"' + output + '"';
 
-        document.querySelector('body').prepend(quote);
+        document.querySelector('body').append(quote);
 
         setTimeout(function () {
           quote.classList.add('quote--show');

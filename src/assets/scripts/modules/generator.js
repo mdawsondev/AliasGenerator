@@ -27,7 +27,6 @@ export default class Generator {
 
   init() {
     this.getData();
-    this.getButtons();
     this.getWordCount();
   }
 
@@ -37,11 +36,29 @@ export default class Generator {
     this.toggleOptions('category', this.activeCats);
   }
 
-  getData() {
+  buildCats(callback) {
+    let fragment = document.createDocumentFragment();
+    this.data.forEach((item) => {
+      let cat = document.createElement('div');
+      let toggle = document.createElement('i');
+      let name = item.name;
+      toggle.classList.add('fa', 'fa-toggle-on');
+      cat.classList.add('category', 'category--enabled');
+      cat.id = name;
+      cat.textContent = ` ${name}`;
+      cat.prepend(toggle);
+      fragment.appendChild(cat);
+    });
+    document.querySelector('.features__categories').appendChild(fragment);
+    callback(); // Now we can add functionality to our buttons!
+  }
+
+  getData(callback) {
     fetch('./assets/data/collection.json')
       .then(response => { return response.json() })
       .then(data => {
         this.data = data.category;
+        this.buildCats(() => this.getButtons());
         this.enableCats();
       });
   }
@@ -61,20 +78,28 @@ export default class Generator {
   }
 
   createName() {
+    let aCLength = this.activeCats.length; // Cached for speed.
     let customs = this.custom.value.replace(/ /g, '').split(',');
+    let customsLength = customs.length; // Cached for speed.
     let i = 0;
     while (i < this.wordCount) {
-      let randCat = this.activeCats[Math.floor(Math.random() * this.activeCats.length)]; // Pull random available category.
+      let dataCat = null;
       let selection = null;
-      if (randCat === 'somecustom') { // Use custom words if enabled.
-        selection = customs[Math.floor(Math.random() * customs.length)];
-      } else { // Custom word wasn't selected.
-        let dataCat = this.data.find(arg => { // Connect random category to object data.
-          return arg.name === randCat;
-        })
-        selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)] // Select random word from object.
-      };
-      if (this.username.indexOf(selection) === -1) { // No repeated words allowed! Decided to force this feature.
+      let randCat = this.activeCats[Math.floor(Math.random() * aCLength)];
+
+      /*  From here, we're going to:
+            1. Check if custom words were selected (somecustom).
+            2a. If somecustom is true, we'll pick a random custom word.
+            2b. If somecustom is false, we'll pick a random word from our database.
+            3. If this is an unused word, add it to our builder;
+              otherwise, repeat the loop without increasing 'i'.
+      */
+
+      randCat === 'somecustom' ? selection = customs[Math.floor(Math.random() * customsLength)] // 1 ? 2a.
+        : (dataCat = this.data.find(arg => { return arg.name === randCat }), // 2b.
+          selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)]);
+
+      if (this.username.indexOf(selection) === -1) { // 3.
         this.username.push(selection);
         i++;
       }
@@ -133,12 +158,8 @@ export default class Generator {
       if (style === 'random') { // 'capsrandom' is enabled.
         let temp = '';
         for (let letter in word) {
-          let rand = (Math.floor(Math.random() * 2));
-          if (rand) {
-            temp += word[letter].toUpperCase();
-          } else {
-            temp += word[letter];
-          }
+          let nextLetter = word[letter];
+          (Math.floor(Math.random() * 2)) ? temp += nextLetter.toUpperCase() : temp += nextLetter;
         }
         this.username[i] = temp;
       }
@@ -181,15 +202,15 @@ export default class Generator {
     elements.forEach((element) => {
       element.addEventListener('click', (e) => {
         let feature = e.currentTarget;
-        let location = arr.indexOf(feature.id);
-        if (location === -1) {
-          arr.push(feature.id);
-        } else {
-          arr.splice(location, 1);
-        }
-        feature.classList.toggle(`${query}--enabled`) // Toggle the style!
-        feature.children[0].classList.toggle('fa-toggle-on')
-        feature.children[0].classList.toggle('fa-toggle-off')
+        let featureFA = feature.children[0];
+        let featureID = feature.id;
+        let location = arr.indexOf(featureID);
+
+        location === -1 ? arr.push(featureID) : arr.splice(location, 1);
+
+        feature.classList.toggle(`${query}--enabled`); // Toggle the style!
+        featureFA.classList.toggle('fa-toggle-on');
+        featureFA.classList.toggle('fa-toggle-off');
       });
     });
   }

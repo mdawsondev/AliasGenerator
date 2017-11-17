@@ -141,7 +141,6 @@ var Generator = function () {
     key: 'init',
     value: function init() {
       this.getData();
-      this.getButtons();
       this.getWordCount();
     }
   }, {
@@ -152,14 +151,35 @@ var Generator = function () {
       this.toggleOptions('category', this.activeCats);
     }
   }, {
+    key: 'buildCats',
+    value: function buildCats(callback) {
+      var fragment = document.createDocumentFragment();
+      this.data.forEach(function (item) {
+        var cat = document.createElement('div');
+        var toggle = document.createElement('i');
+        var name = item.name;
+        toggle.classList.add('fa', 'fa-toggle-on');
+        cat.classList.add('category', 'category--enabled');
+        cat.id = name;
+        cat.textContent = ' ' + name;
+        cat.prepend(toggle);
+        fragment.appendChild(cat);
+      });
+      document.querySelector('.features__categories').appendChild(fragment);
+      callback(); // Now we can add functionality to our buttons!
+    }
+  }, {
     key: 'getData',
-    value: function getData() {
+    value: function getData(callback) {
       var _this = this;
 
       fetch('./assets/data/collection.json').then(function (response) {
         return response.json();
       }).then(function (data) {
         _this.data = data.category;
+        _this.buildCats(function () {
+          return _this.getButtons();
+        });
         _this.enableCats();
       });
     }
@@ -187,25 +207,32 @@ var Generator = function () {
     value: function createName() {
       var _this3 = this;
 
+      var aCLength = this.activeCats.length; // Cached for speed.
       var customs = this.custom.value.replace(/ /g, '').split(',');
+      var customsLength = customs.length; // Cached for speed.
       var i = 0;
 
       var _loop = function _loop() {
-        var randCat = _this3.activeCats[Math.floor(Math.random() * _this3.activeCats.length)]; // Pull random available category.
+        var dataCat = null;
         var selection = null;
-        if (randCat === 'somecustom') {
-          // Use custom words if enabled.
-          selection = customs[Math.floor(Math.random() * customs.length)];
-        } else {
-          // Custom word wasn't selected.
-          var dataCat = _this3.data.find(function (arg) {
-            // Connect random category to object data.
-            return arg.name === randCat;
-          });
-          selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)]; // Select random word from object.
-        };
+        var randCat = _this3.activeCats[Math.floor(Math.random() * aCLength)];
+
+        /*  From here, we're going to:
+              1. Check if custom words were selected (somecustom).
+              2a. If somecustom is true, we'll pick a random custom word.
+              2b. If somecustom is false, we'll pick a random word from our database.
+              3. If this is an unused word, add it to our builder;
+                otherwise, repeat the loop without increasing 'i'.
+        */
+
+        randCat === 'somecustom' ? selection = customs[Math.floor(Math.random() * customsLength)] // 1 ? 2a.
+        : (dataCat = _this3.data.find(function (arg) {
+          return arg.name === randCat;
+        }), // 2b.
+        selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)]);
+
         if (_this3.username.indexOf(selection) === -1) {
-          // No repeated words allowed! Decided to force this feature.
+          // 3.
           _this3.username.push(selection);
           i++;
         }
@@ -280,12 +307,8 @@ var Generator = function () {
           // 'capsrandom' is enabled.
           var temp = '';
           for (var letter in word) {
-            var rand = Math.floor(Math.random() * 2);
-            if (rand) {
-              temp += word[letter].toUpperCase();
-            } else {
-              temp += word[letter];
-            }
+            var nextLetter = word[letter];
+            Math.floor(Math.random() * 2) ? temp += nextLetter.toUpperCase() : temp += nextLetter;
           }
           _this5.username[i] = temp;
         }
@@ -333,15 +356,15 @@ var Generator = function () {
       elements.forEach(function (element) {
         element.addEventListener('click', function (e) {
           var feature = e.currentTarget;
-          var location = arr.indexOf(feature.id);
-          if (location === -1) {
-            arr.push(feature.id);
-          } else {
-            arr.splice(location, 1);
-          }
+          var featureFA = feature.children[0];
+          var featureID = feature.id;
+          var location = arr.indexOf(featureID);
+
+          location === -1 ? arr.push(featureID) : arr.splice(location, 1);
+
           feature.classList.toggle(query + '--enabled'); // Toggle the style!
-          feature.children[0].classList.toggle('fa-toggle-on');
-          feature.children[0].classList.toggle('fa-toggle-off');
+          featureFA.classList.toggle('fa-toggle-on');
+          featureFA.classList.toggle('fa-toggle-off');
         });
       });
     }

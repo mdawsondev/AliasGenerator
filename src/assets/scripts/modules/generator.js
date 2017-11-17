@@ -39,9 +39,10 @@ export default class Generator {
   buildCats(callback) {
     let fragment = document.createDocumentFragment();
     this.data.forEach((item) => {
-      let cat = document.createElement('div');
-      let toggle = document.createElement('i');
-      let name = item.name;
+      let cat = document.createElement('div'),
+        toggle = document.createElement('i'),
+        name = item.name;
+
       toggle.classList.add('fa', 'fa-toggle-on');
       cat.classList.add('category', 'category--enabled');
       cat.id = name;
@@ -83,9 +84,9 @@ export default class Generator {
     let customsLength = customs.length; // Cached for speed.
     let i = 0;
     while (i < this.wordCount) {
-      let dataCat = null;
-      let selection = null;
-      let randCat = this.activeCats[Math.floor(Math.random() * aCLength)];
+      let dataCat = null,
+        selection = null,
+        randCat = this.activeCats[Math.floor(Math.random() * aCLength)];
 
       /*  From here, we're going to:
             1. Check if custom words were selected (somecustom).
@@ -190,10 +191,15 @@ export default class Generator {
   generate() {
     document.querySelector('#generate').addEventListener('click', () => {
       this.clearGen();
-      this.createName();
-      this.transformOutput(this.settings);
-      this.setOutput(this.username);
-      this.addLog(this.username);
+      try {
+        this.createName();
+        this.transformOutput(this.settings);
+        this.setOutput(this.username);
+        this.addLog(this.username);
+      }
+      catch (err) {
+        this.setOutput('Pick some words!');
+      }
     });
   }
 
@@ -201,10 +207,10 @@ export default class Generator {
     const elements = document.querySelectorAll(`.${query}`);
     elements.forEach((element) => {
       element.addEventListener('click', (e) => {
-        let feature = e.currentTarget;
-        let featureFA = feature.children[0];
-        let featureID = feature.id;
-        let location = arr.indexOf(featureID);
+        let feature = e.currentTarget,
+          featureFA = feature.children[0],
+          featureID = feature.id,
+          location = arr.indexOf(featureID);
 
         location === -1 ? arr.push(featureID) : arr.splice(location, 1);
 

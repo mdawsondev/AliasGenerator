@@ -155,9 +155,10 @@ var Generator = function () {
     value: function buildCats(callback) {
       var fragment = document.createDocumentFragment();
       this.data.forEach(function (item) {
-        var cat = document.createElement('div');
-        var toggle = document.createElement('i');
-        var name = item.name;
+        var cat = document.createElement('div'),
+            toggle = document.createElement('i'),
+            name = item.name;
+
         toggle.classList.add('fa', 'fa-toggle-on');
         cat.classList.add('category', 'category--enabled');
         cat.id = name;
@@ -213,9 +214,9 @@ var Generator = function () {
       var i = 0;
 
       var _loop = function _loop() {
-        var dataCat = null;
-        var selection = null;
-        var randCat = _this3.activeCats[Math.floor(Math.random() * aCLength)];
+        var dataCat = null,
+            selection = null,
+            randCat = _this3.activeCats[Math.floor(Math.random() * aCLength)];
 
         /*  From here, we're going to:
               1. Check if custom words were selected (somecustom).
@@ -343,10 +344,14 @@ var Generator = function () {
 
       document.querySelector('#generate').addEventListener('click', function () {
         _this7.clearGen();
-        _this7.createName();
-        _this7.transformOutput(_this7.settings);
-        _this7.setOutput(_this7.username);
-        _this7.addLog(_this7.username);
+        try {
+          _this7.createName();
+          _this7.transformOutput(_this7.settings);
+          _this7.setOutput(_this7.username);
+          _this7.addLog(_this7.username);
+        } catch (err) {
+          _this7.setOutput('Pick some words!');
+        }
       });
     }
   }, {
@@ -355,10 +360,10 @@ var Generator = function () {
       var elements = document.querySelectorAll('.' + query);
       elements.forEach(function (element) {
         element.addEventListener('click', function (e) {
-          var feature = e.currentTarget;
-          var featureFA = feature.children[0];
-          var featureID = feature.id;
-          var location = arr.indexOf(featureID);
+          var feature = e.currentTarget,
+              featureFA = feature.children[0],
+              featureID = feature.id,
+              location = arr.indexOf(featureID);
 
           location === -1 ? arr.push(featureID) : arr.splice(location, 1);
 

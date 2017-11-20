@@ -3,11 +3,12 @@
   border: .125rem solid rgba(black, .25)
   border-radius: .5rem
   box-sizing: border-box
-  max-height: 100%
   margin: 2rem 0
   padding: 1rem
-  transition: 1s all ease-in
   width: 100%
+  +md
+    max-height: 100%
+    transition: 1s all ease-in
 
 .features__header
   color: #fff
@@ -15,7 +16,9 @@
   font-weight: 700
   text-align: center
   p
-    margin: 0 0 1rem
+    margin: 1rem
+    +md
+      margin: 0 0 1rem
 
 .features__body
   color: #aaa
@@ -23,10 +26,14 @@
 .features--hidden
   max-height: 0
   opacity: 0
+  pointer-events: none
 
-.features--flex
+.features--grid
   display: grid
-  grid-template: 100% / 1fr 1fr 1fr
+  grid-display: 1fr 1fr 1fr / 100%
+  +md
+    grid-template: 100% / 1fr 1fr 1fr
+
 
 .features__wrapper
   width: 100%

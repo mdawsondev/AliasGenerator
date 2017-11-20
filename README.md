@@ -1,10 +1,10 @@
-# [Incogni.me](https://mdawsondev.github.io/incogni.me/src/index.html) [![codebeat badge](https://codebeat.co/badges/5c97894c-08e6-4d53-9945-da77f49dde4f)](https://codebeat.co/projects/github-com-mdawsondev-alias-generator-master)
+# [Incogni.me](https://mdawsondev.github.io/incogni.me/dist/index.html) [![codebeat badge](https://codebeat.co/badges/5c97894c-08e6-4d53-9945-da77f49dde4f)](https://codebeat.co/projects/github-com-mdawsondev-alias-generator-master)
 
 ### About
 ------
 Incogni.me is a word generator focused on the creation of unique usernames. Using a series of controlled properties, users can generate content from predefined words, or via custom input.
 
-This project is open source, and can be used [right here on GitHub](https://mdawsondev.github.io/incogni.me/src/index.html)!
+This project is open source, and can be used [right here on GitHub](https://mdawsondev.github.io/incogni.me/dist/index.html)!
 
 ### History
 ------

@@ -1,120 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Alias Generator</title>
-  <link href="styles/main.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
-  <script src="https://use.fontawesome.com/31b02488b8.js" async></script>
-  <script src="scripts/main.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Incogni.me - Username Generator</title>
+  <link rel="stylesheet" href="./assets/styles/style.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Fredoka+One:regular" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-  <div class="content-wrapper">
-    <aside>
-      <form class="options" onsubmit="return false">
-      <div class="formbreak">
-        <header>
-          <h1>Alias Generator</h1>
-          <p class="author">by <a href="mailto:mdawsondev@gmail.com">mdawsondev</a></p>
-          <p class="desc">Alias Generator is a tool for generating usernames. Clicking "Toggle List" opens a list to toggle word usage, custom words must be separated by a comma, and options can be turned on or off. Clicking on the generated alias will allow direct editing!</p>
-        </header>
-        <div class="selections" id="selections">
-          <p class="title clickable" onclick="list(this)"><i class="fa fa-plus"></i> Toggle Lists</p>
+  <div class="wrapper">
+    <h1 class="title title--common">
+      <i class="fa fa-user" aria-hidden="true"></i> Incogni.me</h1>
+    <h3 class="subtitle title--common">Username Generator</h3>
+
+    <div class="features features--hidden">
+      <div class="features__body features--grid">
+
+        <div class="features__settings">
+          <div class="features__header">
+            <p>Morphs</p>
+          </div>
+          <div class="features__wrapper">
+            <div class="setting" id="leet">
+              <i class="fa fa-toggle-off" aria-hidden="true"></i> Leet</div>
+            <div class="setting" id="capsfirst">
+              <i class="fa fa-toggle-off" aria-hidden="true"></i> Caps - First Letters</div>
+            <div class="setting" id="capslock">
+              <i class="fa fa-toggle-off" aria-hidden="true"></i> Caps - LOCK</div>
+            <div class="setting" id="capsrandom">
+              <i class="fa fa-toggle-off" aria-hidden="true"></i> Caps - RaNdoM</div>
+            <label for="wordcount">Word Count </label>
+            <input class="setting--number" type="number" name="wordcount" id="wordcount" min="1" max="5" value="3">
+          </div>
         </div>
-        <div class="custom" id="custom">
-          <p class="title"><i class="fa fa fa-file-text-o"></i> Custom Words</p>
-          <textarea class="c-list" rows="3" cols="28" placeholder="custom word, custom word 2 . . ."></textarea>
-          <div class="col-wrap">
-            <div class="c-feature">
-              <input class="c-only" id="c-only" type="checkbox" onclick="custCheck(this.id)" />
-              <label for="c-only" onclick="change(this)"><i class="fa fa-toggle-off"></i> Use Custom Only</label>
+
+        <div class="features__custom">
+          <div class="features__wrapper">
+
+            <div class="features__header">
+              <p>Custom Words</p>
             </div>
-            <div class="c-feature">
-              <input class="c-plus" id="c-plus" type="checkbox" onclick="custCheck(this.id)"/>
-              <label for="c-plus" onclick="change(this)"><i class="fa fa-toggle-off"></i> Include Custom</label>
+            <textarea class="custom__input" name="custom__input" id="custom__input" cols="30" rows="5"></textarea>
+            <div class="category" id="somecustom">
+              <i class="fa fa-toggle-off" aria-hidden="true"></i> Include Custom</div>
+            <div class="category" id="onlycustom">
+              <i class="fa fa-toggle-off" aria-hidden="true"></i> Only Custom</div>
+          </div>
+        </div>
+
+        <div class="features__categories">
+          <div class="features__wrapper">
+
+            <div class="features__header">
+              <p>Active Words</p>
             </div>
-          </div>
-        </div>
-        <p class="title"><i class="fa fa-flask"></i> Options</p>
-          <select class="count" id="count" placeholder="Number of Words" required>
-            <option value="" disabled selected>Word Count</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <div>
-            <input class="grammar" id="grammar" type="checkbox">
-            <label for="grammar" onclick="change(this)"><i class="fa fa-toggle-off"></i> Use Grammar</label>
-          </div>
-          <div>
-            <input class="norepeats" id="norepeats" type="checkbox">
-            <label for="norepeats" onclick="change(this)"><i class="fa fa-toggle-off"></i> No Repeated Words</label>
-          </div>
-          <div>
-            <input class="caps" id="caps" type="checkbox" checked>
-            <label for="caps" onclick="change(this)"><i class="fa fa-toggle-on"></i> Capital Words</label>
-          </div>
-          <div>
-            <input class="caps-random" id="caps-random" type="checkbox">
-            <label for="caps-random" onclick="change(this)"><i class="fa fa-toggle-off"></i> Random Caps</label>
-          </div>
-          <div>
-            <input class="caps-only" id="caps-only" type="checkbox">
-            <label for="caps-only" onclick="change(this)"><i class="fa fa fa-toggle-off"></i> Caps Lock</label>
-          </div>
-          <div>
-            <input class="leet" id="leet" type="checkbox">
-            <label for="leet" onclick="change(this)"><i class="fa fa fa-toggle-off"></i> Leet</label>
-          </div>
-        </div>
-        <button class="clickable go" onclick="begin()"><i class="fa fa-spin fa-cog fa-lg" aria-hidden="true"></i> Generate</button>
-      </form>
-    </aside>
-    <content>
-      <div class="tbar">
-        <div>
-          <p class="default" id="default" onclick="swap(this.id)"><i class="fa fa-home"></i> Default</p>
-        </div>
-        <div>
-          <p class="reddit" id="reddit" onclick="swap(this.id)"><i class="fa fa-reddit"></i> Reddit</p>
-        </div>
-        <div>
-          <p class="twitter" id="twitter" onclick="swap(this.id)"><i class="fa fa-twitter"></i> Twitter</p>
-        </div>
-      </div>
-      <div class="generated">
-        <div class="gencontent gendefault" id="gendefault">
-          <h2 class="names alias1" id="alias1" contenteditable="true" spellcheck="false">Press Generate</h2>
-          <h3 class="names alias2" id="alias2" contenteditable="true" spellcheck="false">...</h3>
-          <h4 class="names alias3" id="alias3" contenteditable="true" spellcheck="false">...</h4>
-          <h5 class="names alias4" id="alias4" contenteditable="true" spellcheck="false">...</h5>
-        </div>
-        <div class="gencontent genreddit" id="genreddit">
-          <div></div>
-          <img src="https://b.thumbs.redditmedia.com/7AlpvErovtQ160o9FyIIdHCzfL2k-ejc982U6uPCuzI.png"" />
-          <p class="user">u/<span class="alias0" contenteditable="true" spellcheck="false">AliasGenerator</span></p>
-          <p>21,521 Karma<i class="fa fa-info-circle"></i></p>
-          <p>Say something about yourself!</p>
-        </div>
-        <div class="gencontent gentwitter" id="gentwitter">
-          <img src="https://pbs.twimg.com/profile_images/446914475426205696/LN6HayFM_400x400.png" />
-          <div class="spacer">
-            <div>
-              <p class="black tname">Your Name <i class="fa fa-check-circle"></i></p>
-              <p>@<span class="alias0">AliasGenerator</span></p>
-            </div>
-            <p class="black">Say something about yourself!</p>
-            <p><i class="fa fa-link"></i> <a href="#">aliasgenerator</a></p>
-            <p><i class="fa fa-calendar"></i> Joined April 2008</i>
-            <p><i class="fa fa-image"></i> <a href="#">190 Photos and videos</a></p>
           </div>
         </div>
       </div>
-    </content>
-    <div class="hub">
-      <p><a href="http://github.com/mdawsondev/alias-generator"><i class="fa fa-github"></i></a></p>
+    </div>
+    <div class="container">
+      <div class="options">
+
+        <button class="btn btn--options">
+          <i class="fa fa-gear fa-spin" aria-hidden="true"></i> Settings
+        </button>
+      </div>
+
+      <div class="output">
+        <p class="output__username" contenteditable="true" spellcheck="false">Username</p>
+      </div>
+
+      <button class="btn btn--generate btn--t-l" id="generate">Generate</button>
+
+      <!-- <div class="history">
+        <p class="history__log">History</p>
+      </div> -->
+    </div>
+    <div class="footer">
+      <div class="github">
+        <a href="http://github.com/mdawsondev/incognime/"><i class="fa fa-github fa-2x"></i></a>
+      </div>
+      <div class="copy">
+        <p>Created by <a href="http://mdawsondev.com">Matt Dawson</a>.</p>
+      </div>
     </div>
   </div>
+  <script src="./assets/scripts/index.js"></script>
 </body>
+
 </html>

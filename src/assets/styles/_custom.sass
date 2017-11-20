@@ -1,0 +1,23 @@
+=e($element)
+  &__#{$element}
+    @content
+
+=m($modifier)
+  &--#{$modifier}
+    @content
+
+=sm
+  @media (min-width: 576px)
+    @content
+
+=md
+  @media (min-width: 768px)
+    @content
+
+=lg
+  @media (min-width: 992px)
+    @content
+
+=xl
+  @media (min-width: 1200px)
+    @content

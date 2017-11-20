@@ -9,6 +9,6 @@ export default class Title {
     setInterval((e) => {
       let select = Math.floor(Math.random() * colors.length);
       this.title.style.color = colors[select];
-    }, 2000)
+    }, 2000);
   }
 }      

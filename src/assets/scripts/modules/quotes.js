@@ -6,10 +6,10 @@ export default class Quotes {
 
   getData() {
     fetch('./assets/data/quotes.json')
-      .then(response => { return response.json() })
+      .then(response => { return response.json(); })
       .then(data => {
         for (let key in data.quotes.quote) {
-          this.data.push(data.quotes.quote[key])
+          this.data.push(data.quotes.quote[key]);
         }
         this.triggerOutput();
       });
@@ -38,11 +38,11 @@ export default class Quotes {
           quote.classList.remove('quote--show');
           setTimeout(() => {
             quote.remove();
-          }, 5000)  // Destroy output element after x seconds.
+          }, 5000);  // Destroy output element after x seconds.
         }, 3000); // Hide output after x seconds.
-      }, 100) // Toggle fade-in transition on load.
+      }, 100); // Toggle fade-in transition on load.
 
-    }, 3000) // Create new element every tick.
+    }, 3000); // Create new element every tick.
   }
 
 }

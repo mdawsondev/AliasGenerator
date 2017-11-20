@@ -12,7 +12,7 @@
 export default class Generator {
   constructor() {
     this.activeCats = [];
-    this.custom = document.querySelector('#custom__input')
+    this.custom = document.querySelector('#custom__input');
     this.data = null;
     this.log = [];
     this.output = document.querySelector('.output__username'); // Tethered to this.username!
@@ -44,7 +44,7 @@ export default class Generator {
         toggle = document.createElement('i'),
         name = item.name;
 
-      span.classList.add('category--uppercase')
+      span.classList.add('category--uppercase');
       toggle.classList.add('fa', 'fa-toggle-on');
       cat.classList.add('category', 'category--enabled');
       cat.id = name;
@@ -59,7 +59,7 @@ export default class Generator {
 
   getData(callback) {
     fetch('./assets/data/collection.json')
-      .then(response => { return response.json() })
+      .then(response => { return response.json(); })
       .then(data => {
         this.data = data.category;
         this.buildCats(() => this.getButtons());
@@ -102,7 +102,7 @@ export default class Generator {
       if (randCat === 'somecustom' || this.activeCats.indexOf('onlycustom') > -1) {
         selection = customs[Math.floor(Math.random() * customsLength)];
       } else {
-        dataCat = this.data.find(arg => { return arg.name === randCat });
+        dataCat = this.data.find(arg => { return arg.name === randCat; });
         selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)];
       }
 
@@ -148,7 +148,7 @@ export default class Generator {
           break;
       }
     });
-    this.username = this.username.join('')
+    this.username = this.username.join('');
   }
 
   toCaps(style) {

@@ -32,3 +32,8 @@ Incogni.me is the successor to "Alias Generator," one of the first applications 
 * More Modifiers
 * More Words
 * Preview Cards
+
+### File Structure
+------
+**/src/** is the unminified source code.
+**/dist/** is the public distribution folder.

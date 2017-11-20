@@ -22,3 +22,13 @@ Incogni.me is the successor to "Alias Generator," one of the first applications 
 * Modifier - Caps: First Letter
 * Modifier - Caps: RaNDoM LeTTeRS
 * Modifier - L33T Translation
+
+### Upcoming
+------
+* Availability Checker
+* Grammar Function
+* History Log
+* More Categories
+* More Modifiers
+* More Words
+* Preview Cards

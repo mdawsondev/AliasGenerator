@@ -156,13 +156,16 @@ var Generator = function () {
       var fragment = document.createDocumentFragment();
       this.data.forEach(function (item) {
         var cat = document.createElement('div'),
+            span = document.createElement('span'),
             toggle = document.createElement('i'),
             name = item.name;
 
+        span.classList.add('category--uppercase');
         toggle.classList.add('fa', 'fa-toggle-on');
         cat.classList.add('category', 'category--enabled');
         cat.id = name;
-        cat.textContent = ' ' + name;
+        span.textContent = ' ' + name;
+        cat.append(span);
         cat.prepend(toggle);
         fragment.appendChild(cat);
       });
@@ -226,11 +229,14 @@ var Generator = function () {
                 otherwise, repeat the loop without increasing 'i'.
         */
 
-        randCat === 'somecustom' ? selection = customs[Math.floor(Math.random() * customsLength)] // 1 ? 2a.
-        : (dataCat = _this3.data.find(function (arg) {
-          return arg.name === randCat;
-        }), // 2b.
-        selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)]);
+        if (randCat === 'somecustom') {
+          selection = customs[Math.floor(Math.random() * customsLength)];
+        } else {
+          dataCat = _this3.data.find(function (arg) {
+            return arg.name === randCat;
+          });
+          selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)];
+        }
 
         if (_this3.username.indexOf(selection) === -1) {
           // 3.

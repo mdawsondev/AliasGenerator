@@ -13,7 +13,9 @@
   color: #fff
   font-size: 1.5rem
   font-weight: 700
-  margin: -1rem
+  text-align: center
+  p
+    margin: 0 0 1rem
 
 .features__body
   color: #aaa
@@ -23,5 +25,8 @@
   opacity: 0
 
 .features--flex
-  display: flex
-  justify-content: space-around
+  display: grid
+  grid-template: 100% / 1fr 1fr 1fr
+
+.features__wrapper
+  width: 100%

@@ -18,34 +18,47 @@
     <h3 class="subtitle title--common">Username Generator</h3>
 
     <div class="features features--hidden">
-      <div class="features__header features--flex">
-        <p>Morphs</p>
-        <p>Custom Words</p>
-        <p>Active Words</p>
-      </div>
       <div class="features__body features--flex">
+
         <div class="features__settings">
-          <div class="setting" id="leet">
-            <i class="fa fa-toggle-off" aria-hidden="true"></i> Leet</div>
-          <div class="setting" id="capsfirst">
-            <i class="fa fa-toggle-off" aria-hidden="true"></i> Caps - First Letters</div>
-          <div class="setting" id="capslock">
-            <i class="fa fa-toggle-off" aria-hidden="true"></i> Caps - LOCK</div>
-          <div class="setting" id="capsrandom">
-            <i class="fa fa-toggle-off" aria-hidden="true"></i> Caps - RaNdoM</div>
-          <label for="wordcount">Word Count </label>
-          <input class="setting--number" type="number" name="wordcount" id="wordcount" min="1" max="5" value="3">
+          <div class="features__header">
+            <p>Morphs</p>
+          </div>
+          <div class="features__wrapper">
+            <div class="setting" id="leet">
+              <i class="fa fa-toggle-off" aria-hidden="true"></i> Leet</div>
+            <div class="setting" id="capsfirst">
+              <i class="fa fa-toggle-off" aria-hidden="true"></i> Caps - First Letters</div>
+            <div class="setting" id="capslock">
+              <i class="fa fa-toggle-off" aria-hidden="true"></i> Caps - LOCK</div>
+            <div class="setting" id="capsrandom">
+              <i class="fa fa-toggle-off" aria-hidden="true"></i> Caps - RaNdoM</div>
+            <label for="wordcount">Word Count </label>
+            <input class="setting--number" type="number" name="wordcount" id="wordcount" min="1" max="5" value="3">
+          </div>
         </div>
 
         <div class="features__custom">
-          <textarea name="custom__input" id="custom__input" cols="30" rows="5"></textarea>
-          <div class="category" id="somecustom">
-            <i class="fa fa-toggle-off" aria-hidden="true"></i> Include Custom</div>
-          <div class="category" id="onlycustom">
-            <i class="fa fa-toggle-off" aria-hidden="true"></i> Only Custom</div>
+          <div class="features__wrapper">
+
+            <div class="features__header">
+              <p>Custom Words</p>
+            </div>
+            <textarea class="custom__input" name="custom__input" id="custom__input" cols="30" rows="5"></textarea>
+            <div class="category" id="somecustom">
+              <i class="fa fa-toggle-off" aria-hidden="true"></i> Include Custom</div>
+            <div class="category" id="onlycustom">
+              <i class="fa fa-toggle-off" aria-hidden="true"></i> Only Custom</div>
+          </div>
         </div>
 
         <div class="features__categories">
+          <div class="features__wrapper">
+
+            <div class="features__header">
+              <p>Active Words</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

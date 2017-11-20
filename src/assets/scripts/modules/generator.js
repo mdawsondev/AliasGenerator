@@ -40,13 +40,16 @@ export default class Generator {
     let fragment = document.createDocumentFragment();
     this.data.forEach((item) => {
       let cat = document.createElement('div'),
+        span = document.createElement('span'),
         toggle = document.createElement('i'),
         name = item.name;
 
+      span.classList.add('category--uppercase')
       toggle.classList.add('fa', 'fa-toggle-on');
       cat.classList.add('category', 'category--enabled');
       cat.id = name;
-      cat.textContent = ` ${name}`;
+      span.textContent = ` ${name}`;
+      cat.append(span);
       cat.prepend(toggle);
       fragment.appendChild(cat);
     });
@@ -67,7 +70,7 @@ export default class Generator {
   enableCats() {
     this.data.forEach((item) => {
       this.activeCats.push(item.name);
-    })
+    });
   }
 
   /* End #Init */
@@ -96,9 +99,12 @@ export default class Generator {
               otherwise, repeat the loop without increasing 'i'.
       */
 
-      randCat === 'somecustom' ? selection = customs[Math.floor(Math.random() * customsLength)] // 1 ? 2a.
-        : (dataCat = this.data.find(arg => { return arg.name === randCat }), // 2b.
-          selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)]);
+      if (randCat === 'somecustom') {
+        selection = customs[Math.floor(Math.random() * customsLength)];
+      } else {
+        dataCat = this.data.find(arg => { return arg.name === randCat });
+        selection = dataCat.content[Math.floor(Math.random() * dataCat.content.length)];
+      }
 
       if (this.username.indexOf(selection) === -1) { // 3.
         this.username.push(selection);

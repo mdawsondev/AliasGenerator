@@ -58,7 +58,11 @@ body {
 }
 
 .category--enabled {
-  color: cornflowerblue;
+  color: #7ba5f0;
+}
+
+.category--uppercase {
+  text-transform: capitalize;
 }
 
 .container {
@@ -70,6 +74,10 @@ body {
   padding: 2rem;
   width: 100%;
   z-index: 10;
+}
+
+.custom__input {
+  resize: none;
 }
 
 .features {
@@ -88,7 +96,11 @@ body {
   color: #fff;
   font-size: 1.5rem;
   font-weight: 700;
-  margin: -1rem;
+  text-align: center;
+}
+
+.features__header p {
+  margin: 0 0 1rem;
 }
 
 .features__body {
@@ -101,8 +113,12 @@ body {
 }
 
 .features--flex {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template: 100% / 1fr 1fr 1fr;
+}
+
+.features__wrapper {
+  width: 100%;
 }
 
 .output {
@@ -144,7 +160,7 @@ body {
 }
 
 .setting--enabled {
-  color: cornflowerblue;
+  color: #7ba5f0;
 }
 
 .title--common {
@@ -173,4 +189,5 @@ body {
   margin: 0 auto;
   max-width: 50rem;
   position: relative;
+  z-index: 1;
 }

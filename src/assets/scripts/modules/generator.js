@@ -92,14 +92,14 @@ export default class Generator {
         randCat = this.activeCats[Math.floor(Math.random() * aCLength)];
 
       /*  From here, we're going to:
-            1. Check if custom words were selected (somecustom).
+            1. Check if custom words were selected (somecustom/onlycustom).
             2a. If somecustom is true, we'll pick a random custom word.
             2b. If somecustom is false, we'll pick a random word from our database.
             3. If this is an unused word, add it to our builder;
               otherwise, repeat the loop without increasing 'i'.
       */
 
-      if (randCat === 'somecustom') {
+      if (randCat === 'somecustom' || this.activeCats.indexOf('onlycustom') > -1) {
         selection = customs[Math.floor(Math.random() * customsLength)];
       } else {
         dataCat = this.data.find(arg => { return arg.name === randCat });

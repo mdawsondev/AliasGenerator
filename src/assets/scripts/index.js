@@ -546,7 +546,7 @@ var Title = function () {
     value: function colorize() {
       var _this = this;
 
-      var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+      var colors = ['red', 'orange', 'yellow'];
       setInterval(function (e) {
         var select = Math.floor(Math.random() * colors.length);
         _this.title.style.color = colors[select];

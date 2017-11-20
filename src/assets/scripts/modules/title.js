@@ -5,7 +5,7 @@ export default class Title {
   }
 
   colorize() {
-    const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+    const colors = ['red', 'orange', 'yellow'];
     setInterval((e) => {
       let select = Math.floor(Math.random() * colors.length);
       this.title.style.color = colors[select];

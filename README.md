@@ -1,37 +1,24 @@
-# Alias Generator [![codebeat badge](https://codebeat.co/badges/5c97894c-08e6-4d53-9945-da77f49dde4f)](https://codebeat.co/projects/github-com-mdawsondev-alias-generator-master)
+# [Incogni.me](https://mdawsondev.github.io/incogni.me/src/index.html) [![codebeat badge](https://codebeat.co/badges/5c97894c-08e6-4d53-9945-da77f49dde4f)](https://codebeat.co/projects/github-com-mdawsondev-alias-generator-master)
 
 ### About
 ------
-Alias Generator is a word generator focused on the creation of unique usernames. Using a series of controlled properties, users can generate content from predefined words, or by using custom input. Alias Generator also features "preview cards," allowing users to see what the generated name "feels like" in the wild.
+Incogni.me is a word generator focused on the creation of unique usernames. Using a series of controlled properties, users can generate content from predefined words, or via custom input.
 
-This project is open source, and can be used [right here on GitHub](https://mdawsondev.github.io/alias-generator/)!
+This project is open source, and can be used [right here on GitHub](https://mdawsondev.github.io/incogni.me/src/index.html)!
+
+### History
+------
+Incogni.me is the successor to "Alias Generator," one of the first applications I created. Originally, Alias Generator was a challenge to see how much I knew about web development before diving into several major online courses. After learning a significant number of new concepts, I decided to revisit and reproduce the entire project from the ground up. The entire engine has been rebuilt and redesigned.
 
 ### Features
 ------
-* Predefined Inputs
-* Customized Inputs
-* Micro-Logic for Grammar
-* Organized Capitalized Letters
-* Random Capitalized Letters
-* Caps Locked Words
-* Leet Translator
-* Default Preview Card
-* Reddit Preview Card
-* Twitter Preview Card
-* On-Page Editing
-
-### To-Do
-------
-* Compatability tests.
-* Redesign for mobile users.
-* Rename HTML classes and ids for readability.
-* Restructure CSS for simplicity.
-* Restructure JS for modular use.
-* Additional tabs.
-* Random option feature.
-* "Hardcore" feature.
-
-### Folders
-------
-* **dist**: Build folder; all files minimized and tidy.
-* **src**: Source folder holding the original code.
+* Categories - Predefined
+* Categories - Custom Input
+* Code - Modular JS
+* Code - Modular Sass/CSS
+* Design - Mobile Responsive
+* Design - On-Page Editing
+* Modifier - Caps: CAPS LOCK
+* Modifier - Caps: First Letter
+* Modifier - Caps: RaNDoM LeTTeRS
+* Modifier - L33T Translation
